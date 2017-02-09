@@ -1,4 +1,0 @@
-admin ağgangur:
-	Notendanafn:	admin
-	email:			admin@fakeemail.com
-	Lykilorğ:		hopur-11
