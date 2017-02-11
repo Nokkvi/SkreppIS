@@ -21,6 +21,7 @@ from passenger import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^passenger/', views.PassengerList.as_view()),
+    url(r'^driver/', views.DriverList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
