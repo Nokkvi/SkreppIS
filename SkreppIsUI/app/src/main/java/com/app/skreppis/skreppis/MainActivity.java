@@ -10,14 +10,15 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainDriverFragment.Callbacks {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         Button rideButton = (Button) findViewById(R.id.p_findride);
         //optional passengerbutton
@@ -33,8 +34,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
     protected void findRide() {
         Intent intent = new Intent(this, FindRideActivity.class);
+        startActivity(intent);
+    }
+
+    public void findPassenger() {
+        Intent intent = new Intent(this, FindPassengerActivity.class);
         startActivity(intent);
     }
 

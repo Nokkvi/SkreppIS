@@ -33,8 +33,8 @@ public class FindRideActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -57,5 +57,8 @@ public class FindRideActivity extends AppCompatActivity {
         if (id == R.id.menu_about) {
             return true;
         }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }
