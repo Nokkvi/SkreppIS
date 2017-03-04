@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Passenger
 from .serializers import PassengerSerializer
+from django.views.decorators.csrf import csrf_exempt
 
 # Lists all Passengers or creates a new one
 #
@@ -14,7 +15,8 @@ class PassengerList(APIView):
         serializer = PassengerSerializer(passenger, many=True)
         return Response(serializer.data)
 
-    def post(self):
+    @csrf_exempt
+    def post(self, request):
         serializer = PassengerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

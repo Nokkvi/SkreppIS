@@ -38,9 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'allaccess',
+    # Our apps
     'driver.apps.DriverConfig',
-    'passenger.apps.PassengerConfig'
+    'passenger.apps.PassengerConfig',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Default backend
+    'django.contrib.auth.backends.ModelBackend',
+    # Additional backend
+    'allaccess.backends.AuthorizedServiceBackend',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

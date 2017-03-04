@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Driver
 from .serializers import DriverSerializer
+from django.views.decorators.csrf import csrf_exempt
 
 # Lists all Passengers or creates a new one
 #
@@ -14,7 +15,8 @@ class DriverList(APIView):
         serializer = DriverSerializer(driver, many=True)
         return Response(serializer.data)
 
-    def post(self):
+    @csrf_exempt
+    def post(self, request):
         serializer = DriverSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
