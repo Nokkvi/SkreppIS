@@ -27,7 +27,6 @@
         android:id="@+id/menu_toggle_driver"
         android:orderInCategory="104"
         android:title="@string/debug_toggle_driver"
-        android:visible="false"
         app:showAsAction="never" />
 
 </menu>
