@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     // TODO: Replace this dummy value.
     boolean isDriver = false;
 
@@ -65,13 +65,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
     protected void findRide() {
         Intent intent = new Intent(this, FindRideActivity.class);
         startActivity(intent);
@@ -81,32 +74,20 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FindPassengerActivity.class);
         startActivity(intent);
     }
+/*
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem toggle = (MenuItem) findViewById(R.id.menu_toggle_driver);
+        return super.onPrepareOptionsMenu(menu);
+    }*/
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.menu_manageprofile) {
-            return true;
+    public boolean menuToggleDriver() {
+        if(isDriver) {
+            toggleDriver(false);
+        } else {
+            toggleDriver(true);
         }
-        if (id == R.id.menu_ridehistory) {
-            return true;
-        }
-        if (id == R.id.menu_logout) {
-            return true;
-        }
-        if (id == R.id.menu_about){
-            return true;
-        }
-        if (id == R.id.menu_toggle_driver) {
-            if(isDriver){
-                toggleDriver(false);
-            }else {
-                toggleDriver(true);
-            }
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 }
