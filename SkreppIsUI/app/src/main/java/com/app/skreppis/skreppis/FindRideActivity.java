@@ -57,6 +57,9 @@ public class FindRideActivity extends AppCompatActivity {
         if (id == R.id.menu_about) {
             return true;
         }
+        if (id == R.id.menu_toggle_driver) {
+            return true;
+        }
 
 
         return super.onOptionsItemSelected(item);

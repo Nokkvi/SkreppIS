@@ -20,8 +20,13 @@
         app:showAsAction="never"/>
     <item
         android:id="@+id/menu_logout"
-        android:orderInCategory="101"
-        android:title="@string/menu_ridehistory"
+        android:orderInCategory="103"
+        android:title="@string/menu_logout"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_toggle_driver"
+        android:orderInCategory="104"
+        android:title="@string/debug_toggle_driver"
+        app:showAsAction="never" />
 
 </menu>

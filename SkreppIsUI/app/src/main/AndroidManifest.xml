@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FindRideActivity"></activity>
+        <activity android:name=".FindPassengerActivity"></activity>
     </application>
 
 </manifest>
