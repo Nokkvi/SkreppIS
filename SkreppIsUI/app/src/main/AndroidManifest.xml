@@ -15,8 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FindRideActivity"></activity>
-        <activity android:name=".FindPassengerActivity"></activity>
+        <activity android:name=".FindRideActivity" />
+        <activity android:name=".FindPassengerActivity" />
+        <activity android:name=".ManageProfileActivity" />
+        <activity android:name=".RideHistoryActivity"></activity>
     </application>
 
 </manifest>

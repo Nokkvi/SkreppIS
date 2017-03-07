@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class FindRideActivity extends AppCompatActivity {
+public class FindRideActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,33 +35,4 @@ public class FindRideActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.menu_manageprofile) {
-            return true;
-        }
-        if (id == R.id.menu_ridehistory) {
-            return true;
-        }
-        if (id == R.id.menu_logout) {
-            return true;
-        }
-        if (id == R.id.menu_about) {
-            return true;
-        }
-        if (id == R.id.menu_toggle_driver) {
-            return true;
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
 }
