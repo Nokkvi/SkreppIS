@@ -5,5 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.app.skreppis.skreppis.RideHistoryActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test_text6"/>
 
 </android.support.constraint.ConstraintLayout>

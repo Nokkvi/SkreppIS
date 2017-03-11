@@ -19,6 +19,9 @@
         <activity android:name=".FindPassengerActivity" />
         <activity android:name=".ManageProfileActivity" />
         <activity android:name=".RideHistoryActivity" />
+        <activity android:name=".PopUpWindow"
+            android:theme="@style/Theme.AppCompat.popupTheme"/>
+
     </application>
 
 </manifest>
