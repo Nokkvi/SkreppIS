@@ -18,7 +18,7 @@
         <activity android:name=".FindRideActivity" />
         <activity android:name=".FindPassengerActivity" />
         <activity android:name=".ManageProfileActivity" />
-        <activity android:name=".RideHistoryActivity"></activity>
+        <activity android:name=".RideHistoryActivity" />
     </application>
 
 </manifest>
