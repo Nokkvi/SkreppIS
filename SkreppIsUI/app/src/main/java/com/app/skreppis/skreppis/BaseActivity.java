@@ -1,6 +1,5 @@
 package com.app.skreppis.skreppis;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +26,7 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         Intent intent;
+
         switch (id) {
             case R.id.menu_manageprofile:
                 intent = new Intent(this, ManageProfileActivity.class);

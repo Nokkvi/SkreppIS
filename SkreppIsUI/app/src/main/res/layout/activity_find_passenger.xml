@@ -10,7 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.app.skreppis.skreppis.FindPassengerActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnHit"
+        android:text="HIT ME"/>
+
     <TextView
+        android:id="@+id/JSONItem"
         android:text="@string/test_text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
