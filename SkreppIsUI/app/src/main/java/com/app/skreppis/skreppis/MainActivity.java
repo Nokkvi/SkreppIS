@@ -1,18 +1,15 @@
 package com.app.skreppis.skreppis;
 
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
+
     // TODO: Replace this dummy value.
-    boolean isDriver = false;
+    boolean isDriver;
 
     Button mFindRideBtn;
     Button mFindPassengerBtn;
@@ -20,14 +17,14 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        makepref();
+        isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
+
         if (isDriver) {
             toggleDriver(true);
         } else {
             toggleDriver(false);
         }
-
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         //change to fragment?
         //final TextView messageBox = (TextView) findViewById(R.id.messagebox);
@@ -45,12 +42,12 @@ public class MainActivity extends BaseActivity {
                     findPassenger();
                 }
             });
-            isDriver = true;
+            sharedPref.edit().putBoolean(getString(R.string.pref_isdriver), true).apply();
         } else {
             setContentView(R.layout.activity_main_passenger);
             manageRideButton();
             mFindPassengerBtn = null;
-            isDriver = false;
+            sharedPref.edit().putBoolean(getString(R.string.pref_isdriver), false).apply();
         }
     }
 
@@ -83,6 +80,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean menuToggleDriver() {
+        isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
         if(isDriver) {
             toggleDriver(false);
         } else {
