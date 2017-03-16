@@ -20,7 +20,7 @@ class DriverManager(models.Manager):
         name = user.get_username()
         phone_number = Passenger.objects.get(pk=user.pk).phone_number
         description = Passenger.objects.get(pk=user.pk).description
-        image = Passenger.object.get(pk=user.pk)
+        image = Passenger.object.get(pk=user.pk).image
         driver = self.create(user=user, name=name, phone_number=phone_number, description=description, image=image)
         return driver
 

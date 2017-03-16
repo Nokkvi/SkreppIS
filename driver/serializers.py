@@ -59,3 +59,5 @@ class RequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
         fields = '__all__'
+
+#class ZoneSerializer(serializers.)

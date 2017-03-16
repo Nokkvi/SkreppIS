@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import HyperlinkedIdentityField
 
 from .models import Passenger
@@ -18,7 +19,7 @@ class PassengerSerializer(serializers.ModelSerializer):
                   ]
 
 class PassengerDetailSerializer(serializers.ModelSerializer):
-
+    image = SerializerMethodField()
     class Meta:
         model = Passenger
         fields = [  'name',
@@ -33,6 +34,7 @@ class PassengerDetailSerializer(serializers.ModelSerializer):
         except:
             image = None
         return image
+
 
 class PassengerCreateSerializer(serializers.ModelSerializer):
 
