@@ -20,6 +20,8 @@ class Passenger(models.Model):
     name = models.CharField(max_length=50, blank=True)
     phone_number = models.CharField(max_length=16, blank=True)
     zones = models.ManyToManyField(Zone, null=True)
+    description = models.CharField(max_length=200, blank=True)
+    image = models.CharField(max_length=200, blank=True)
 
     objects = PassengerManager()
 

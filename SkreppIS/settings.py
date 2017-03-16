@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Our apps
     'driver.apps.DriverConfig',
     'passenger.apps.PassengerConfig',
+    'ratings.apps.RatingConfig'
 ]
 
 AUTHENTICATION_BACKENDS = (

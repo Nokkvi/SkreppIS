@@ -25,13 +25,33 @@ from rest_framework.permissions import (
     IsAdminUser,
     IsAuthenticatedOrReadOnly,
 )
+
+from rest_framework.filters import (
+    SearchFilter,
+    OrderingFilter,
+)
+from passenger.pagination import PageNumberPagination
 from .permissions import IsOwnerOrReadOnly
+from django.db.models import Q
 # Lists all Passengers or creates a new one
 #
 class DriverList(ListAPIView):
     queryset = Driver.objects.all()
     serializer_class = DriverSerializer
     permission_classes = [AllowAny]
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['zones__name', 'name']
+    pagination_class = PageNumberPagination  # PageNumberPagination
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Passenger.objects.all()
+        query = self.request.GET.get("q")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(zones__name__contains=query)|
+                Q(name__contains=query)
+            ).distinct()
+        return queryset_list
 
 class DriverDetailView(RetrieveAPIView):
     queryset = Passenger.objects.all()

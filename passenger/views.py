@@ -19,12 +19,19 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 
+from rest_framework.filters import (
+    SearchFilter,
+    OrderingFilter,
+)
+
+from passenger.pagination import PageNumberPagination
 from .permissions import IsOwnerOrReadOnly
 from .models import Passenger
 from .serializers import    (
                             PassengerSerializer,
                             PassengerDetailSerializer,
-                            PassengerCreateUpdateSerializer
+                            PassengerCreateSerializer,
+                            PassengerUpdateSerializer
                             )
 from django.views.decorators.csrf import csrf_exempt
 
@@ -34,13 +41,16 @@ class PassengerList(ListAPIView):
     queryset = Passenger.objects.all()
     serializer_class = PassengerSerializer
     permission_classes = [AllowAny]
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['zones__name', 'name']
+    pagination_class = PageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
         queryset_list = Passenger.objects.all()
         query = self.request.GET.get("q")
         if query:
             queryset_list = queryset_list.filter(
-                Q(zones__name=query)|
+                Q(zones__name__contains=query)|
                 Q(name__contains=query)
             ).distinct()
         return queryset_list
@@ -59,14 +69,14 @@ class PassengerDestroyView(DestroyAPIView):
 
 class PassengerUpdateView(UpdateAPIView):
     queryset = Passenger.objects.all()
-    serializer_class = PassengerCreateUpdateSerializer
+    serializer_class = PassengerUpdateSerializer
     lookup_field = "name"
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
 
 class PassengerCreateView(CreateAPIView):
     queryset = Passenger.objects.all()
-    serializer_class = PassengerCreateUpdateSerializer
+    serializer_class = PassengerCreateSerializer
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):

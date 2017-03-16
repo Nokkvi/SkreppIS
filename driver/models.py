@@ -19,8 +19,11 @@ class DriverManager(models.Manager):
     def create_driver(self, user):
         name = user.get_username()
         phone_number = Passenger.objects.get(pk=user.pk).phone_number
-        driver = self.create(user=user, name=name, phone_number=phone_number)
+        description = Passenger.objects.get(pk=user.pk).description
+        image = Passenger.object.get(pk=user.pk)
+        driver = self.create(user=user, name=name, phone_number=phone_number, description=description, image=image)
         return driver
+
 
 
 
@@ -31,6 +34,8 @@ class Driver(models.Model):
     isBusy = models.BooleanField(default=False)
     zones = models.ManyToManyField(Zone, null=True)
     phone_number = models.CharField(max_length=16, blank=True)
+    description = models.CharField(max_length=200, blank=True)
+    image = models.CharField(max_length=200, blank=True)
     requests = models.CharField(max_length=1000, blank=True)
 
     objects = DriverManager

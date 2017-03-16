@@ -1,12 +1,18 @@
 from rest_framework import serializers
+from rest_framework.serializers import HyperlinkedIdentityField
 
 from .models import Passenger
 
-class PassengerSerializer(serializers.ModelSerializer):
 
+
+class PassengerSerializer(serializers.ModelSerializer):
+    url = HyperlinkedIdentityField(
+        view_name='detail',
+        lookup_field='name'
+    )
     class Meta:
         model = Passenger
-        fields = [  'id',
+        fields = [  'url',
                     'name',
                     'phone_number'
                   ]
@@ -15,17 +21,34 @@ class PassengerDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Passenger
-        fields = [  'id',
-                    'name',
-                    'phone_number'
+        fields = [  'name',
+                    'phone_number',
+                    'description',
+                    'image',
                   ]
 
+    def get_image(self, obj):
+        try:
+            image = obj.image.url
+        except:
+            image = None
+        return image
 
-class PassengerCreateUpdateSerializer(serializers.ModelSerializer):
+class PassengerCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Passenger
         fields = [#'id',
                   #'name',
-                  'phone_number'
+                  'phone_number',
+                  ]
+
+class PassengerUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Passenger
+        fields = [#'id',
+                  #'name',
+                  'phone_number',
+                  'description',
                   ]

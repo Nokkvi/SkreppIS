@@ -18,10 +18,11 @@ from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
 import passenger.views
 import driver.views
+import ratings.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^passenger/$', passenger.views.PassengerList.as_view(), name='list'),
+    url(r'^passenger/$', passenger.views.PassengerList.as_view(), name='passenger-list'),
     url(r'^passenger/create/$', passenger.views.PassengerCreateView.as_view(), name='create'),
     url(r'^passenger/(?P<name>[\w-]+)/$', passenger.views.PassengerDetailView.as_view(), name='detail'),
     url(r'^passenger/(?P<name>[\w-]+)/edit$', passenger.views.PassengerUpdateView.as_view(), name='edit'),
@@ -31,6 +32,9 @@ urlpatterns = [
     url(r'^driver/(?P<name>[\w-]+)/$', driver.views.DriverDetailView.as_view(), name='driverdetail'),
     url(r'^driver/(?P<name>[\w-]+)/edit$', driver.views.DriverUpdateView.as_view(), name='driveredit'),
     url(r'^driver/(?P<name>[\w-]+)/delete$', driver.views.DriverDestroyView.as_view(), name='driverdelete'),
+    url(r'^ratings/$', ratings.views.RatingList.as_view(), name='ratinglist'),
+    url(r'^ratings/(?P<id>$\d+)/$', ratings.views.RatingDetailView.as_view(), name='ratingdetail'),
+    #url(r'^ratings/(?P<id>$\d+)/delete$', ratings.views.RatingDeleteView.as_view(), name='ratingdelete'),
     url(r'^accounts/', include('allaccess.urls')),
 ]
 

@@ -1,6 +1,10 @@
 from rest_framework import serializers
+from rest_framework.fields import SerializerMethodField
 
 from .models import Driver, Request
+
+from ratings.serializers import RatingSerializer
+from ratings.models import Rating, RatingManager
 
 class DriverSerializer(serializers.ModelSerializer):
 
@@ -9,17 +13,28 @@ class DriverSerializer(serializers.ModelSerializer):
         fields = [  'id',
                     'user',
                     'name',
-                    'phone_number'
+                    'phone_number',
+                    'zones',
                   ]
 
 class DriverDetailSerializer(serializers.ModelSerializer):
-
+    rating = SerializerMethodField()
     class Meta:
         model = Driver
         fields = [  'id',
                     'name',
-                    'phone_number'
+                    'phone_number',
+                    'description',
+                    'zones',
+                    'rating',
                   ]
+
+    def get_rating(self, obj):
+        c_qs = Rating.objects.filter(driver__name=obj)
+        ratings = RatingSerializer(c_qs, many=True).data
+        return ratings
+
+
 
 class DriverCreateSerializer(serializers.ModelSerializer):
 
