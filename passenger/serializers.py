@@ -6,4 +6,26 @@ class PassengerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Passenger
-        fields = '__all__'
+        fields = [  'id',
+                    'name',
+                    'phone_number'
+                  ]
+
+class PassengerDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Passenger
+        fields = [  'id',
+                    'name',
+                    'phone_number'
+                  ]
+
+
+class PassengerCreateUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Passenger
+        fields = [#'id',
+                  #'name',
+                  'phone_number'
+                  ]

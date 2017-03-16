@@ -25,7 +25,7 @@ SECRET_KEY = 'l8!1dyy^qk=ypt!g&gd(iady(-$h8)d1)ngaz9)t&c1qdcz$jf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.175.1', 'localhost']
 
 
 # Application definition
@@ -51,7 +51,7 @@ AUTHENTICATION_BACKENDS = (
     'allaccess.backends.AuthorizedServiceBackend',
 )
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
