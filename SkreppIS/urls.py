@@ -35,6 +35,8 @@ urlpatterns = [
     url(r'^ratings/$', ratings.views.RatingList.as_view(), name='ratinglist'),
     url(r'^ratings/(?P<id>$\d+)/$', ratings.views.RatingDetailView.as_view(), name='ratingdetail'),
     #url(r'^ratings/(?P<id>$\d+)/delete$', ratings.views.RatingDeleteView.as_view(), name='ratingdelete'),
+    url(r'^dzones/$', driver.views.ZoneList.as_view(), name='dzones'),
+    url(r'^pzones/$', passenger.views.ZoneList.as_view(), name='pzones'),
     url(r'^accounts/', include('allaccess.urls')),
 ]
 

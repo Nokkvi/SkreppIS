@@ -8,12 +8,6 @@ from django.db import models
 
 from passenger.models import Passenger
 
-class Zone(models.Model):
-    name = models.CharField(max_length=100, blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
 
 class DriverManager(models.Manager):
     def create_driver(self, user):
@@ -32,7 +26,6 @@ class Driver(models.Model):
     name = models.CharField(max_length=50, blank=True)
     isActive = models.BooleanField(default=False)
     isBusy = models.BooleanField(default=False)
-    zones = models.ManyToManyField(Zone, null=True)
     phone_number = models.CharField(max_length=16, blank=True)
     description = models.CharField(max_length=200, blank=True)
     image = models.CharField(max_length=200, blank=True)
@@ -54,16 +47,16 @@ class Driver(models.Model):
     def get_requests(self):
         return json.loads(self.requests)
 
-    def set_zones(self, zones_list):
-        self.zones = json.dumps(zones_list)
-
-    def get_zones(self):
-        return json.loads(self.zones)
-
     def save(self, **kwargs):
         self.slug = slugify(self.name)
         super(Driver, self).save()
 
+class Zone(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    driver = models.ForeignKey(Driver, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 class Request(models.Model):
     passenger = models.ForeignKey(Passenger, on_delete=models.CASCADE)
@@ -75,3 +68,4 @@ class Request(models.Model):
 
     def __str__(self):
         return "Frá " + self.passenger.name
+

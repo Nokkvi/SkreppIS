@@ -1,13 +1,14 @@
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
-from .models import Driver, Request
+from .models import Driver, Request, Zone
 
 from ratings.serializers import RatingSerializer
 from ratings.models import Rating, RatingManager
 
 class DriverSerializer(serializers.ModelSerializer):
-
+    zones = SerializerMethodField()
+    rating = SerializerMethodField()
     class Meta:
         model = Driver
         fields = [  'id',
@@ -15,7 +16,18 @@ class DriverSerializer(serializers.ModelSerializer):
                     'name',
                     'phone_number',
                     'zones',
+                    'rating',
                   ]
+
+    def get_zones(self, obj):
+        c_qs = Zone.objects.filter(driver__name=obj)
+        zones = ZoneSerializer(c_qs, many=True).data
+        return zones
+
+    def get_rating(self, obj):
+        c_qs = Rating.objects.filter(driver__name=obj)
+        ratings = RatingSerializer(c_qs, many=True).data
+        return ratings
 
 class DriverDetailSerializer(serializers.ModelSerializer):
     rating = SerializerMethodField()
@@ -28,6 +40,11 @@ class DriverDetailSerializer(serializers.ModelSerializer):
                     'zones',
                     'rating',
                   ]
+
+    def get_zones(self, obj):
+        c_qs = Zone.objects.filter(driver__name=obj)
+        zones = ZoneSerializer(c_qs, many=True).data
+        return zones
 
     def get_rating(self, obj):
         c_qs = Rating.objects.filter(driver__name=obj)
@@ -60,4 +77,14 @@ class RequestSerializer(serializers.ModelSerializer):
         model = Request
         fields = '__all__'
 
-#class ZoneSerializer(serializers.)
+class ZoneSerializer(serializers.ModelSerializer):
+    driver = SerializerMethodField()
+    class Meta:
+        model = Zone
+        fields = [
+            'name',
+            'driver',
+        ]
+
+    def get_driver(self, obj):
+        return obj.driver.name
