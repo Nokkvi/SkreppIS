@@ -7,7 +7,15 @@
 /build
 /captures
 .externalNativeBuild
+<<<<<<< 7b30e77c21aea6be36953354b25e7b2fff586d3d
 ../.idea/compiler.xml
 ../.idea/copyright/
 .idea/modules.xml
 
+||||||| merged common ancestors
+=======
+ SkreppIsUI/.idea/modules.xml
+../.idea/compiler.xml
+../.idea/copyright/
+.idea/modules.xml
+>>>>>>> basic look changes
