@@ -21,8 +21,16 @@ import driver.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^passenger/', passenger.views.PassengerList.as_view()),
-    url(r'^driver/', driver.views.DriverList.as_view()),
+    url(r'^passenger/$', passenger.views.PassengerList.as_view(), name='list'),
+    url(r'^passenger/create/$', passenger.views.PassengerCreateView.as_view(), name='create'),
+    url(r'^passenger/(?P<name>[\w-]+)/$', passenger.views.PassengerDetailView.as_view(), name='detail'),
+    url(r'^passenger/(?P<name>[\w-]+)/edit$', passenger.views.PassengerUpdateView.as_view(), name='edit'),
+    url(r'^passenger/(?P<name>[\w-]+)/delete$', passenger.views.PassengerDestroyView.as_view(), name='delete'),
+    url(r'^driver/$', driver.views.DriverList.as_view(), name='driverlist'),
+    url(r'^driver/create/$', driver.views.DriverCreateView.as_view(), name='drivercreate'),
+    url(r'^driver/(?P<name>[\w-]+)/$', driver.views.DriverDetailView.as_view(), name='driverdetail'),
+    url(r'^driver/(?P<name>[\w-]+)/edit$', driver.views.DriverUpdateView.as_view(), name='driveredit'),
+    url(r'^driver/(?P<name>[\w-]+)/delete$', driver.views.DriverDestroyView.as_view(), name='driverdelete'),
     url(r'^accounts/', include('allaccess.urls')),
 ]
 

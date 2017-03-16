@@ -9,7 +9,7 @@ from django.db import models
 from passenger.models import Passenger
 
 class Zone(models.Model):
-    name = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -17,8 +17,8 @@ class Zone(models.Model):
 
 class DriverManager(models.Manager):
     def create_driver(self, user):
-        name = user.get_full_name()
-        phone_number = user.passenger.phone_number
+        name = user.get_username()
+        phone_number = Passenger.objects.get(pk=user.pk).phone_number
         driver = self.create(user=user, name=name, phone_number=phone_number)
         return driver
 
@@ -26,6 +26,7 @@ class DriverManager(models.Manager):
 
 class Driver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=50, blank=True)
     isActive = models.BooleanField(default=False)
     isBusy = models.BooleanField(default=False)
     zones = models.ManyToManyField(Zone, null=True)
