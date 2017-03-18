@@ -26,12 +26,13 @@ from rest_framework.filters import (
 
 from passenger.pagination import PageNumberPagination
 from .permissions import IsOwnerOrReadOnly
-from .models import Passenger
+from .models import Passenger, Zone
 from .serializers import    (
                             PassengerSerializer,
                             PassengerDetailSerializer,
                             PassengerCreateSerializer,
-                            PassengerUpdateSerializer
+                            PassengerUpdateSerializer,
+                            ZoneSerializer
                             )
 from django.views.decorators.csrf import csrf_exempt
 
@@ -54,6 +55,7 @@ class PassengerList(ListAPIView):
                 Q(name__contains=query)
             ).distinct()
         return queryset_list
+
 
 class PassengerDetailView(RetrieveAPIView):
     queryset = Passenger.objects.all()
@@ -82,3 +84,21 @@ class PassengerCreateView(CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),
                         )
+
+class ZoneList(ListAPIView):
+    queryset = Zone.objects.all()
+    serializer_class = ZoneSerializer
+    permission_classes = [AllowAny]
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['name', 'passenger__name']
+    pagination_class = PageNumberPagination  # PageNumberPagination
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Zone.objects.all()
+        query = self.request.GET.get("q")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(name__contains=query) |
+                Q(passenger__name__contains=query)
+            ).distinct()
+        return queryset_list

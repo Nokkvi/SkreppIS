@@ -2,12 +2,13 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Driver, Passenger
+from .models import Driver, Passenger, Zone
 from .serializers import (
     DriverSerializer,
     DriverCreateSerializer,
     DriverDetailSerializer,
     DriverUpdateSerializer,
+    ZoneSerializer,
 )
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.generics import (
@@ -40,7 +41,7 @@ class DriverList(ListAPIView):
     serializer_class = DriverSerializer
     permission_classes = [AllowAny]
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['zones__name', 'name']
+    search_fields = ['name', 'zones__name']
     pagination_class = PageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
@@ -87,3 +88,21 @@ class DriverUpdateView(UpdateAPIView):
 def perform_update(self, serializer):
     serializer.save(phone_number=Passenger.objects.get(user=self.request.user.pk).phone_number
                     )
+
+class ZoneList(ListAPIView):
+    queryset = Zone.objects.all()
+    serializer_class = ZoneSerializer
+    permission_classes = [AllowAny]
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['name', 'driver__name']
+    pagination_class = PageNumberPagination  # PageNumberPagination
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Zone.objects.all()
+        query = self.request.GET.get("q")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(name__contains=query) |
+                Q(driver__name__contains=query)
+            ).distinct()
+        return queryset_list
