@@ -66,5 +66,5 @@ public class ManageProfileActivity extends BaseActivity {
         return finalImage;
     }
 
-    public static
+
 }
