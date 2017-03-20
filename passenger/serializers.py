@@ -27,13 +27,19 @@ class PassengerSerializer(serializers.ModelSerializer):
 
 class PassengerDetailSerializer(serializers.ModelSerializer):
     image = SerializerMethodField()
+    zones = SerializerMethodField()
     class Meta:
         model = Passenger
         fields = [  'name',
                     'phone_number',
                     'description',
                     'image',
+                    'zones',
                   ]
+    def get_zones(self, obj):
+        c_qs = Zone.objects.filter(passenger__name=obj)
+        zones = ZoneSerializer(c_qs, many=True).data
+        return zones
 
     def get_image(self, obj):
         try:
@@ -70,6 +76,29 @@ class ZoneSerializer(serializers.ModelSerializer):
             'name',
             'passenger',
         ]
+
+    def get_passenger(self, obj):
+        return obj.passenger.name
+
+class ZoneCreateSerializer(serializers.ModelSerializer):
+    passenger = SerializerMethodField()
+    class Meta:
+        model = Zone
+        fields = [
+            'name',
+            'passenger',
+        ]
+
+    def get_passenger(self, obj):
+        return obj.passenger.name
+
+class ZoneDetailSerializer(serializers.ModelSerializer):
+    passenger = SerializerMethodField()
+    class Meta:
+        model = Zone
+        fields = [  'name',
+                    'passenger',
+                  ]
 
     def get_passenger(self, obj):
         return obj.passenger.name

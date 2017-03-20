@@ -12,6 +12,8 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView
     )
 
+from rest_framework.mixins import DestroyModelMixin
+
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
@@ -23,6 +25,7 @@ from rest_framework.filters import (
     SearchFilter,
     OrderingFilter,
 )
+from rest_framework_bulk import ListBulkCreateUpdateDestroyAPIView
 
 from passenger.pagination import PageNumberPagination
 from .permissions import IsOwnerOrReadOnly
@@ -32,7 +35,9 @@ from .serializers import    (
                             PassengerDetailSerializer,
                             PassengerCreateSerializer,
                             PassengerUpdateSerializer,
-                            ZoneSerializer
+                            ZoneSerializer,
+                            ZoneCreateSerializer,
+                            ZoneDetailSerializer,
                             )
 from django.views.decorators.csrf import csrf_exempt
 
@@ -67,7 +72,7 @@ class PassengerDestroyView(DestroyAPIView):
     queryset = Passenger.objects.all()
     serializer_class = PassengerDetailSerializer
     lookup_field = "name"
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
 class PassengerUpdateView(UpdateAPIView):
     queryset = Passenger.objects.all()
@@ -86,7 +91,6 @@ class PassengerCreateView(CreateAPIView):
                         )
 
 class ZoneList(ListAPIView):
-    queryset = Zone.objects.all()
     serializer_class = ZoneSerializer
     permission_classes = [AllowAny]
     filter_backends = [SearchFilter, OrderingFilter]
@@ -102,3 +106,26 @@ class ZoneList(ListAPIView):
                 Q(passenger__name__contains=query)
             ).distinct()
         return queryset_list
+
+class ZoneCreateView(CreateAPIView):
+    queryset = Zone.objects.all()
+    serializer_class = ZoneCreateSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = PageNumberPagination
+
+    def perform_create(self, serializer):
+        serializer.save(passenger=Passenger.objects.get(user=self.request.user.pk),
+                        )
+
+class ZoneDestroyView(DestroyAPIView):
+    serializer_class = ZoneDetailSerializer(many=True)
+    permission_classes = [IsAuthenticated]
+    lookup_field = "passenger"
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Zone.objects.filter(passenger=Passenger.objects.get(user=self.request.user.pk))
+        queryset_list.delete()
+        return queryset_list
+
+
+

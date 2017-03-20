@@ -88,3 +88,27 @@ class ZoneSerializer(serializers.ModelSerializer):
 
     def get_driver(self, obj):
         return obj.driver.name
+
+
+class ZoneCreateSerializer(serializers.ModelSerializer):
+    driver = SerializerMethodField()
+    class Meta:
+        model = Zone
+        fields = [
+            'name',
+            'driver',
+        ]
+
+    def get_driver(self, obj):
+        return obj.driver.name
+
+class ZoneDetailSerializer(serializers.ModelSerializer):
+    driver = SerializerMethodField()
+    class Meta:
+        model = Zone
+        fields = [  'name',
+                    'driver',
+                  ]
+
+    def get_driver(self, obj):
+        return obj.driver.name

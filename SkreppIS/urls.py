@@ -37,6 +37,8 @@ urlpatterns = [
     #url(r'^ratings/(?P<id>$\d+)/delete$', ratings.views.RatingDeleteView.as_view(), name='ratingdelete'),
     url(r'^dzones/$', driver.views.ZoneList.as_view(), name='dzones'),
     url(r'^pzones/$', passenger.views.ZoneList.as_view(), name='pzones'),
+    url(r'^pzones/create/$', passenger.views.ZoneCreateView.as_view(), name='pzonescreate'),
+    url(r'^passenger/(?P<passenger>[\w-]+)/zonedelete$', passenger.views.ZoneDestroyView.as_view(), name='zonedelete'),
     url(r'^accounts/', include('allaccess.urls')),
 ]
 
