@@ -19,6 +19,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 import passenger.views
 import driver.views
 import ratings.views
+import accounts.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -41,6 +42,7 @@ urlpatterns = [
     url(r'^passenger/(?P<name>[\w-]+)/addzone$', passenger.views.ZoneCreateView.as_view(), name='pzonescreate'),
     url(r'^passenger/(?P<passenger>[\w-]+)/zonedelete$', passenger.views.ZoneDestroyView.as_view(), name='pzonedelete'),
     url(r'^driver/(?P<driver>[\w-]+)/zonedelete$', driver.views.ZoneDestroyView.as_view(), name='dzonedelete'),
+    url(r'^register/$', accounts.views.UserCreateApiView.as_view(), name='register'),
     url(r'^accounts/', include('allaccess.urls')),
 ]
 
