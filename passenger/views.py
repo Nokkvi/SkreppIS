@@ -12,8 +12,6 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView
     )
 
-from rest_framework.mixins import DestroyModelMixin
-
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
@@ -25,7 +23,6 @@ from rest_framework.filters import (
     SearchFilter,
     OrderingFilter,
 )
-from rest_framework_bulk import ListBulkCreateUpdateDestroyAPIView
 
 from passenger.pagination import PageNumberPagination
 from .permissions import IsOwnerOrReadOnly
