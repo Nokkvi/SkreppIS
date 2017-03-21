@@ -20,6 +20,7 @@ import passenger.views
 import driver.views
 import ratings.views
 import accounts.views
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -42,8 +43,11 @@ urlpatterns = [
     url(r'^passenger/(?P<name>[\w-]+)/addzone$', passenger.views.ZoneCreateView.as_view(), name='pzonescreate'),
     url(r'^passenger/(?P<passenger>[\w-]+)/zonedelete$', passenger.views.ZoneDestroyView.as_view(), name='pzonedelete'),
     url(r'^driver/(?P<driver>[\w-]+)/zonedelete$', driver.views.ZoneDestroyView.as_view(), name='dzonedelete'),
-    url(r'^register/$', accounts.views.UserCreateApiView.as_view(), name='register'),
+    url(r'^register/$', accounts.views.UserCreateAPIView.as_view(), name='register'),
+    url(r'^login/$', accounts.views.UserLoginAPIView.as_view(), name='login'),
+    url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^accounts/', include('allaccess.urls')),
+    url(r'^api-token-refresh/', refresh_jwt_token),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
