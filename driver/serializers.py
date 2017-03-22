@@ -20,6 +20,7 @@ class DriverSerializer(serializers.ModelSerializer):
                   ]
 
     def get_zones(self, obj):
+        print("Her")
         c_qs = Zone.objects.filter(driver__name=obj)
         zones = ZoneSerializer(c_qs, many=True).data
         return zones
@@ -31,6 +32,7 @@ class DriverSerializer(serializers.ModelSerializer):
 
 class DriverDetailSerializer(serializers.ModelSerializer):
     rating = SerializerMethodField()
+    zones = SerializerMethodField()
     class Meta:
         model = Driver
         fields = [  'id',
@@ -68,7 +70,7 @@ class DriverUpdateSerializer(serializers.ModelSerializer):
         model = Driver
         fields = [  'isActive',
                     'isBusy',
-                    'zones'
+                    'zones',
                   ]
 
 class RequestSerializer(serializers.ModelSerializer):
@@ -85,6 +87,30 @@ class ZoneSerializer(serializers.ModelSerializer):
             'name',
             'driver',
         ]
+
+    def get_driver(self, obj):
+        return obj.driver.name
+
+
+class ZoneCreateSerializer(serializers.ModelSerializer):
+    driver = SerializerMethodField()
+    class Meta:
+        model = Zone
+        fields = [
+            'name',
+            'driver',
+        ]
+
+    def get_driver(self, obj):
+        return obj.driver.name
+
+class ZoneDetailSerializer(serializers.ModelSerializer):
+    driver = SerializerMethodField()
+    class Meta:
+        model = Zone
+        fields = [  'name',
+                    'driver',
+                  ]
 
     def get_driver(self, obj):
         return obj.driver.name

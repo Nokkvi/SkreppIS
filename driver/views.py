@@ -9,6 +9,8 @@ from .serializers import (
     DriverDetailSerializer,
     DriverUpdateSerializer,
     ZoneSerializer,
+    ZoneCreateSerializer,
+    ZoneDetailSerializer,
 )
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.generics import (
@@ -45,7 +47,7 @@ class DriverList(ListAPIView):
     pagination_class = PageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        queryset_list = Passenger.objects.all()
+        queryset_list = Driver.objects.all()
         query = self.request.GET.get("q")
         if query:
             queryset_list = queryset_list.filter(
@@ -55,7 +57,7 @@ class DriverList(ListAPIView):
         return queryset_list
 
 class DriverDetailView(RetrieveAPIView):
-    queryset = Passenger.objects.all()
+    queryset = Driver.objects.all()
     serializer_class = DriverDetailSerializer
     lookup_field = "name"
 
@@ -69,7 +71,7 @@ class DriverCreateView(CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),
-                        phone_number=Passenger.objects.get(user=self.request.user.pk).phone_number
+                        phone_number=Driver.objects.get(user=self.request.user.pk).phone_number
                         )
 
 class DriverDestroyView(DestroyAPIView):
@@ -105,4 +107,24 @@ class ZoneList(ListAPIView):
                 Q(name__contains=query) |
                 Q(driver__name__contains=query)
             ).distinct()
+        return queryset_list
+
+class ZoneCreateView(CreateAPIView):
+    queryset = Zone.objects.all()
+    serializer_class = ZoneCreateSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = PageNumberPagination
+
+    def perform_create(self, serializer):
+        serializer.save(driver=Driver.objects.get(user=self.request.user.pk),
+                        )
+
+class ZoneDestroyView(DestroyAPIView):
+    serializer_class = ZoneDetailSerializer(many=True)
+    permission_classes = [IsAuthenticated]
+    lookup_field = "driver"
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = Zone.objects.filter(driver=Driver.objects.get(user=self.request.user.pk))
+        queryset_list.delete()
         return queryset_list

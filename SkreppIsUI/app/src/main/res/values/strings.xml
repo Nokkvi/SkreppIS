@@ -52,10 +52,13 @@
     <string name="title_activity_register">Sign in</string>
 
     <!-- Register Strings -->
+    <string name="register_field_uname">Username</string>
     <string name="register_field_email">*Email</string>
+    <string name="register_field_cemail">*Confirm Email</string>
     <string name="register_field_password">*Password</string>
     <string name="register_field_pwretype">*Re-Type Password</string>
-    <string name="register_field_name">*Name</string>
+    <string name="register_field_fname">*First Name</string>
+    <string name="register_field_lname">*Last Name</string>
     <string name="register_field_phone">Phone Number</string>
     <string name="register_field_profile">Profile</string>
     <string name="register_button">Register</string>
