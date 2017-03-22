@@ -270,7 +270,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
             registerRequest.setUsername(uname);
             registerRequest.setPassword(password);
-            registerRequest.setEmail1(email);
+            registerRequest.setEmail(email);
             registerRequest.setEmail2(cemail);
             registerRequest.setFirst_name(fname);
             registerRequest.setLast_name(lname);

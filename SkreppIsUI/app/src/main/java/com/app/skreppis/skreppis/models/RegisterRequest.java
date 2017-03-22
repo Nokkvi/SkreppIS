@@ -7,7 +7,7 @@ package com.app.skreppis.skreppis.models;
 public class RegisterRequest {
     private String username;
     private String password;
-    private String email1;
+    private String email;
     private String email2;
     private String first_name;
     private String last_name;
@@ -44,12 +44,12 @@ public class RegisterRequest {
         this.email2 = email2;
     }
 
-    public String getEmail1() {
-        return email1;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmail1(String email1) {
-        this.email1 = email1;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

@@ -12,6 +12,6 @@ import retrofit2.http.POST;
  */
 
 public interface SkreppIsApi {
-    @POST("register")
+    @POST("/register/")
     Call<RegisterResponse> getRegistered(@Body RegisterRequest registerRequest);
 }
