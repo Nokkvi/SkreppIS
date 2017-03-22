@@ -3,6 +3,7 @@ package com.app.skreppis.skreppis;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -27,8 +29,30 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
+import com.app.skreppis.skreppis.models.RegisterRequest;
+import com.app.skreppis.skreppis.models.RegisterResponse;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.apache.commons.io.IOUtils;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -45,30 +69,35 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private UserRegisterTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private EditText mUnameView;
+    private EditText mEmailView;
+    private EditText mcEmailView;
     private EditText mPasswordView;
     private EditText mPWRetypeView;
-    private EditText mNameView;
+    private EditText mfNameView;
+    private EditText mlNameView;
     private EditText mPhoneView;
-    private EditText mProfileView;
 
     private View mRegProgressView;
 
     private View mRegisterFormView;
+    SkreppIsApi service;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         // Set up the register form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
-
-        mPasswordView = (EditText) findViewById(R.id.register_password_field);
+        mUnameView = (EditText) findViewById(R.id.register_uname_field);
+        mEmailView = (EditText) findViewById(R.id.register_email_field);
+        //populateAutoComplete();
+        mcEmailView = (EditText) findViewById(R.id.register_cemail_field);
+        mPasswordView = (EditText) findViewById(R.id.register_pw_field);
         mPWRetypeView = (EditText) findViewById(R.id.register_pwretype_field);
-        mNameView = (EditText) findViewById(R.id.register_name_field);
+        mfNameView = (EditText) findViewById(R.id.register_fname_field);
+        mlNameView = (EditText) findViewById(R.id.register_lname_field);
         mPhoneView = (EditText) findViewById(R.id.register_phone_field);
-        mProfileView = (EditText) findViewById(R.id.register_profile_field);
 
         Button mRegisterButton = (Button) findViewById(R.id.bt_register_user);
 
@@ -82,6 +111,12 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                 attemptRegister();
             }
         });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.106:8000")
+                .addConverterFactory(GsonConverterFactory.create()).build();
+
+        service = retrofit.create(SkreppIsApi.class);
     }
 
     protected boolean registerSuccess(){
@@ -90,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         finish();
         return true;
     }
-
+/*
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -98,7 +133,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
         getLoaderManager().initLoader(0, null, this);
     }
-
+    */
+/*
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
@@ -120,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         }
         return false;
     }
-
+*/
     /**
      * Callback received when a permissions request has been completed.
      */
@@ -129,7 +165,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                                            @NonNull int[] grantResults) {
         if (requestCode == REQUEST_READ_CONTACTS) {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
+                //populateAutoComplete();
             }
         }
     }
@@ -146,21 +182,34 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         }
 
         // Reset errors.
+
+        mUnameView.setError(null);
         mEmailView.setError(null);
+        mcEmailView.setError(null);
         mPasswordView.setError(null);
         mPWRetypeView.setError(null);
-        mNameView.setError(null);
+        mfNameView.setError(null);
+        mlNameView.setError(null);
 
         // Store values at the time of the login attempt.
+        String uname = mUnameView.getText().toString();
         String email = mEmailView.getText().toString();
+        String cemail = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
         String pwretype = mPWRetypeView.getText().toString();
-        String name = mNameView.getText().toString();
+        String fname = mfNameView.getText().toString();
+        String lname = mfNameView.getText().toString();
         String phone = mPhoneView.getText().toString();
-        String profile = mProfileView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
+
+        // Check if username is filled out
+        if (TextUtils.isEmpty(uname)) {
+            mUnameView.setError(getString(R.string.error_field_required));
+            focusView = mUnameView;
+            cancel = true;
+        }
 
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
@@ -176,10 +225,17 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             cancel = true;
         }
 
-        // Check if name is filled out
-        if (TextUtils.isEmpty(name)) {
-            mNameView.setError(getString(R.string.error_field_required));
-            focusView = mNameView;
+        // Check if first name is filled out
+        if (TextUtils.isEmpty(fname)) {
+            mfNameView.setError(getString(R.string.error_field_required));
+            focusView = mfNameView;
+            cancel = true;
+        }
+
+        // Check if last name is filled out
+        if (TextUtils.isEmpty(lname)) {
+            mfNameView.setError(getString(R.string.error_field_required));
+            focusView = mlNameView;
             cancel = true;
         }
 
@@ -194,6 +250,13 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             cancel = true;
         }
 
+        // Check for matching emails
+        if (!TextUtils.equals(email, cemail)) {
+            mcEmailView.setError(getString(R.string.error_field_required));
+            focusView = mcEmailView;
+            cancel = true;
+        }
+
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -203,8 +266,34 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             // perform the user login attempt.
 
             showProgress(true);
-            mAuthTask = new UserRegisterTask(email, password, name, phone, profile);
-            mAuthTask.execute((Void) null);
+            RegisterRequest registerRequest = new RegisterRequest();
+
+            registerRequest.setUsername(uname);
+            registerRequest.setPassword(password);
+            registerRequest.setEmail1(email);
+            registerRequest.setEmail2(cemail);
+            registerRequest.setFirst_name(fname);
+            registerRequest.setLast_name(lname);
+
+            Call<RegisterResponse> registerResponseCall = service.getRegistered(registerRequest);
+
+            registerResponseCall.enqueue(new Callback<RegisterResponse>() {
+                @Override
+                public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                    int statusCode = response.code();
+
+                    RegisterResponse registerResponse = response.body();
+
+                    showProgress(false);
+
+                    Log.d("RegisterActivity", "onResponse: "+ statusCode);
+                }
+
+                @Override
+                public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                    Log.d("RegisterActivity", "onFailure: " + t.getMessage());
+                }
+            });
         }
     }
 
@@ -280,14 +369,14 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             cursor.moveToNext();
         }
 
-        addEmailsToAutoComplete(emails);
+        //addEmailsToAutoComplete(emails);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
     }
-
+    /*
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
@@ -296,7 +385,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
         mEmailView.setAdapter(adapter);
     }
-
+    */
 
     private interface ProfileQuery {
         String[] PROJECTION = {
@@ -312,46 +401,67 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserRegisterTask extends AsyncTask<Void, Void, Boolean> {
+    public class UserRegisterTask extends AsyncTask<String, Void, String> {
 
+
+        private final String mUname;
         private final String mEmail;
         private final String mPassword;
-        private final String mName;
+        private final String mfName;
+        private final String mlName;
         private final String mPhone;
-        private final String mProfile;
 
 
-        UserRegisterTask(String email, String password, String name, String phone, String profile) {
+        UserRegisterTask(String uname, String email, String password, String fname, String lname, String phone) {
+            mUname = uname;
             mEmail = email;
             mPassword = password;
-            mName = name;
+            mfName = fname;
+            mlName = lname;
             mPhone = phone;
-            mProfile = profile;
+        }
+
+
+        protected void onPreExecute(){
+            super.onPreExecute();
         }
 
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected String doInBackground(String... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
+            String urlString = params[0];
 
+            String resultToDisplay = "";
+
+            InputStream in = null;
+
+            try {
+                URL url = new URL(urlString);
+
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                in = new BufferedInputStream(urlConnection.getInputStream());
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
+                return e.getMessage();
+            } try {
+                resultToDisplay = IOUtils.toString(in, "UTF-8");
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+            return resultToDisplay;
             // TODO: Bæta passenger við í RESTið
-            return true;
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
+        protected void onPostExecute(String result) {
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
-                registerSuccess();
-            }
+            registerSuccess();
         }
 
         @Override

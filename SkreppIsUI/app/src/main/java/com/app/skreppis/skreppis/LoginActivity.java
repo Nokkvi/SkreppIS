@@ -124,8 +124,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     protected void goToRegister(){
-        /*Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void populateAutoComplete() {
