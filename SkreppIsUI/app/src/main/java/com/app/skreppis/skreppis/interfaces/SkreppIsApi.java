@@ -1,5 +1,7 @@
 package com.app.skreppis.skreppis.interfaces;
 
+import com.app.skreppis.skreppis.models.LoginRequest;
+import com.app.skreppis.skreppis.models.LoginResponse;
 import com.app.skreppis.skreppis.models.RegisterRequest;
 import com.app.skreppis.skreppis.models.RegisterResponse;
 
@@ -14,4 +16,7 @@ import retrofit2.http.POST;
 public interface SkreppIsApi {
     @POST("/register/")
     Call<RegisterResponse> getRegistered(@Body RegisterRequest registerRequest);
+
+    @POST("/login/")
+    Call<LoginResponse> Login(@Body LoginRequest loginRequest);
 }

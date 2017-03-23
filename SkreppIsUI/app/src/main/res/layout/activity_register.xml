@@ -60,7 +60,7 @@
                             android:id="@+id/register_uname_field"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textEmailAddress"
+                            android:inputType="text"
                             android:maxLines="1"
                             android:singleLine="true" />
 
@@ -312,7 +312,7 @@
                             android:id="@+id/register_lname_field"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text|"
+                            android:inputType="textPersonName"
                             android:maxLines="1"
                             android:singleLine="true" />
 
@@ -354,7 +354,7 @@
                             android:id="@+id/register_phone_field"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPersonName"
+                            android:inputType="phone"
                             android:maxLines="10" />
 
 
