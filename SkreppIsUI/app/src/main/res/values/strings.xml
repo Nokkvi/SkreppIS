@@ -23,6 +23,7 @@
     <string name="test_text4">It Could Be Franky, It Could Be Very Fresh And Cleann</string>
     <string name="test_text5">If You\'ve Never Been Kissed By A Lady Of Paris, You\'ve Never Been Kissed At All</string>
     <string name="test_text6">When A Gentleman Contemplates A Lady Of Paris, The Gentleman Is Apt To Exclaim: "Ooh La La," For The Ladies Of Paris Are Very Charming</string>
+    <string name="test_text7">Please. It Was Trees.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 
@@ -52,7 +53,7 @@
     <string name="title_activity_register">Sign in</string>
 
     <!-- Register Strings -->
-    <string name="register_field_uname">Username</string>
+    <string name="register_field_uname">*Username</string>
     <string name="register_field_email">*Email</string>
     <string name="register_field_cemail">*Confirm Email</string>
     <string name="register_field_password">*Password</string>
@@ -99,6 +100,23 @@
         <item>Mosfellsbær</item>
 
     </string-array>
+
+    <!-- Manage Profile -->
+
+    <string name="man_profile_email">Email:</string>
+    <string name="man_profile_unamme">Username:</string>
+    <string name="man_profile_firstname">First Name:</string>
+    <string name="man_profile_lastname">Last Name:</string>
+    <string name="man_profile_phonenr">Phone Number:</string>
+    <string name="man_profile_userprofile">Profile:</string>
+
+    <string name="btn_change">Change</string>
+    <string name="btn_change_passw">Change Password</string>
+    <string name="btn_become_driver">Become Driver</string>
+
+    <string name="man_dprofile_maxseats">Max Seats Available</string>
+    <string name="man_dprofile_smoking">Smoking Allowed</string>
+    <string name="man_dprofile_carprofile">Car Information</string>
 
 
 </resources>
