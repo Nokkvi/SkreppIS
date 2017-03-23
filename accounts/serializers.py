@@ -107,7 +107,7 @@ class UserLoginSerializer(ModelSerializer):
             ).distinct()
         user = user.exclude(email__isnull=True).exclude(email__iexact='')
         if user.exists() and user.count() == 1:
-            user = user.first()
+            user_obj = user.first()
         else:
             raise ValidationError("This username/email is not valid.")
 
