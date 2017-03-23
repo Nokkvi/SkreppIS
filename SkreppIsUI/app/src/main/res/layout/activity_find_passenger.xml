@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_find_passenger"
     android:layout_width="match_parent"
@@ -10,6 +10,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_skrepp"
+    android:gravity="center"
     tools:context="com.app.skreppis.skreppis.FindPassengerActivity">
 
     <TextView
@@ -39,6 +41,40 @@
         android:imeOptions="actionSend" />
 
     <Button
+        style="?android:attr/buttonBarButtonStyle"
+        android:id="@+id/p_requestdriver"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/t_toggle_active"
+        android:textColor="@android:color/black"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="@android:color/background_light"
+        android:layout_margin="12dp"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        />
+
+    <Button
+        style="?android:attr/buttonBarButtonStyle"
+        android:id="@+id/p_finddriver"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/p_finddriver"
+        android:textColor="@android:color/black"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="@android:color/white"
+        android:layout_margin="12dp"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnHit"
@@ -46,7 +82,7 @@
 
     <TextView
         android:id="@+id/JSONItem"
-        android:text="@string/test_text3"
+        android:text="abcd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

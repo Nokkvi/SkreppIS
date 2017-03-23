@@ -12,6 +12,8 @@
 
     <string name="d_findpassenger">Find Passenger</string>
 
+    <string name="t_toggle_active">Toggle Active</string>
+
     <string name="menu_manageprofile">Manage Profile</string>
     <string name="menu_ridehistory">Ride History</string>
     <string name="menu_about">About App</string>
