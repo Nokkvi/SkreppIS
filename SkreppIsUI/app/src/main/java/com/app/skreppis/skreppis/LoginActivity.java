@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,8 +31,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
+import com.app.skreppis.skreppis.models.LoginRequest;
+import com.app.skreppis.skreppis.models.LoginResponse;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -62,6 +73,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    SkreppIsApi service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +117,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 goToRegister();
             }
         });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.106:8000")
+                .addConverterFactory(GsonConverterFactory.create()).build();
+
+        service = retrofit.create(SkreppIsApi.class);
+
         mDebug.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,12 +224,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        }
+        /*
+        else if (!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
         }
-
+        */
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -219,8 +240,35 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            LoginRequest loginRequest = new LoginRequest();
+            if (email.contains("@")) {
+                loginRequest.setEmail(email);
+            } else{
+                loginRequest.setUsername(email);
+            }
+            loginRequest.setPassword(password);
+
+            Call<LoginResponse> loginResponseCall = service.Login(loginRequest);
+            loginResponseCall.enqueue(new Callback<LoginResponse>() {
+                @Override
+                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                    int statusCode = response.code();
+
+                    LoginResponse loginResponse = response.body();
+
+                    showProgress(false);
+
+                    Log.d("LoginActivity", "onResponse: "+ statusCode);
+                    if(statusCode == 200){
+                        loginSuccess();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LoginResponse> call, Throwable t) {
+                    Log.d("LoginActivity", "onFailure: " + t.getMessage());
+                }
+            });
         }
     }
 

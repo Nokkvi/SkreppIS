@@ -66,7 +66,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserRegisterTask mAuthTask = null;
 
     // UI references.
     private EditText mUnameView;
@@ -120,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     }
 
     protected boolean registerSuccess(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
         return true;
@@ -177,9 +176,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      * errors are presented and no actual login attempt is made.
      */
     private void attemptRegister() {
-        if (mAuthTask != null) {
-            return;
-        }
 
         // Reset errors.
 
@@ -287,6 +283,10 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                     showProgress(false);
 
                     Log.d("RegisterActivity", "onResponse: "+ statusCode);
+                    if(statusCode == 201){
+                        System.out.println(registerResponse);
+                        registerSuccess();
+                    }
                 }
 
                 @Override
@@ -401,73 +401,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserRegisterTask extends AsyncTask<String, Void, String> {
 
 
-        private final String mUname;
-        private final String mEmail;
-        private final String mPassword;
-        private final String mfName;
-        private final String mlName;
-        private final String mPhone;
 
-
-        UserRegisterTask(String uname, String email, String password, String fname, String lname, String phone) {
-            mUname = uname;
-            mEmail = email;
-            mPassword = password;
-            mfName = fname;
-            mlName = lname;
-            mPhone = phone;
-        }
-
-
-        protected void onPreExecute(){
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            // TODO: attempt authentication against a network service.
-
-            String urlString = params[0];
-
-            String resultToDisplay = "";
-
-            InputStream in = null;
-
-            try {
-                URL url = new URL(urlString);
-
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-
-                in = new BufferedInputStream(urlConnection.getInputStream());
-
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-
-                return e.getMessage();
-            } try {
-                resultToDisplay = IOUtils.toString(in, "UTF-8");
-            } catch (IOException e){
-                e.printStackTrace();
-            }
-            return resultToDisplay;
-            // TODO: Bæta passenger við í RESTið
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            mAuthTask = null;
-            showProgress(false);
-
-            registerSuccess();
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
-        }
-    }
 }
