@@ -63,6 +63,42 @@
     <string name="register_field_profile">Profile</string>
     <string name="register_button">Register</string>
 
+    <!-- Required field -->
+    <string name="required_field_note">Fields marked with a \'*\' are required.</string>
+
+    <!-- Find Driver Strings -->
+    <string name="find_driver_location">*Where Are You Now?</string>
+    <string name="find_driver_destination">*Where Do You Want To Go?</string>
+    <string name="find_driver_numseats">How many seats do you need?</string>
+
+    <string-array name="seat_number">
+        <item>--</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>3+</item>
+    </string-array>
+
+    <string name="find_driver_zone">Search Drivers In This Zone</string>
+
+    <string-array name="zone">
+        <item>Rvk, City Centre</item>
+        <item>Rvk, Vesturbær</item>
+        <item>Rvk, Hlíðar</item>
+        <item>Rvk, Laugardalur</item>
+        <item>Rvk, Háaleiti</item>
+        <item>Rvk, Breiðholt</item>
+        <item>Rvk, Árbær</item>
+        <item>Rvk, Grafarvogur</item>
+        <item>Rvk, Kjalarnes</item>
+        <item>Rvk, Grafarholt</item>
+        <item>Hafnarfjörður</item>
+        <item>Kópavogur</item>
+        <item>Garðabær</item>
+        <item>Seltjarnarnes</item>
+        <item>Mosfellsbær</item>
+
+    </string-array>
 
 
 </resources>

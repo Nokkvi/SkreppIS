@@ -17,6 +17,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,19 +29,20 @@
             android:label="@string/title_activity_findpassenger" />
         <activity
             android:name=".ManageProfileActivity"
-            android:label="@string/title_activity_manageprofile"/>
+            android:label="@string/title_activity_manageprofile" />
         <activity
             android:name=".RideHistoryActivity"
-            android:label="@string/title_activity_ridehistory"/>
+            android:label="@string/title_activity_ridehistory" />
         <activity
-            android:name=".PopUpWindow"
-            android:theme="@style/Theme.AppCompat.popupTheme"
-            android:label="@string/title_activity_about"/>
+            android:name=".AboutWindowActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/Theme.AppCompat.popupTheme" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -48,6 +50,10 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" />
+        <activity
+            android:name=".PostRideRequestActivity"
+            android:label="@string/title_activity_findride" />
+        <activity android:name=".SearchDriverCriteriaActivity"></activity>
     </application>
 
 </manifest>
