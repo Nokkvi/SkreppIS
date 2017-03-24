@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'allaccess',
+    #'allaccess',
     # Our apps
     'driver.apps.DriverConfig',
     'passenger.apps.PassengerConfig',

@@ -63,13 +63,13 @@ class PassengerDetailView(RetrieveAPIView):
     queryset = Passenger.objects.all()
     serializer_class = PassengerDetailSerializer
     lookup_field = "name"
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class PassengerDestroyView(DestroyAPIView):
     queryset = Passenger.objects.all()
     serializer_class = PassengerDetailSerializer
     lookup_field = "name"
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwnerOrReadOnly]
 
 class PassengerUpdateView(UpdateAPIView):
     queryset = Passenger.objects.all()
@@ -89,7 +89,7 @@ class PassengerCreateView(CreateAPIView):
 
 class ZoneList(ListAPIView):
     serializer_class = ZoneSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['name', 'passenger__name']
     pagination_class = PageNumberPagination  # PageNumberPagination
@@ -107,7 +107,7 @@ class ZoneList(ListAPIView):
 class ZoneCreateView(CreateAPIView):
     queryset = Zone.objects.all()
     serializer_class = ZoneCreateSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     pagination_class = PageNumberPagination
 
     def perform_create(self, serializer):
@@ -116,7 +116,7 @@ class ZoneCreateView(CreateAPIView):
 
 class ZoneDestroyView(DestroyAPIView):
     serializer_class = ZoneDetailSerializer(many=True)
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwnerOrReadOnly]
     lookup_field = "passenger"
 
     def get_queryset(self, *args, **kwargs):

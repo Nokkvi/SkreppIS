@@ -33,7 +33,7 @@ from django.views.decorators.csrf import csrf_exempt
 #
 class RatingList(ListAPIView):
     serializer_class = RatingSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['passenger__name', 'driver__name']
     pagination_class = PageNumberPagination  # PageNumberPagination
@@ -53,4 +53,4 @@ class RatingDetailView(RetrieveAPIView):
     serializer_class = RatingSerializer
 
     #lookup_field = "driver"
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]

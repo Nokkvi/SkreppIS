@@ -41,7 +41,7 @@ from django.db.models import Q
 class DriverList(ListAPIView):
     queryset = Driver.objects.all()
     serializer_class = DriverSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['name', 'zones__name']
     pagination_class = PageNumberPagination  # PageNumberPagination
@@ -61,13 +61,13 @@ class DriverDetailView(RetrieveAPIView):
     serializer_class = DriverDetailSerializer
     lookup_field = "name"
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class DriverCreateView(CreateAPIView):
     queryset = Driver.objects.all()
     serializer_class = DriverCreateSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),
@@ -94,7 +94,7 @@ def perform_update(self, serializer):
 class ZoneList(ListAPIView):
     queryset = Zone.objects.all()
     serializer_class = ZoneSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['name', 'driver__name']
     pagination_class = PageNumberPagination  # PageNumberPagination
@@ -112,7 +112,7 @@ class ZoneList(ListAPIView):
 class ZoneCreateView(CreateAPIView):
     queryset = Zone.objects.all()
     serializer_class = ZoneCreateSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     pagination_class = PageNumberPagination
 
     def perform_create(self, serializer):
@@ -121,7 +121,7 @@ class ZoneCreateView(CreateAPIView):
 
 class ZoneDestroyView(DestroyAPIView):
     serializer_class = ZoneDetailSerializer(many=True)
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwnerOrReadOnly]
     lookup_field = "driver"
 
     def get_queryset(self, *args, **kwargs):
