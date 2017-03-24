@@ -37,7 +37,7 @@ public class BaseActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.menu_about:
-                intent = new Intent(this, PopUpWindow.class);
+                intent = new Intent(this, AboutWindowActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.menu_logout:

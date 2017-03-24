@@ -3,25 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_skrepp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="120dp"
+        >
 
         <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/bt_find_ride"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-
-
-            android:layout_margin="@dimen/fab_margin"
             android:text="@string/p_findride"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:background="#1188ff" />
+            android:background="@android:color/background_light"
+            android:layout_margin="12dp"
+            android:paddingBottom="30dp"
+            android:paddingTop="30dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textSize="20dp"
+
+            />
 
     </LinearLayout>
 

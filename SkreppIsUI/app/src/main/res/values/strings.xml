@@ -12,6 +12,8 @@
 
     <string name="d_findpassenger">Find Passenger</string>
 
+    <string name="t_toggle_active">Toggle Active</string>
+
     <string name="menu_manageprofile">Manage Profile</string>
     <string name="menu_ridehistory">Ride History</string>
     <string name="menu_about">About App</string>
@@ -23,6 +25,7 @@
     <string name="test_text4">It Could Be Franky, It Could Be Very Fresh And Cleann</string>
     <string name="test_text5">If You\'ve Never Been Kissed By A Lady Of Paris, You\'ve Never Been Kissed At All</string>
     <string name="test_text6">When A Gentleman Contemplates A Lady Of Paris, The Gentleman Is Apt To Exclaim: "Ooh La La," For The Ladies Of Paris Are Very Charming</string>
+    <string name="test_text7">Please. It Was Trees.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 
@@ -52,7 +55,7 @@
     <string name="title_activity_register">Sign in</string>
 
     <!-- Register Strings -->
-    <string name="register_field_uname">Username</string>
+    <string name="register_field_uname">*Username</string>
     <string name="register_field_email">*Email</string>
     <string name="register_field_cemail">*Confirm Email</string>
     <string name="register_field_password">*Password</string>
@@ -63,6 +66,59 @@
     <string name="register_field_profile">Profile</string>
     <string name="register_button">Register</string>
 
+    <!-- Required field -->
+    <string name="required_field_note">Fields marked with a \'*\' are required.</string>
+
+    <!-- Find Driver Strings -->
+    <string name="find_driver_location">*Where Are You Now?</string>
+    <string name="find_driver_destination">*Where Do You Want To Go?</string>
+    <string name="find_driver_numseats">How many seats do you need?</string>
+
+    <string-array name="seat_number">
+        <item>--</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>3+</item>
+    </string-array>
+
+    <string name="find_driver_zone">Search Drivers In This Zone</string>
+
+    <string-array name="zone">
+        <item>Rvk, City Centre</item>
+        <item>Rvk, Vesturbær</item>
+        <item>Rvk, Hlíðar</item>
+        <item>Rvk, Laugardalur</item>
+        <item>Rvk, Háaleiti</item>
+        <item>Rvk, Breiðholt</item>
+        <item>Rvk, Árbær</item>
+        <item>Rvk, Grafarvogur</item>
+        <item>Rvk, Kjalarnes</item>
+        <item>Rvk, Grafarholt</item>
+        <item>Hafnarfjörður</item>
+        <item>Kópavogur</item>
+        <item>Garðabær</item>
+        <item>Seltjarnarnes</item>
+        <item>Mosfellsbær</item>
+
+    </string-array>
+
+    <!-- Manage Profile -->
+
+    <string name="man_profile_email">Email:</string>
+    <string name="man_profile_unamme">Username:</string>
+    <string name="man_profile_firstname">First Name:</string>
+    <string name="man_profile_lastname">Last Name:</string>
+    <string name="man_profile_phonenr">Phone Number:</string>
+    <string name="man_profile_userprofile">Profile:</string>
+
+    <string name="btn_change">Change</string>
+    <string name="btn_change_passw">Change Password</string>
+    <string name="btn_become_driver">Become Driver</string>
+
+    <string name="man_dprofile_maxseats">Max Seats Available</string>
+    <string name="man_dprofile_smoking">Smoking Allowed</string>
+    <string name="man_dprofile_carprofile">Car Information</string>
 
 
 </resources>
