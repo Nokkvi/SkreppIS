@@ -81,7 +81,7 @@ class PassengerUpdateView(UpdateAPIView):
 class PassengerCreateView(CreateAPIView):
     queryset = Passenger.objects.all()
     serializer_class = PassengerCreateSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),

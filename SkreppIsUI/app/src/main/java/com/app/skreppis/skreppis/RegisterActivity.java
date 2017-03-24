@@ -30,6 +30,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
+import com.app.skreppis.skreppis.models.AuthRequest;
+import com.app.skreppis.skreppis.models.AuthResponse;
+import com.app.skreppis.skreppis.models.PassengerCreateRequest;
+import com.app.skreppis.skreppis.models.PassengerCreateResponse;
 import com.app.skreppis.skreppis.models.RegisterRequest;
 import com.app.skreppis.skreppis.models.RegisterResponse;
 
@@ -195,7 +199,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         String pwretype = mPWRetypeView.getText().toString();
         String fname = mfNameView.getText().toString();
         String lname = mfNameView.getText().toString();
-        String phone = mPhoneView.getText().toString();
+        final String phone = mPhoneView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -262,7 +266,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             // perform the user login attempt.
 
             showProgress(true);
-            RegisterRequest registerRequest = new RegisterRequest();
+            final RegisterRequest registerRequest = new RegisterRequest();
 
             registerRequest.setUsername(uname);
             registerRequest.setPassword(password);
@@ -284,6 +288,40 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
                     Log.d("RegisterActivity", "onResponse: "+ statusCode);
                     if(statusCode == 201){
+                        AuthRequest authRequest = new AuthRequest();
+                        authRequest.setUsername(registerResponse.getUsername());
+                        authRequest.setPassword(registerRequest.getPassword());
+                        Call<AuthResponse> authResponseCall = service.Auth(authRequest);
+                        authResponseCall.enqueue(new Callback<AuthResponse>() {
+                            @Override
+                            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                                int statusCode = response.code();
+                                Log.d("AuthActivity", "onResponse: "+ statusCode);
+                                AuthResponse authResponse = response.body();
+                                System.out.println(authResponse.getToken());
+                                showProgress(false);
+                                PassengerCreateRequest passengerCreateRequest = new PassengerCreateRequest();
+                                passengerCreateRequest.setPhone_number(phone);
+                                Call<PassengerCreateResponse> createPassengerResponseCall = service.createPassenger(" JWT "+authResponse.getToken(), passengerCreateRequest);
+                                createPassengerResponseCall.enqueue(new Callback<PassengerCreateResponse>() {
+                                    @Override
+                                    public void onResponse(Call<PassengerCreateResponse> call, Response<PassengerCreateResponse> response) {
+                                        int statusCode = response.code();
+                                        Log.d("CreatePassenger", "onResponse: "+ statusCode);
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<PassengerCreateResponse> call, Throwable t) {
+                                        Log.d("CreatePassenger", "onFailure: " + t.getMessage());
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailure(Call<AuthResponse> call, Throwable t) {
+                                Log.d("Authorization", "onFailure: " + t.getMessage());
+                            }
+                        });
                         System.out.println(registerResponse);
                         registerSuccess();
                     }

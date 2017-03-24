@@ -32,6 +32,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
+import com.app.skreppis.skreppis.models.AuthRequest;
+import com.app.skreppis.skreppis.models.AuthResponse;
 import com.app.skreppis.skreppis.models.LoginRequest;
 import com.app.skreppis.skreppis.models.LoginResponse;
 
@@ -207,7 +209,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        final String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -240,7 +242,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            LoginRequest loginRequest = new LoginRequest();
+            final LoginRequest loginRequest = new LoginRequest();
             if (email.contains("@")) {
                 loginRequest.setEmail(email);
             } else{
@@ -260,6 +262,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                     Log.d("LoginActivity", "onResponse: "+ statusCode);
                     if(statusCode == 200){
+                        AuthRequest authRequest = new AuthRequest();
+                        authRequest.setUsername(loginResponse.getUsername());
+                        authRequest.setPassword(loginRequest.getPassword());
+                        Call<AuthResponse> authResponseCall = service.Auth(authRequest);
+                        authResponseCall.enqueue(new Callback<AuthResponse>() {
+                            @Override
+                            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                                int statusCode = response.code();
+
+                                AuthResponse authResponse = response.body();
+                                System.out.println(authResponse.getToken());
+                                showProgress(false);
+                            }
+
+                            @Override
+                            public void onFailure(Call<AuthResponse> call, Throwable t) {
+                                Log.d("Authorization", "onFailure: " + t.getMessage());
+                            }
+                        });
                         loginSuccess();
                     }
                 }

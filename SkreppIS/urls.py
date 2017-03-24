@@ -20,7 +20,7 @@ import passenger.views
 import driver.views
 import ratings.views
 import accounts.views
-from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -46,8 +46,9 @@ urlpatterns = [
     url(r'^register/$', accounts.views.UserCreateAPIView.as_view(), name='register'),
     url(r'^login/$', accounts.views.UserLoginAPIView.as_view(), name='login'),
     url(r'^api-token-auth/', obtain_jwt_token),
-    url(r'^accounts/', include('allaccess.urls')),
+    #url(r'^accounts/', include('allaccess.urls')),
     url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^api-token-verify/', verify_jwt_token),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
