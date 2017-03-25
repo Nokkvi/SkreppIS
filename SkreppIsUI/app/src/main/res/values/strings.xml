@@ -113,6 +113,7 @@
     <string name="man_profile_userprofile">Profile:</string>
 
     <string name="btn_change">Change</string>
+    <string name="btn_save">Save</string>
     <string name="btn_change_passw">Change Password</string>
     <string name="btn_become_driver">Become Driver</string>
 
