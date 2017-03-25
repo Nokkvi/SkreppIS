@@ -17,6 +17,7 @@ class DriverSerializer(serializers.ModelSerializer):
                     'phone_number',
                     'zones',
                     'rating',
+                    'car_seats',
                   ]
 
     def get_zones(self, obj):
@@ -41,6 +42,7 @@ class DriverDetailSerializer(serializers.ModelSerializer):
                     'description',
                     'zones',
                     'rating',
+                    'car_seats',
                   ]
 
     def get_zones(self, obj):
@@ -62,6 +64,7 @@ class DriverCreateSerializer(serializers.ModelSerializer):
         fields = [  #'id',
                     #'passenger',
                     #''
+                    'car_seats',
                   ]
 
 class DriverUpdateSerializer(serializers.ModelSerializer):
