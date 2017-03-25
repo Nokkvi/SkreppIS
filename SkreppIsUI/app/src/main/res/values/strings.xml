@@ -1,4 +1,9 @@
 <resources>
+    <!-- about us-->
+    <string name="about_us">Made by Nökkvi, Einar, Elísabet and Jón as a final project in
+        course HBVRKII taught by Dr. Matthias Book. Any suggestions, bug reports are welcome, send us a
+        line at elr13@hi.is
+    </string>
     <!-- preference values-->
     <string name="preference_file_key">Preference Key</string>
     <string name="pref_isdriver">Is Driver</string>
