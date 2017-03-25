@@ -30,6 +30,7 @@ class Driver(models.Model):
     description = models.CharField(max_length=200, blank=True)
     image = models.CharField(max_length=200, blank=True)
     requests = models.CharField(max_length=1000, blank=True)
+    car_seats = models.IntegerField(null=True)
 
     objects = DriverManager
 
