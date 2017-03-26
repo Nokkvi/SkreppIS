@@ -2,6 +2,7 @@ package com.app.skreppis.skreppis;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -75,6 +76,7 @@ public class ManageProfileActivity extends BaseActivity {
         mSaveSmokeBt = (Button) findViewById(R.id.btn_man_profile_sv_smoke);
         mBecomeDriverBt = (Button) findViewById(R.id.bt_man_profile_become_driver);
         mDebugDriverBt = (Button) findViewById(R.id.bt_man_profile_debug_driver);
+        mChangePasswordBt = (Button) findViewById(R.id.bt_man_profile_ch_password);
 
         mUnameView = findViewById(R.id.man_uname_view);
         mUnameCView = findViewById(R.id.man_uname_cview);
@@ -178,6 +180,12 @@ public class ManageProfileActivity extends BaseActivity {
                 driverMode();
             }
         });
+        mChangePasswordBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changePassword();
+            }
+        });
 
         //imageView = (ImageView) findViewById(R.id.profileImage);
 
@@ -186,6 +194,11 @@ public class ManageProfileActivity extends BaseActivity {
         //Bitmap newBitmap = convertImage(bitmap);
         //imageView.setImageBitmap(newBitmap);
 
+    }
+
+    private void changePassword(){
+        Intent intent = new Intent(this, ChangePasswordActivity.class);
+        startActivity(intent);
     }
 
     //Swaps visibility of two views.

@@ -3,7 +3,7 @@ package com.app.skreppis.skreppis;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class PostRideRequestActivity extends AppCompatActivity {
+public class PostRideRequestActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,7 +7,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import butterknife.*;
 
-public class SearchDriverCriteriaActivity extends AppCompatActivity {
+public class SearchDriverCriteriaActivity extends BaseActivity {
 
     @BindView(R.id.driverList)
     RecyclerView driverList;

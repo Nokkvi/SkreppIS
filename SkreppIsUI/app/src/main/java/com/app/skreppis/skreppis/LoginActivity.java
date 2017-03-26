@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:8000")
+                .baseUrl("http://192.168.1.100:8000")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);
