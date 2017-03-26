@@ -38,6 +38,10 @@
             android:label="@string/title_activity_about"
             android:theme="@style/Theme.AppCompat.popupTheme" />
         <activity
+            android:name=".ChangePasswordActivity"
+            android:label="@string/title_activity_manageprofile"
+            android:theme="@style/Theme.AppCompat.popupTheme" />
+        <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
@@ -53,7 +57,7 @@
         <activity
             android:name=".PostRideRequestActivity"
             android:label="@string/title_activity_findride" />
-        <activity android:name=".SearchDriverCriteriaActivity"></activity>
+        <activity android:name=".SearchDriverCriteriaActivity" />
     </application>
 
 </manifest>

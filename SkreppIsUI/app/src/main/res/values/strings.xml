@@ -94,7 +94,9 @@
         <item>Rvk, Hlíðar</item>
         <item>Rvk, Laugardalur</item>
         <item>Rvk, Háaleiti</item>
-        <item>Rvk, Breiðholt</item>
+        <item>Rvk, Efra Breiðholt</item>
+        <item>Rvk, Neðra Breiðholt</item>
+        <item>Rvk, Fossvogur</item>
         <item>Rvk, Árbær</item>
         <item>Rvk, Grafarvogur</item>
         <item>Rvk, Kjalarnes</item>
@@ -117,12 +119,21 @@
     <string name="man_profile_userprofile">Profile:</string>
 
     <string name="btn_change">Change</string>
+    <string name="btn_save">Save</string>
     <string name="btn_change_passw">Change Password</string>
     <string name="btn_become_driver">Become Driver</string>
+    <string name="btn_new_pw">Save Password</string>
+    <string name="btn_forgot_pw">Forgot Password?</string>
 
     <string name="man_dprofile_maxseats">Max Seats Available</string>
     <string name="man_dprofile_smoking">Smoking Allowed</string>
     <string name="man_dprofile_carprofile">Car Information</string>
+
+    <string name="man_profile_oldpw">Previous Password:</string>
+    <string name="man_profile_newpw">New Password:</string>
+    <string name="man_profile_reppw">Repeat New Password:</string>
+    <string name="man_profile_forgotpw">Sucks To Be You!</string>
+
 
 
 </resources>

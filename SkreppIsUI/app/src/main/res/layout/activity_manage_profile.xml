@@ -52,6 +52,52 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <!-- username change -->
+            <LinearLayout
+                android:id="@+id/man_uname_cview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="true"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/man_uname_field"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textNoSuggestions"
+                            android:maxLines="1" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25">
+
+                    <Button
+                        android:id="@+id/btn_man_profile_sv_uname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_save"
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!-- Username view -->
             <LinearLayout
                 android:id="@+id/man_uname_view"
                 android:layout_width="match_parent"
@@ -98,6 +144,52 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <!-- First Name change -->
+            <LinearLayout
+                android:id="@+id/man_fname_cview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="true"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/man_fname_field"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textNoSuggestions"
+                            android:maxLines="1" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25">
+
+                    <Button
+                        android:id="@+id/btn_man_profile_sv_fname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_save"
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!-- First Name view -->
             <LinearLayout
                 android:id="@+id/man_fname_view"
                 android:layout_width="match_parent"
@@ -144,6 +236,52 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <!-- Last Name change -->
+            <LinearLayout
+                android:id="@+id/man_lname_cview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="true"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/man_lname_field"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textNoSuggestions"
+                            android:maxLines="1" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25">
+
+                    <Button
+                        android:id="@+id/btn_man_profile_sv_lname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_save"
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!-- Last Name view -->
             <LinearLayout
                 android:id="@+id/man_lname_view"
                 android:layout_width="match_parent"
@@ -190,6 +328,52 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <!-- Phone Number change -->
+            <LinearLayout
+                android:id="@+id/man_phone_cview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="true"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/man_phone_field"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:maxLines="1" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25">
+
+                    <Button
+                        android:id="@+id/btn_man_profile_sv_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_save"
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!-- Phone Number view -->
             <LinearLayout
                 android:id="@+id/man_phone_view"
                 android:layout_width="match_parent"
@@ -236,6 +420,7 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <!-- Change Password button -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -249,6 +434,7 @@
 
             </LinearLayout>
 
+            <!-- Become Driver button -->
             <LinearLayout
                 android:id="@+id/become_driver_view"
                 android:layout_width="match_parent"
@@ -263,12 +449,75 @@
 
             </LinearLayout>
 
+            <!-- TODO: Fjarlægja -->
+            <!-- Stop being Driver button (debug only)-->
+            <LinearLayout
+                android:id="@+id/debug_driver_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/bt_man_profile_debug_driver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stop being Driver"/>
+
+            </LinearLayout>
+
+            <!-- Driver info superview -->
             <LinearLayout
                 android:id="@+id/man_driver_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <!-- Seat Number change -->
+                <LinearLayout
+                    android:id="@+id/man_seats_cview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="true"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.75">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/man_seats_field"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textNoSuggestions"
+                                android:maxLines="1" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25">
+
+                        <Button
+                            android:id="@+id/btn_man_profile_sv_seats"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_save"
+                            />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Seat Number view -->
                 <LinearLayout
                     android:id="@+id/man_seats_view"
                     android:layout_width="match_parent"
@@ -284,7 +533,7 @@
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/man_profile_phonenr"/>
+                            android:text="@string/man_dprofile_maxseats"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -316,6 +565,53 @@
 
 
                 </LinearLayout>
+
+                <!-- Smoking change -->
+                <LinearLayout
+                    android:id="@+id/man_smoke_cview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="true"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.75">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/man_smoke_field"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textNoSuggestions"
+                                android:maxLines="1" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25">
+
+                        <Button
+                            android:id="@+id/btn_man_profile_sv_smoke"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_save"
+                            />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Smoking view -->
                 <LinearLayout
                     android:id="@+id/man_smoke_view"
                     android:layout_width="match_parent"
@@ -331,7 +627,7 @@
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/man_profile_phonenr"/>
+                            android:text="@string/man_dprofile_smoking"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -361,24 +657,9 @@
 
                     </RelativeLayout>
                 </LinearLayout>
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/profileImage"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:src="@drawable/profile_pic"
-                android:scaleType="fitXY"
-                android:layout_weight="0.42"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/black">
-
 
             </LinearLayout>
+
         </LinearLayout>
 
 

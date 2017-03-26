@@ -18,7 +18,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SearchDriverCriteriaActivity extends AppCompatActivity {
+public class SearchDriverCriteriaActivity extends BaseActivity {
 
     @BindView(R.id.driverList)
     RecyclerView driverList;
