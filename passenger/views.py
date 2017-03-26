@@ -26,7 +26,7 @@ from rest_framework.filters import (
 
 from passenger.pagination import PageNumberPagination
 from .permissions import IsOwnerOrReadOnly
-from .models import Passenger, Zone
+from .models import Passenger, Zone, RideRequest
 from .serializers import    (
                             PassengerSerializer,
                             PassengerDetailSerializer,
@@ -35,6 +35,7 @@ from .serializers import    (
                             ZoneSerializer,
                             ZoneCreateSerializer,
                             ZoneDetailSerializer,
+                            RideRequestCreateSerializer,
                             )
 from django.views.decorators.csrf import csrf_exempt
 
@@ -123,6 +124,16 @@ class ZoneDestroyView(DestroyAPIView):
         queryset_list = Zone.objects.filter(passenger=Passenger.objects.get(user=self.request.user.pk))
         queryset_list.delete()
         return queryset_list
+
+class RideRequestCreateView(CreateAPIView):
+    queryset = RideRequest.objects.all()
+    serializer_class = RideRequestCreateSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    pagination_class = PageNumberPagination
+
+    def perform_create(self, serializer):
+        serializer.save(passenger=Passenger.objects.get(user=self.request.user.pk),
+                        )
 
 
 

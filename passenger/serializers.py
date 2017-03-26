@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import HyperlinkedIdentityField
 
-from .models import Passenger, Zone
+from .models import Passenger, Zone, RideRequest
 
 
 
@@ -102,3 +102,13 @@ class ZoneDetailSerializer(serializers.ModelSerializer):
 
     def get_passenger(self, obj):
         return obj.passenger.name
+
+class RideRequestCreateSerializer(serializers.ModelSerializer):
+    passenger = SerializerMethodField()
+    class Meta:
+        model = RideRequest
+        fields = [
+            'passenger',
+            'start',
+            'end',
+        ]

@@ -28,3 +28,9 @@ class Zone(models.Model):
 
     def __str__(self):
         return self.name
+
+class RideRequest(models.Model):
+    passenger = models.ForeignKey(Passenger, null=True, blank=True)
+    start = models.CharField(max_length=100, blank=True, null=True)
+    end = models.CharField(max_length=100, null=True, blank=True)
+
