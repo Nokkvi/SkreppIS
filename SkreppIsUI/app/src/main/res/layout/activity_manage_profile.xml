@@ -22,6 +22,39 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Username view -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="true">
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25">
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/man_profile_unamme"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75">
+
+                    <TextView
+                        android:id="@+id/man_profile_unamedisplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/test_text7"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,98 +81,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/test_text7"/>
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <!-- username change -->
-            <LinearLayout
-                android:id="@+id/man_uname_cview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="true"
-                android:visibility="gone">
-
-                <RelativeLayout
-                    android:layout_width="0px"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.75">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/man_uname_field"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textNoSuggestions"
-                            android:maxLines="1" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0px"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.25">
-
-                    <Button
-                        android:id="@+id/btn_man_profile_sv_uname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_save"
-                        />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <!-- Username view -->
-            <LinearLayout
-                android:id="@+id/man_uname_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="true">
-
-                <RelativeLayout
-                    android:layout_width="0px"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.25">
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/man_profile_unamme"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0px"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5">
-
-                    <TextView
-                        android:id="@+id/man_profile_unamedisplay"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/test_text7"/>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0px"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.25">
-
-                    <Button
-                        android:id="@+id/btn_man_profile_ch_uname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_change"
-                        />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -494,7 +435,7 @@
                                 android:id="@+id/man_seats_field"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textNoSuggestions"
+                                android:inputType="number"
                                 android:maxLines="1" />
 
                         </android.support.design.widget.TextInputLayout>
@@ -580,18 +521,25 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.75">
 
-                        <android.support.design.widget.TextInputLayout
+                        <RadioGroup
+                            android:layout_height="match_parent"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:orientation="horizontal" >
 
-                            <EditText
-                                android:id="@+id/man_smoke_field"
-                                android:layout_width="match_parent"
+                            <RadioButton
+                                android:id="@+id/rad_smoking_yes"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:inputType="textNoSuggestions"
-                                android:maxLines="1" />
+                                android:text="@string/man_smoking_allowed" />
 
-                        </android.support.design.widget.TextInputLayout>
+                            <RadioButton
+                                android:id="@+id/rad_smoking_no"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="@string/man_smoking_banned"
+                                />
+
+                        </RadioGroup>
 
                     </RelativeLayout>
 

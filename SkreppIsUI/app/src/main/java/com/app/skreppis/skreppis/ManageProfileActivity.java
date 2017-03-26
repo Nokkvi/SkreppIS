@@ -12,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.app.skreppis.skreppis.R;
 
@@ -21,8 +23,6 @@ import static android.R.attr.y;
 
 public class ManageProfileActivity extends BaseActivity {
 
-    Button mChangeUnameBt;
-    Button mSaveUnameBt;
     Button mChangeFnameBt;
     Button mSaveFnameBt;
     Button mChangeLnameBt;
@@ -37,8 +37,13 @@ public class ManageProfileActivity extends BaseActivity {
     Button mChangeSmokeBt;
     Button mSaveSmokeBt;
 
-    View mUnameView;
-    View mUnameCView;
+    EditText mFnameField;
+    EditText mLnameField;
+    EditText mPhoneField;
+    EditText mSeatsField;
+    RadioButton mSmokingAllowed;
+    RadioButton mSmokingBanned;
+
     View mFnameView;
     View mFnameCView;
     View mLnameView;
@@ -61,9 +66,6 @@ public class ManageProfileActivity extends BaseActivity {
         isDriver = true;
         setContentView(R.layout.activity_manage_profile);
 
-
-        mChangeUnameBt = (Button) findViewById(R.id.btn_man_profile_ch_uname);
-        mSaveUnameBt = (Button) findViewById(R.id.btn_man_profile_sv_uname);
         mChangeFnameBt = (Button) findViewById(R.id.btn_man_profile_ch_fname);
         mSaveFnameBt = (Button) findViewById(R.id.btn_man_profile_sv_fname);
         mChangeLnameBt = (Button) findViewById(R.id.btn_man_profile_ch_lname);
@@ -78,8 +80,13 @@ public class ManageProfileActivity extends BaseActivity {
         mDebugDriverBt = (Button) findViewById(R.id.bt_man_profile_debug_driver);
         mChangePasswordBt = (Button) findViewById(R.id.bt_man_profile_ch_password);
 
-        mUnameView = findViewById(R.id.man_uname_view);
-        mUnameCView = findViewById(R.id.man_uname_cview);
+        mFnameField = (EditText) findViewById(R.id.man_fname_field);
+        mLnameField = (EditText) findViewById(R.id.man_lname_field);
+        mPhoneField = (EditText) findViewById(R.id.man_phone_field);
+        mSeatsField = (EditText) findViewById(R.id.man_seats_field);
+        mSmokingAllowed = (RadioButton) findViewById(R.id.rad_smoking_yes);
+        mSmokingBanned = (RadioButton) findViewById(R.id.rad_smoking_no);
+
         mFnameView = findViewById(R.id.man_fname_view);
         mFnameCView = findViewById(R.id.man_fname_cview);
         mLnameView = findViewById(R.id.man_lname_view);
@@ -94,18 +101,6 @@ public class ManageProfileActivity extends BaseActivity {
 
         driverMode();
 
-        mChangeUnameBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                swapVisible(true, mUnameView, mUnameCView);
-            }
-        });
-        mSaveUnameBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                swapVisible(false, mUnameView, mUnameCView);
-            }
-        });
         mChangeFnameBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

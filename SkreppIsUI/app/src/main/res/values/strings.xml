@@ -126,6 +126,9 @@
     <string name="man_profile_phonenr">Phone Number:</string>
     <string name="man_profile_userprofile">Profile:</string>
 
+    <string name="man_smoking_allowed">Smoking Allowed</string>
+    <string name="man_smoking_banned">No Smoking</string>
+
     <string name="btn_change">Change</string>
     <string name="btn_save">Save</string>
     <string name="btn_change_passw">Change Password</string>
