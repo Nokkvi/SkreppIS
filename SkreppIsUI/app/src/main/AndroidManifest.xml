@@ -58,6 +58,7 @@
             android:name=".PostRideRequestActivity"
             android:label="@string/title_activity_findride" />
         <activity android:name=".SearchDriverCriteriaActivity" />
+        <activity android:name=".SearchPassengerCriteriaActivity"></activity>
     </application>
 
 </manifest>
