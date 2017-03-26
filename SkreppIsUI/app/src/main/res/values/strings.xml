@@ -90,7 +90,7 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-    
+
     <string name="find_driver_zone">Search For Active Drivers In This Zone</string>
 
     <string name="find_passenger_zone">Search Passengers In This Zone</string>

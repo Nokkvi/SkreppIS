@@ -5,6 +5,7 @@ from rest_framework.permissions import AllowAny
 from .serializers import (
     UserCreateSerializer,
     UserLoginSerializer,
+    UserUpdateSerializer,
 )
 
 from rest_framework.response import Response
