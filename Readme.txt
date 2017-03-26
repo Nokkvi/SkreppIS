@@ -1,9 +1,10 @@
-1. Opna cmd og skrifa ip config. Finndu local ip töluna. 192.168.???.???
+1. OpniÃ° cmd og skrifiÃ° ip config. FinniÃ° local ip tÃ¶luna. 192.168.???.???
 
-2. Opnar forritiğ í einhverju django umhverfi(mælum meğ pycharm). Til ağ geta keyrt bakendann şarf ağ keyra pip skipanirnar: 
+2. OpniÃ° forritiÃ° Ã­ einhverju django umhverfi(mÃ¦lum meÃ° pycharm). Til aÃ° geta keyrt bakendann Ã¾arf aÃ° keyra pip skipanirnar: 
 	pip install djangorestframework, pip install markdown, pip install django-filter, pip install djangorestframework-jwt
+	
+3. FinniÃ° lÃ­nuna sem byrjar Ã¡ ALLOWED_HOSTS Ã­ settings.py og bÃ¦tiÃ° Ã¾ar inn ip-tÃ¶lunni ykkar.
 
-3. Opnar Skreppís í pycharm og skrifar í run: py manage.py runserver 192.168.???.???:8000
+4. OpniÃ° SkreppÃ­s Ã­ pycharm og skrifiÃ° Ã­ run: py manage.py runserver 192.168.???.???:8000
 
-4. Nú er hægt ağ opna skreppIsUI folderinn í android studio. Şar şarftu ağ breyta ip addressum í LoginActivity og RegiserActivity
-	í ip töluna sem şú notağir til ağ keyra server.
+5. NÃº er hÃ¦gt aÃ° opna skreppIsUI folderinn Ã­ android studio. Ãar Ã¾arf aÃ° breyta ip addressum Ã­ LoginActivity, RegiserActivity og SearchDriverCriteriaActivity hvar sem stendur baseUrl("ip tala").
