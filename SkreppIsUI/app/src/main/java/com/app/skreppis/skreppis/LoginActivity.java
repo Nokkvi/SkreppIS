@@ -76,6 +76,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     SkreppIsApi service;
+    AuthResponse authResponse;
+    int token;
+
+    public int getToken() {
+        return token;
+    }
+
+    public void setToken(int token) {
+        this.token = token;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,23 +131,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.100:8000")
+                .baseUrl("http://192.168.1.106:8000")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);
-
-        mDebug.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginSuccess();
-            }
-        });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    protected boolean loginSuccess(){
+    protected boolean loginSuccess(String token){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -261,29 +264,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     showProgress(false);
 
                     Log.d("LoginActivity", "onResponse: "+ statusCode);
-                    if(statusCode == 200){
-                        AuthRequest authRequest = new AuthRequest();
-                        authRequest.setUsername(loginResponse.getUsername());
-                        authRequest.setPassword(loginRequest.getPassword());
-                        Call<AuthResponse> authResponseCall = service.Auth(authRequest);
-                        authResponseCall.enqueue(new Callback<AuthResponse>() {
-                            @Override
-                            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
-                                int statusCode = response.code();
+                    AuthRequest authRequest = new AuthRequest();
+                    authRequest.setUsername(loginResponse.getUsername());
+                    authRequest.setPassword(loginRequest.getPassword());
+                    Call<AuthResponse> authResponseCall = service.Auth(authRequest);
+                    authResponseCall.enqueue(new Callback<AuthResponse>() {
+                        @Override
+                        public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                            int statusCode = response.code();
+                            Log.d("AuthActivity", "onResponse: "+ statusCode);
+                            AuthResponse authResponse = response.body();
+                            if(authResponse == null)
+                                System.out.print("Oh Shit!");
+                            System.out.println(authResponse.getToken());
+                            showProgress(false);
+                            loginSuccess(authResponse.getToken());
+                        }
 
-                                AuthResponse authResponse = response.body();
-                                System.out.println(authResponse.getToken());
-                                showProgress(false);
-                            }
-
-                            @Override
-                            public void onFailure(Call<AuthResponse> call, Throwable t) {
-                                Log.d("Authorization", "onFailure: " + t.getMessage());
-                            }
-                        });
-                        loginSuccess();
-                    }
+                        @Override
+                        public void onFailure(Call<AuthResponse> call, Throwable t) {
+                            Log.d("Authorization", "onFailure: " + t.getMessage());
+                        }
+                    });
                 }
+
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
@@ -435,7 +439,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                loginSuccess();
+                loginSuccess(authResponse.getToken());
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

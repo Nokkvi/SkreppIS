@@ -33,5 +33,5 @@ public interface SkreppIsApi {
     Call<DriverList> getDriverList();
 
     @GET("/driver/")
-    Call<DriverList> getDriverListSearch(@Query("zones") String zone, @Query("car_seats") String car_seats);
+    Call<DriverList> getDriverListSearch(@Query("q") String zone, @Query("search") String car_seats);
 }

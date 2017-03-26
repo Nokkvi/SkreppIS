@@ -51,6 +51,12 @@ public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.Dr
         return driverListItemResponseList.size();
     }
 
+    public void clear() {
+        int size = this.driverListItemResponseList.size();
+        this.driverListItemResponseList.clear();
+        notifyItemRangeRemoved(0, size);
+    }
+
     public static class DriverListViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.cardViewDriver)

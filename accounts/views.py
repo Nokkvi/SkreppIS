@@ -20,6 +20,12 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView
     )
 
+from rest_framework.permissions import (
+    IsAuthenticated,
+)
+
+from driver.permissions import IsOwnerOrReadOnly
+
 User = get_user_model()
 
 # Create your views here.
@@ -27,6 +33,12 @@ class UserCreateAPIView(CreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = UserCreateSerializer
     queryset = User.objects.all()
+
+class UserUpdateView(UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserUpdateSerializer
+    lookup_field = "name"
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
 class UserLoginAPIView(APIView):
     permission_classes = [AllowAny]

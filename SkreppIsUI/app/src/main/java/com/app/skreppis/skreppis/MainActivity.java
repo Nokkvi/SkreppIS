@@ -13,6 +13,15 @@ public class MainActivity extends BaseActivity {
 
     Button mFindRideBtn;
     Button mFindPassengerBtn;
+    int token;
+
+    public int getToken() {
+        return token;
+    }
+
+    public void setToken(int token) {
+        this.token = token;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

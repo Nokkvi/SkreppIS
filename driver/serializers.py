@@ -68,9 +68,9 @@ class DriverUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Driver
-        fields = [  'isActive',
-                    'isBusy',
-                    'zones',
+        fields = [  'isBusy',
+                    'car_seats',
+                    'smoking_allowed',
                   ]
 
 class RequestSerializer(serializers.ModelSerializer):

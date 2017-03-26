@@ -31,6 +31,7 @@ class Driver(models.Model):
     image = models.CharField(max_length=200, blank=True)
     requests = models.CharField(max_length=1000, blank=True)
     car_seats = models.IntegerField(null=True)
+    smoking_allowed = models.BooleanField(default=False)
 
     objects = DriverManager
 
@@ -56,7 +57,7 @@ class Zone(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     driver = models.ForeignKey(Driver, null=True, blank=True)
 
-    def __str__(self):
+    def get_name(self):
         return self.name
 
 class Request(models.Model):

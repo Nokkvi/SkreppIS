@@ -23,6 +23,14 @@ class UserDetailSerializer(ModelSerializer):
             'last_name',
         ]
 
+class UserUpdateSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'first_name',
+            'last_name'
+        ]
+
 class UserCreateSerializer(ModelSerializer):
     email = EmailField(label='Email Address')
     email2 = EmailField(label='Confirm Email')
