@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     #'allaccess',
     # Our apps
+    'allaccess',
     'driver.apps.DriverConfig',
     'passenger.apps.PassengerConfig',
     'ratings.apps.RatingConfig',

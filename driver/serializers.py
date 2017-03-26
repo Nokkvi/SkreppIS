@@ -11,9 +11,7 @@ class DriverSerializer(serializers.ModelSerializer):
     rating = SerializerMethodField()
     class Meta:
         model = Driver
-        fields = [  'id',
-                    'user',
-                    'name',
+        fields = [  'name',
                     'phone_number',
                     'zones',
                     'rating',
@@ -36,8 +34,7 @@ class DriverDetailSerializer(serializers.ModelSerializer):
     zones = SerializerMethodField()
     class Meta:
         model = Driver
-        fields = [  'id',
-                    'name',
+        fields = [  'name',
                     'phone_number',
                     'description',
                     'zones',
