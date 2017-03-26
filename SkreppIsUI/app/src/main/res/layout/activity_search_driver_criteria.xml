@@ -10,46 +10,88 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_skreppis"
     tools:context="com.app.skreppis.skreppis.SearchDriverCriteriaActivity">
 
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:layout_marginLeft="40dp"
+       android:layout_marginRight="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/black">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="@android:color/white"
         android:text="@string/required_field_note"/>
     <TextView
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
         android:text="@string/find_driver_zone"/>
 
     <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/find_ride_zonespinner"
         android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:entries="@array/zone"
         android:prompt="@string/find_driver_zone" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_margin="5dp"
         android:text="@string/find_driver_numseats"/>
 
     <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/find_ride_seatspinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_margin="5dp"
         android:entries="@array/seat_number"
         android:prompt="@string/find_driver_numseats" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/driver_search_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search"/>
+        android:text="Search"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        style="?android:attr/buttonBarButtonStyle"
+        android:background="@android:color/white"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+           />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="16dp"
         android:layout_height="wrap_content"
-        android:id="@+id/driverList"
-    />
+        android:background="@android:color/white"
+        android:id="@+id/driverList" />
+   </LinearLayout>
 
 </LinearLayout>

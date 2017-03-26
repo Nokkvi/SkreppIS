@@ -14,26 +14,18 @@
     tools:context="com.app.skreppis.skreppis.PostRideRequestActivity">
 
     <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
+    android:orientation="vertical">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+
         android:background="@color/black"
         >
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="@string/find_driver_numseats" />
-
-        <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/find_ride_seatspinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/seat_number"
-            android:prompt="@string/find_driver_numseats" />
-
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -71,23 +63,45 @@
                 android:maxLines="1" />
 
         </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"
+            android:text="@string/find_driver_numseats" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/find_ride_seatspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_margin="5dp"
+            android:entries="@array/seat_number"
+            android:prompt="@string/find_driver_numseats" />
     </LinearLayout>
 
     <Button
         style="?android:attr/buttonBarButtonStyle"
         android:id="@+id/driver_search_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
         android:text="Send request"
-        android:textColor="@android:color/black"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@android:color/white"
-        android:layout_margin="12dp"
-        android:paddingBottom="30dp"
-        android:paddingTop="30dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:textSize="20dp"
         />
+</LinearLayout>
 
 </LinearLayout>
+
+
+
