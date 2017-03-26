@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         service = retrofit.create(SkreppIsApi.class);
 
-        mLoginFormView = findViewById(R.id.login_form);
+        mLoginFormView = findViewById(R.id.email_login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 

@@ -14,35 +14,11 @@
     android:gravity="center"
     tools:context="com.app.skreppis.skreppis.FindPassengerActivity">
 
-    <TextView
-        android:id="@+id/Text1"
-        android:text="Where are you now?"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/searchStart"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:imeOptions="actionSend" />
-
-    <TextView
-        android:id="@+id/Text2"
-        android:text="Where are you going?"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/searchEnd"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:imeOptions="actionSend" />
 
     <Button
         style="?android:attr/buttonBarButtonStyle"
-        android:id="@+id/p_requestdriver"
+        android:id="@+id/d_toggleactive"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/t_toggle_active"
@@ -59,10 +35,10 @@
 
     <Button
         style="?android:attr/buttonBarButtonStyle"
-        android:id="@+id/p_finddriver"
+        android:id="@+id/d_searchpassengers"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/p_finddriver"
+        android:text="@string/d_searchpassenger"
         android:textColor="@android:color/black"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:background="@android:color/white"
@@ -73,17 +49,5 @@
         android:textStyle="bold"
         android:textSize="20dp"
         />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnHit"
-        android:text="HIT ME"/>
-
-    <TextView
-        android:id="@+id/JSONItem"
-        android:text="abcd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

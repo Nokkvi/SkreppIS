@@ -10,35 +10,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.app.skreppis.skreppis.SearchDriverCriteriaActivity">
+    tools:context="com.app.skreppis.skreppis.SearchPassengerCriteriaActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/required_field_note"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/find_driver_zone"/>
+        android:text="@string/find_passenger_zone"/>
 
     <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/find_ride_zonespinner"
+        android:id="@+id/find_passenger_zonespinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/zone"
-        android:prompt="@string/find_driver_zone" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/find_driver_numseats"/>
-
-    <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/find_ride_seatspinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/seat_number"
-        android:prompt="@string/find_driver_numseats" />
+        android:prompt="@string/find_passenger_zone" />
 
     <Button
         android:id="@+id/driver_search_button"
@@ -50,6 +34,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/driverList"
-    />
+        />
 
 </LinearLayout>
