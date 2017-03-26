@@ -9,38 +9,36 @@
     android:background="@drawable/background_skreppis"
     tools:context="com.app.skreppis.skreppis.FindRideActivity">
 
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/p_requestdriver"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="@string/p_requestdriver"
-            android:textColor="@android:color/black"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:background="@android:color/background_light"
-            android:layout_margin="12dp"
-            android:paddingBottom="30dp"
-            android:paddingTop="30dp"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            />
+    <Button
+        android:id="@+id/p_requestdriver"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@android:color/background_light"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp"
+        android:text="@string/p_requestdriver"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
-         <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/p_finddriver"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="@string/p_finddriver"
-            android:textColor="@android:color/black"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:background="@android:color/white"
-            android:layout_margin="12dp"
-            android:paddingBottom="30dp"
-            android:paddingTop="30dp"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textSize="20dp"
-             />
+    <Button
+        android:id="@+id/p_finddriver"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@android:color/white"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp"
+        android:text="@string/p_finddriver"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 </LinearLayout>

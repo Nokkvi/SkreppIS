@@ -11,17 +11,17 @@
     tools:context=".LoginActivity">
 
     <!-- Login progress -->
-    <RelativeLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black">
-        <ProgressBar
-            android:id="@+id/login_progress"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/email_login_form"
@@ -65,31 +65,50 @@
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
 
-
         <Button
             android:id="@+id/bt_sign_in"
-            style="?android:textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginTop="16dp"
+            android:layout_marginRight="2dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:background="@android:color/white"
+            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
             android:text="@string/action_sign_in_short"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/bt_goto_register"
-            style="?android:textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginTop="16dp"
+            android:layout_marginLeft="2dp"
             android:text="@string/action_register"
-            android:textStyle="bold" />
+            style="?android:attr/buttonBarButtonStyle"
+            android:background="@android:color/black"
+            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
 
 
 
@@ -101,20 +120,24 @@
 
             <Button
                 android:id="@+id/bt_fb_login"
-                style="?android:textAppearanceSmall"
-                android:textStyle="bold"
                 android:text="@string/action_facebook_login"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:background="@android:color/white"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                />
 
-    <Button
-        android:id="@+id/bt_login_debug"
-        style="?android:textAppearanceSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="debug"
-        android:textStyle="bold"/>
+                />
+        </LinearLayout>
+    </LinearLayout>
+
 
 </LinearLayout>

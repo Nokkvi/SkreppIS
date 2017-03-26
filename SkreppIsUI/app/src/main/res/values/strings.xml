@@ -59,7 +59,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="action_facebook_login">Login Through Facebook</string>
+    <string name="action_facebook_login">Sign In With Facebook Account</string>
     <string name="title_activity_register">Sign in</string>
 
     <!-- Register Strings -->
