@@ -113,9 +113,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // TODO: Implementa facebook login fítusinn
         Button mFbLoginButton = (Button) findViewById(R.id.bt_fb_login);
 
-        // TODO: Fer beint inn á mainActivity án þess að logga inn. Fjarlægja þegar loginnið er fullklárað
-        Button mDebug = (Button) findViewById(R.id.bt_login_debug);
-
         mSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:8000")
+                .baseUrl("http://192.168.1.2:8000")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);
