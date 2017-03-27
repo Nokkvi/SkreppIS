@@ -43,7 +43,7 @@ class DriverList(ListAPIView):
     serializer_class = DriverSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['name', 'zone__name', 'car_seats']
+    search_fields = ['zone__name']
     pagination_class = PageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
@@ -51,8 +51,7 @@ class DriverList(ListAPIView):
         query = self.request.GET.get("q")
         if query:
             queryset_list = queryset_list.filter(
-                (Q(zone__name__exact=query)|
-                Q(name__contains=query))
+                Q(car_seats__gte=query)
             )
         return queryset_list
 
