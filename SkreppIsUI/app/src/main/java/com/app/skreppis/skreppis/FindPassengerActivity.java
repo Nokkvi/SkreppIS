@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,13 +22,17 @@ public class FindPassengerActivity extends BaseActivity {
 
     private Button mToggleActive;
     private Button mSearchPassenger;
-
+    String token;
     boolean isActive;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_passenger);
+
+        Bundle extras = getIntent().getExtras();
+        token = extras.getString("Token");
+        Log.d("Token:", token);
 
         //TODO: finna Active stöðu bílstjóra
         makepref();
@@ -58,6 +63,7 @@ public class FindPassengerActivity extends BaseActivity {
 
     private void gotoSearch(){
         Intent intent = new Intent(this, SearchPassengerCriteriaActivity.class);
+        intent.putExtra("Token", token);
         startActivity(intent);
     }
 }

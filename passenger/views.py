@@ -26,15 +26,13 @@ from rest_framework.filters import (
 
 from passenger.pagination import PageNumberPagination
 from .permissions import IsOwnerOrReadOnly
-from .models import Passenger, Zone, RideRequest
+from .models import Passenger, RideRequest
 from .serializers import    (
                             PassengerSerializer,
                             PassengerDetailSerializer,
                             PassengerCreateSerializer,
                             PassengerUpdateSerializer,
-                            ZoneSerializer,
-                            ZoneCreateSerializer,
-                            ZoneDetailSerializer,
+                            RideRequestSerializer,
                             RideRequestCreateSerializer,
                             )
 from django.views.decorators.csrf import csrf_exempt
@@ -46,7 +44,7 @@ class PassengerList(ListAPIView):
     serializer_class = PassengerSerializer
     permission_classes = [AllowAny]
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['zones__name', 'name']
+    search_fields = ['name']
     pagination_class = PageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
@@ -54,7 +52,6 @@ class PassengerList(ListAPIView):
         query = self.request.GET.get("q")
         if query:
             queryset_list = queryset_list.filter(
-                Q(zones__name__contains=query)|
                 Q(name__contains=query)
             ).distinct()
         return queryset_list
@@ -88,41 +85,20 @@ class PassengerCreateView(CreateAPIView):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),
                         )
 
-class ZoneList(ListAPIView):
-    serializer_class = ZoneSerializer
+class RideRequestList(ListAPIView):
+    queryset = RideRequest.objects.all()
+    serializer_class = RideRequestSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['name', 'passenger__name']
     pagination_class = PageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        queryset_list = Zone.objects.all()
+        queryset_list = RideRequest.objects.all()
         query = self.request.GET.get("q")
         if query:
             queryset_list = queryset_list.filter(
-                Q(name__contains=query) |
-                Q(passenger__name__contains=query)
-            ).distinct()
-        return queryset_list
-
-class ZoneCreateView(CreateAPIView):
-    queryset = Zone.objects.all()
-    serializer_class = ZoneCreateSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    pagination_class = PageNumberPagination
-
-    def perform_create(self, serializer):
-        serializer.save(passenger=Passenger.objects.get(user=self.request.user.pk),
-                        )
-
-class ZoneDestroyView(DestroyAPIView):
-    serializer_class = ZoneDetailSerializer(many=True)
-    permission_classes = [IsOwnerOrReadOnly]
-    lookup_field = "passenger"
-
-    def get_queryset(self, *args, **kwargs):
-        queryset_list = Zone.objects.filter(passenger=Passenger.objects.get(user=self.request.user.pk))
-        queryset_list.delete()
+                Q(start=query)
+            )
         return queryset_list
 
 class RideRequestCreateView(CreateAPIView):

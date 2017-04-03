@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import HyperlinkedIdentityField
 
-from .models import Passenger, Zone, RideRequest
+from .models import Passenger, RideRequest
 
 
 
@@ -11,35 +11,35 @@ class PassengerSerializer(serializers.ModelSerializer):
         view_name='detail',
         lookup_field='name',
     )
-    zones = SerializerMethodField()
+    riderequests = SerializerMethodField()
     class Meta:
         model = Passenger
         fields = [  'url',
                     'name',
                     'phone_number',
-                    'zones',
+                    'riderequests',
         ]
 
-    def get_zones(self, obj):
-        c_qs = Zone.objects.filter(passenger__name=obj)
-        zones = ZoneSerializer(c_qs, many=True).data
-        return zones
+    def get_riderequests(self, obj):
+        c_qs = RideRequest.objects.filter(passenger__name=obj)
+        riderequests = RideRequestSerializer(c_qs, many=True).data
+        return riderequests
 
 class PassengerDetailSerializer(serializers.ModelSerializer):
     image = SerializerMethodField()
-    zones = SerializerMethodField()
+    riderequest = SerializerMethodField()
     class Meta:
         model = Passenger
         fields = [  'name',
                     'phone_number',
                     'description',
                     'image',
-                    'zones',
+                    'riderequests',
                   ]
-    def get_zones(self, obj):
-        c_qs = Zone.objects.filter(passenger__name=obj)
-        zones = ZoneSerializer(c_qs, many=True).data
-        return zones
+    def get_riderequests(self, obj):
+        c_qs = RideRequest.objects.filter(passenger__name=obj)
+        riderequests = RideRequestSerializer(c_qs, many=True).data
+        return riderequests
 
     def get_image(self, obj):
         try:
@@ -68,40 +68,20 @@ class PassengerUpdateSerializer(serializers.ModelSerializer):
                   'description',
                   ]
 
-class ZoneSerializer(serializers.ModelSerializer):
+class RideRequestSerializer(serializers.ModelSerializer):
     passenger = SerializerMethodField()
     class Meta:
-        model = Zone
+        model = RideRequest
         fields = [
-            'name',
             'passenger',
+            'start',
+            'end',
+            'over',
         ]
 
     def get_passenger(self, obj):
         return obj.passenger.name
 
-class ZoneCreateSerializer(serializers.ModelSerializer):
-    passenger = SerializerMethodField()
-    class Meta:
-        model = Zone
-        fields = [
-            'name',
-            'passenger',
-        ]
-
-    def get_passenger(self, obj):
-        return obj.passenger.name
-
-class ZoneDetailSerializer(serializers.ModelSerializer):
-    passenger = SerializerMethodField()
-    class Meta:
-        model = Zone
-        fields = [  'name',
-                    'passenger',
-                  ]
-
-    def get_passenger(self, obj):
-        return obj.passenger.name
 
 class RideRequestCreateSerializer(serializers.ModelSerializer):
     class Meta:

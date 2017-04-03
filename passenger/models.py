@@ -22,12 +22,6 @@ class Passenger(models.Model):
     def __str__(self):
         return self.name
 
-class Zone(models.Model):
-    name = models.CharField(max_length=100, blank=True, null=True)
-    passenger = models.ForeignKey(Passenger, null=True, blank=True)
-
-    def __str__(self):
-        return self.name
 
 class RideRequest(models.Model):
     passenger = models.ForeignKey(Passenger, null=True, blank=True)

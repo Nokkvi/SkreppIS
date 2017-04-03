@@ -19,7 +19,6 @@ class DriverSerializer(serializers.ModelSerializer):
                   ]
 
     def get_zones(self, obj):
-        print("Her")
         c_qs = Zone.objects.filter(driver__name=obj)
         zones = ZoneSerializer(c_qs, many=True).data
         return zones

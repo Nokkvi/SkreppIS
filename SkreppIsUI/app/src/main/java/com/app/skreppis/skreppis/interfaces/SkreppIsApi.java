@@ -37,4 +37,11 @@ public interface SkreppIsApi {
 
     @POST("/passenger/requestride")
     Call<RideRequestResponse> requestRide(@Header("Authorization") String token, @Body RideRequest rideRequest);
+
+    @GET("/passenger/riderequests")
+    Call<RideRequestList> getPassengerList();
+
+    @GET("/passenger/riderequests")
+    Call<RideRequestList> getPassengerListSearch(@Query("q") String start);
+
 }
