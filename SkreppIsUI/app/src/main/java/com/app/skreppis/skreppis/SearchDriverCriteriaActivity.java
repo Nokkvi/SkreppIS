@@ -58,7 +58,7 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
         //set layout manager for list view
 
         Retrofit retrofit = new Retrofit.Builder().
-                baseUrl(String.valueOf(R.string.ip_tala))
+                baseUrl("http://192.168.1.102:8000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");

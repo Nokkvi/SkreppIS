@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(String.valueOf(R.string.ip_tala))
+                .baseUrl("http://192.168.1.102:8000")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);

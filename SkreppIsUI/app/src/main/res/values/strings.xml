@@ -5,7 +5,7 @@
         line at elr13@hi.is
     </string>
     <!--ip tala -->
-    <string name="ip_tala">192.168.1.102</string>
+    <string name="ip_tala">http://192.168.1.102:8000</string>
     <!-- preference values-->
     <string name="preference_file_key">Preference Key</string>
     <string name="pref_isdriver">Is Driver</string>

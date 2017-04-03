@@ -20,9 +20,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras();
-        token = extras.getString("Token");
-        Log.d("Token:", token);
+        // Bundle extras = getIntent().getExtras();
+        // token = extras.getString("Token");
+        token = getIntent().getStringExtra("Token");
+        Log.d("Token", "Token: " + token);
         makepref();
         isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
 
