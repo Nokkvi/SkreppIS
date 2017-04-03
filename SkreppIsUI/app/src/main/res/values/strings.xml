@@ -20,6 +20,7 @@
     <string name="d_searchpassenger">Search Passengers</string>
     <string name="t_toggle_active">Toggle Active</string>
 
+    <string name="menu_home">Home</string>
     <string name="menu_manageprofile">Manage Profile</string>
     <string name="menu_ridehistory">Ride History</string>
     <string name="menu_about">About App</string>
