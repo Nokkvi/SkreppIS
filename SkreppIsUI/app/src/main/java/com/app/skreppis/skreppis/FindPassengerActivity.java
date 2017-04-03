@@ -30,6 +30,7 @@ public class FindPassengerActivity extends BaseActivity {
         setContentView(R.layout.activity_find_passenger);
 
         //TODO: finna Active stöðu bílstjóra
+        makepref();
         isActive = sharedPref.getBoolean(getString(R.string.pref_isactive), false);
 
         mToggleActive = (Button) findViewById(R.id.d_toggleactive);
