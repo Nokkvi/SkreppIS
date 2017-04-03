@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SearchDriverCriteriaActivity extends BaseActivity {
 
     @BindView(R.id.driverList)
-    RecyclerView driverList;
+    RecyclerView driverListView;
     private SkreppIsApi service;
     private AppCompatSpinner mZoneView;
     private AppCompatSpinner mSeatsView;
@@ -58,7 +58,7 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
         //set layout manager for list view
 
         Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("http://192.168.1.106:8000")
+                baseUrl(String.valueOf(R.string.ip_tala))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");
@@ -67,10 +67,9 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
 
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
 
-        driverList.setLayoutManager(staggeredGridLayoutManager);
+        driverListView.setLayoutManager(staggeredGridLayoutManager);
 
         //create recyclerview adapter
-
 
         Call<DriverList> driverListData = service.getDriverList();
 
@@ -79,11 +78,11 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
             public void onResponse(Call<DriverList> call, Response<DriverList> response) {
                 int statusCode = response.code();
 
-                DriverList driverList1 = response.body();
+                DriverList driverList = response.body();
 
                 Log.d("DriverList", "onResponse: "+ statusCode);
-                adapter = new DriverListAdapter(driverList1.getResults());
-                driverList.setAdapter(adapter);
+                adapter = new DriverListAdapter(driverList.getResults());
+                driverListView.setAdapter(adapter);
             }
 
             @Override
@@ -109,13 +108,13 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
             public void onResponse(Call<DriverList> call, Response<DriverList> response) {
                 int statusCode = response.code();
 
-                DriverList driverList1 = response.body();
-                System.out.println(driverList1);
+                DriverList driverList = response.body();
+                System.out.println(driverList);
 
                 Log.d("DriverListSearch", "onResponse: "+ statusCode);
-                if(driverList1 != null){
-                    adapter = new DriverListAdapter(driverList1.getResults());
-                    driverList.setAdapter(adapter);
+                if(driverList != null){
+                    adapter = new DriverListAdapter(driverList.getResults());
+                    driverListView.setAdapter(adapter);
                 }
             }
 
