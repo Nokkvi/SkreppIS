@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^driver/(?P<name>[\w-]+)/$', driver.views.DriverDetailView.as_view(), name='driverdetail'),
     url(r'^driver/(?P<name>[\w-]+)/edit$', driver.views.DriverUpdateView.as_view(), name='driveredit'),
     url(r'^driver/(?P<name>[\w-]+)/delete$', driver.views.DriverDestroyView.as_view(), name='driverdelete'),
+    url(r'^driver/(?P<name>[\w-]+)/toggleactive$', driver.views.DriverToggleActiveView.as_view(), name='drivertoggleactive'),
     url(r'^ratings/$', ratings.views.RatingList.as_view(), name='ratinglist'),
     url(r'^ratings/(?P<id>$\d+)/$', ratings.views.RatingDetailView.as_view(), name='ratingdetail'),
     #url(r'^ratings/(?P<id>$\d+)/delete$', ratings.views.RatingDeleteView.as_view(), name='ratingdelete'),

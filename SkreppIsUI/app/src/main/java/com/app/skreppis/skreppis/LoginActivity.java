@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     SkreppIsApi service;
     AuthResponse authResponse;
+    LoginResponse loginResponse;
     int token;
 
     public int getToken() {
@@ -137,9 +138,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    protected boolean loginSuccess(String token){
+    protected boolean loginSuccess(String token, String username){
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
         startActivity(intent);
         finish();
         return true;
@@ -257,7 +259,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     int statusCode = response.code();
 
-                    LoginResponse loginResponse = response.body();
+                    final LoginResponse loginResponse = response.body();
 
                     showProgress(false);
 
@@ -276,7 +278,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 System.out.print("Oh Shit!");
                             System.out.println(authResponse.getToken());
                             showProgress(false);
-                            loginSuccess(authResponse.getToken());
+                            loginSuccess(authResponse.getToken(), loginResponse.getUsername());
                         }
 
                         @Override
@@ -437,7 +439,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                loginSuccess(authResponse.getToken());
+                loginSuccess(authResponse.getToken(), loginResponse.getUsername());
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

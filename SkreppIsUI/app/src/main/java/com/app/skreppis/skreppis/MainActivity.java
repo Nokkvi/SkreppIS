@@ -15,6 +15,7 @@ public class MainActivity extends BaseActivity {
     Button mFindRideBtn;
     Button mFindPassengerBtn;
     String token;
+    String username;
 
 
     @Override
@@ -22,7 +23,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         token = extras.getString("Token");
+        username = extras.getString("Username");
         Log.d("Token:", token);
+        Log.d("Username:", username);
         makepref();
         isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
 
@@ -71,12 +74,14 @@ public class MainActivity extends BaseActivity {
     protected void findRide() {
         Intent intent = new Intent(this, FindRideActivity.class);
         intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
     public void findPassenger() {
         Intent intent = new Intent(this, FindPassengerActivity.class);
         intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 /*

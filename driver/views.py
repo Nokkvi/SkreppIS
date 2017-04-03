@@ -8,6 +8,7 @@ from .serializers import (
     DriverCreateSerializer,
     DriverDetailSerializer,
     DriverUpdateSerializer,
+    DriverToggleActiveSerializer,
     ZoneSerializer,
     ZoneCreateSerializer,
     ZoneDetailSerializer,
@@ -72,6 +73,12 @@ class DriverCreateView(CreateAPIView):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),
                         phone_number=Driver.objects.get(user=self.request.user.pk).phone_number
                         )
+
+class DriverToggleActiveView(UpdateAPIView):
+    queryset = Driver.objects.all()
+    serializer_class = DriverToggleActiveSerializer
+    lookup_field = "name"
+    permission_classes = [AllowAny]
 
 class DriverDestroyView(DestroyAPIView):
     queryset = Driver.objects.all()
