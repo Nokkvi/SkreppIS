@@ -1,5 +1,6 @@
 package com.app.skreppis.skreppis;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
@@ -53,6 +54,14 @@ public class PostRideRequestActivity extends BaseActivity {
         service = retrofit.create(SkreppIsApi.class);
     }
 
+    protected boolean PostRideRequestSuccess(String token){
+        Intent intent = new Intent(this, FindRideActivity.class);
+        intent.putExtra("Token", token);
+        startActivity(intent);
+        finish();
+        return true;
+    }
+
     private void postRideRequest(){
         String start = mStartView.getSelectedItem().toString();
         String end = mEndView.getSelectedItem().toString();
@@ -74,6 +83,7 @@ public class PostRideRequestActivity extends BaseActivity {
                 RideRequestResponse rideRequestResponse = response.body();
 
                 Log.d("RideRequestActivity", "onResponse: "+ statusCode);
+                PostRideRequestSuccess(token);
             }
 
             @Override
