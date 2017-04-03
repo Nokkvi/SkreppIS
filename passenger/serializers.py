@@ -104,11 +104,10 @@ class ZoneDetailSerializer(serializers.ModelSerializer):
         return obj.passenger.name
 
 class RideRequestCreateSerializer(serializers.ModelSerializer):
-    passenger = SerializerMethodField()
     class Meta:
         model = RideRequest
         fields = [
-            'passenger',
             'start',
             'end',
+            'seats',
         ]

@@ -33,4 +33,6 @@ class RideRequest(models.Model):
     passenger = models.ForeignKey(Passenger, null=True, blank=True)
     start = models.CharField(max_length=100, blank=True, null=True)
     end = models.CharField(max_length=100, null=True, blank=True)
+    seats = models.IntegerField(null=True)
+    over = models.BooleanField(default=False)
 

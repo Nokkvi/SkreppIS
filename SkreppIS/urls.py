@@ -43,7 +43,7 @@ urlpatterns = [
     url(r'^passenger/(?P<name>[\w-]+)/addzone$', passenger.views.ZoneCreateView.as_view(), name='pzonescreate'),
     url(r'^passenger/(?P<passenger>[\w-]+)/zonedelete$', passenger.views.ZoneDestroyView.as_view(), name='pzonedelete'),
     url(r'^driver/(?P<driver>[\w-]+)/zonedelete$', driver.views.ZoneDestroyView.as_view(), name='dzonedelete'),
-    url(r'^passenger/(?P<passenger>[\w-]+)/requestride$', passenger.views.RideRequestCreateView.as_view(), name='riderequest'),
+    url(r'^passenger/requestride$', passenger.views.RideRequestCreateView.as_view(), name='riderequest'),
     url(r'^register/$', accounts.views.UserCreateAPIView.as_view(), name='register'),
     url(r'^login/$', accounts.views.UserLoginAPIView.as_view(), name='login'),
     url(r'^api-token-auth/', obtain_jwt_token),

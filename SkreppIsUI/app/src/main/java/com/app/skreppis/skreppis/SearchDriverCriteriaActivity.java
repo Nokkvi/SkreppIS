@@ -30,11 +30,16 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
     private AppCompatSpinner mZoneView;
     private AppCompatSpinner mSeatsView;
     DriverListAdapter adapter;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_driver_criteria);
+
+        Bundle extras = getIntent().getExtras();
+        token = extras.getString("Token");
+        Log.d("Token:", token);
 
         mZoneView = (AppCompatSpinner) findViewById(R.id.find_ride_zonespinner);
         mSeatsView = (AppCompatSpinner) findViewById(R.id.find_ride_seatspinner);

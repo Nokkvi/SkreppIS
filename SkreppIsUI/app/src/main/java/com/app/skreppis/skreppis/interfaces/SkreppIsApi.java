@@ -34,4 +34,7 @@ public interface SkreppIsApi {
 
     @GET("/driver/")
     Call<DriverList> getDriverListSearch(@Query("search") String zone, @Query("q") String car_seats);
+
+    @POST("/passenger/requestride")
+    Call<RideRequestResponse> requestRide(@Header("Authorization") String token, @Body RideRequest rideRequest);
 }

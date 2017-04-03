@@ -139,6 +139,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     protected boolean loginSuccess(String token){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("Token", token);
         startActivity(intent);
         finish();
         return true;

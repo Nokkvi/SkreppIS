@@ -146,4 +146,9 @@
     <string name="man_profile_forgotpw">Sucks To Be You!</string>
 
 
+    <!-- Post Ride Request -->
+
+    <string name="post_ride_request_start">Where are you?</string>
+    <string name="post_ride_request_end">Where do you want to go?</string>
+
 </resources>

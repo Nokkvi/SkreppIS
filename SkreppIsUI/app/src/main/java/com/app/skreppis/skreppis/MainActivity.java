@@ -3,6 +3,7 @@ package com.app.skreppis.skreppis;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,19 +14,15 @@ public class MainActivity extends BaseActivity {
 
     Button mFindRideBtn;
     Button mFindPassengerBtn;
-    int token;
+    String token;
 
-    public int getToken() {
-        return token;
-    }
-
-    public void setToken(int token) {
-        this.token = token;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
+        token = extras.getString("Token");
+        Log.d("Token:", token);
         makepref();
         isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
 
@@ -73,11 +70,13 @@ public class MainActivity extends BaseActivity {
 
     protected void findRide() {
         Intent intent = new Intent(this, FindRideActivity.class);
+        intent.putExtra("Token", token);
         startActivity(intent);
     }
 
     public void findPassenger() {
         Intent intent = new Intent(this, FindPassengerActivity.class);
+        intent.putExtra("Token", token);
         startActivity(intent);
     }
 /*
