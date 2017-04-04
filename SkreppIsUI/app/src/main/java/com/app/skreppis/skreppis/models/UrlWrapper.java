@@ -21,7 +21,7 @@ public class UrlWrapper {
      */
     public UrlWrapper(){
         //Breytið þessu gildi í urlið sem þið notið!
-        url = "http://192.168.42.49:8000";
+        url = "http://192.168.1.106:8000";
     }
 
     public String getUrl() {

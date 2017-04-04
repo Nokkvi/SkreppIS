@@ -49,8 +49,6 @@ public class BaseActivity extends AppCompatActivity {
                 //TODO: loka á núverandi notanda.
                 startActivity(intent);
                 return true;
-            case R.id.menu_toggle_driver:
-                menuToggleDriver();
             default:
                 return super.onOptionsItemSelected(item);
         }

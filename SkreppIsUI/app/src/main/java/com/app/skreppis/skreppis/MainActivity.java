@@ -12,6 +12,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 
+import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
+import com.app.skreppis.skreppis.models.DriverListItemResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends BaseActivity
     implements MessageBox.OnStateChangeListener {
 
@@ -23,6 +33,8 @@ public class MainActivity extends BaseActivity
     Button mBecomeDriverBtn;
     String token;
     String username;
+    private UrlWrapper urlWrap;
+    SkreppIsApi service;
 
     /* Þetta er staðan sem messagebox er í.
         "Closed"            The messagebox is closed
@@ -61,12 +73,38 @@ public class MainActivity extends BaseActivity
         isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
         mbState = sharedPref.getString(getString(R.string.pref_mbstate), "Closed");
 
+        urlWrap = new UrlWrapper();
 
-        if (isDriver) {
-            toggleDriver(true);
-        } else {
-            toggleDriver(false);
-        }
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(urlWrap.getUrl())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        System.out.print("bound");
+
+        service = retrofit.create(SkreppIsApi.class);
+
+        Call<DriverListItemResponse> driverListItemResponseCall = service.getDriver(token, username);
+        driverListItemResponseCall.enqueue(new Callback<DriverListItemResponse>() {
+            @Override
+            public void onResponse(Call<DriverListItemResponse> call, Response<DriverListItemResponse> response) {
+                int statusCode = response.code();
+
+                DriverListItemResponse driver = response.body();
+
+                Log.d("Driver", "onResponse: "+ statusCode);
+                if(statusCode == 200){
+                    toggleDriver(true);
+                } else{
+                    toggleDriver(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DriverListItemResponse> call, Throwable t) {
+                Log.d("Driver", "onResponse: "+ t.getMessage());
+            }
+        });
+
     }
 
     //TODO: Debug method. Implement alternative way to detect user status
@@ -199,15 +237,4 @@ public class MainActivity extends BaseActivity
         MenuItem toggle = (MenuItem) findViewById(R.id.menu_toggle_driver);
         return super.onPrepareOptionsMenu(menu);
     }*/
-
-    @Override
-    public boolean menuToggleDriver() {
-        isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
-        if(isDriver) {
-            toggleDriver(false);
-        } else {
-            toggleDriver(true);
-        }
-        return true;
-    }
 }

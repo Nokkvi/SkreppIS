@@ -39,6 +39,7 @@
                 android:layout_weight="1"
                 android:inputType="number"
                 android:maxLines="1"
+                android:textColor="@color/white"
                 android:singleLine="true" />
 
             <CheckBox

@@ -1,5 +1,6 @@
 package com.app.skreppis.skreppis;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,8 +58,16 @@ public class BecomeDriverActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 becomeDriver();
+                success();
             }
         });
+    }
+
+    private void success(){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
+        startActivity(intent);
     }
 
     private void becomeDriver(){

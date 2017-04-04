@@ -37,6 +37,9 @@ public interface SkreppIsApi {
     @GET("/driver/")
     Call<DriverList> getDriverList();
 
+    @GET("/driver/{name}")
+    Call<DriverListItemResponse> getDriver(@Header("Authorization") String token, @Path("name") String username);
+
     @GET("/driver/")
     Call<DriverList> getDriverListSearch(@Query("search") String zone, @Query("q") String car_seats);
 
