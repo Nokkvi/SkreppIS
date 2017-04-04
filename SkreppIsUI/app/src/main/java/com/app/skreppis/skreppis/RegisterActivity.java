@@ -57,6 +57,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.HEAD;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -116,7 +117,13 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         });
 
         Retrofit retrofit = new Retrofit.Builder()
+<<<<<<< HEAD
                 .baseUrl("http://192.168.1.102:8000")
+||||||| merged common ancestors
+                .baseUrl("http://192.168.1.106:8000")
+=======
+                .baseUrl("http://192.168.1.2:8000")
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);

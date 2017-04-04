@@ -39,7 +39,7 @@ from django.db.models import Q
 # Lists all Passengers or creates a new one
 #
 class DriverList(ListAPIView):
-    queryset = Driver.objects.all()
+    queryset = Driver.objects.filter(isActive=True)
     serializer_class = DriverSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
@@ -47,7 +47,7 @@ class DriverList(ListAPIView):
     pagination_class = PageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        queryset_list = Driver.objects.all()
+        queryset_list = Driver.objects.filter(isActive=True)
         query = self.request.GET.get("q")
         if query:
             queryset_list = queryset_list.filter(
@@ -72,6 +72,14 @@ class DriverCreateView(CreateAPIView):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),
                         phone_number=Driver.objects.get(user=self.request.user.pk).phone_number
                         )
+
+
+class DriverToggleActiveView(UpdateAPIView):
+    queryset = Driver.objects.all()
+    serializer_class = DriverToggleActiveSerializer
+    lookup_field = "name"
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
 
 class DriverDestroyView(DestroyAPIView):
     queryset = Driver.objects.all()

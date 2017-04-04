@@ -2,12 +2,14 @@ package com.app.skreppis.skreppis;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity
+    implements MessageBox.OnStateChangeListener {
 
     // TODO: Replace this dummy value.
     boolean isDriver;
@@ -15,6 +17,26 @@ public class MainActivity extends BaseActivity {
     Button mFindRideBtn;
     Button mFindPassengerBtn;
     String token;
+
+    /* Þetta er staðan sem messagebox er í.
+        "Closed"            The messagebox is closed
+        "DriverActive"		Show when driver is active and not busy
+        "DriverRequest"		Show when driver gets request from passenger
+        "PassengerWaiting"	Show driver when driving towards passenger
+        "PassengerCancels"	Show driver when a passenger cancels ride
+        "DriverDestination"	Show driver when driving passenger towards destination
+        "RequestSent"		Show Passenger while driver is responding to request
+        "RequestRejected"	Show Passenger if Driver rejects request
+        "RequestTimeout"	Show Passenger if Driver does not respond in time
+        "RequestSuccess"	Show Passenger while driver is traveling to pick up
+        "DestEta"			Show Passenger while travelling to destination
+        "DriverCancelsE"	Show if driver cancels before picking you up
+        "DriverCancelsL"	Show if driver cancels after picking you up
+        "YouCancelE"		Show Passenger if they cancel early
+        "YouCancelL"		Show Passenger if they cancel late
+        "Arrival"			Show Passenger upon arrival
+     */
+    String mbState;
 
 
     @Override
@@ -25,6 +47,7 @@ public class MainActivity extends BaseActivity {
         Log.d("Token:", token);
         makepref();
         isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
+        mbState = sharedPref.getString(getString(R.string.pref_mbstate), "closed");
 
         if (isDriver) {
             toggleDriver(true);
@@ -79,6 +102,12 @@ public class MainActivity extends BaseActivity {
         intent.putExtra("Token", token);
         startActivity(intent);
     }
+
+    public void onStateChange(String state){
+
+    }
+
+
 /*
     @Override
     public boolean onPrepareOptionsMenu(Menu menu){
