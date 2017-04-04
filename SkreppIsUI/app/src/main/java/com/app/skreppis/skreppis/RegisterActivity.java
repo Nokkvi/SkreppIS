@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.2:8000")
+                .baseUrl("http://192.168.1.106:8000")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);
@@ -298,7 +298,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                                 int statusCode = response.code();
                                 Log.d("AuthActivity", "onResponse: "+ statusCode);
                                 AuthResponse authResponse = response.body();
-                                System.out.println(authResponse.getToken());
                                 showProgress(false);
                                 PassengerCreateRequest passengerCreateRequest = new PassengerCreateRequest();
                                 passengerCreateRequest.setPhone_number(phone);

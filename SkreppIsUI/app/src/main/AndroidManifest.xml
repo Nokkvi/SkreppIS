@@ -43,6 +43,9 @@
             android:label="@string/title_activity_manageprofile"
             android:theme="@style/Theme.AppCompat.popupTheme" />
         <activity
+            android:name="SetZonesActivity"
+            android:label="Set Zones" />
+        <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>

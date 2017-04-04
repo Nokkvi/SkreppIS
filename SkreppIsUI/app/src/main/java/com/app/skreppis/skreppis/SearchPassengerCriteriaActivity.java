@@ -20,6 +20,7 @@ public class SearchPassengerCriteriaActivity extends BaseActivity {
 
     private AppCompatSpinner mStartView;
     String token;
+    String username;
     private SkreppIsApi service;
 
     @Override
@@ -30,6 +31,8 @@ public class SearchPassengerCriteriaActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
         token = extras.getString("Token");
         Log.d("Token:", token);
+        username = extras.getString("Username");
+        Log.d("Username:", username);
 
         mStartView = (AppCompatSpinner) findViewById(R.id.find_passenger_zonespinner);
 

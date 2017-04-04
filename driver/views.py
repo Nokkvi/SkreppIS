@@ -119,15 +119,16 @@ class ZoneCreateView(CreateAPIView):
     queryset = Zone.objects.all()
     serializer_class = ZoneCreateSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    lookup_field = "driver"
     pagination_class = PageNumberPagination
 
     def perform_create(self, serializer):
-        serializer.save(driver=Driver.objects.get(user=self.request.user.pk),
+        serializer.save(driver=Driver.objects.get(user=self.request.user.id),
                         )
 
 class ZoneDestroyView(DestroyAPIView):
     serializer_class = ZoneDetailSerializer(many=True)
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     lookup_field = "driver"
 
     def get_queryset(self, *args, **kwargs):

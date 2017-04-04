@@ -6,9 +6,9 @@ import com.app.skreppis.skreppis.models.*;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -48,5 +48,11 @@ public interface SkreppIsApi {
 
     @PUT("/driver/{name}/toggleactive")
     Call<ToggleActiveResponse> toggleActive(@Header("Authorization") String token, @Path("name") String username);
+
+    @DELETE("/driver/{name}/zonedelete")
+    Call<DropZoneResponse> dropZones(@Header("Authorization") String token, @Path("name") String username);
+
+    @POST("/driver/{name}/addzone")
+    Call<AddZoneResponse> addZone(@Header("Authorization") String token, @Path("name") String username, @Body AddZoneRequest AddZoneRequest);
 
 }
