@@ -36,6 +36,7 @@ import com.app.skreppis.skreppis.models.AuthRequest;
 import com.app.skreppis.skreppis.models.AuthResponse;
 import com.app.skreppis.skreppis.models.LoginRequest;
 import com.app.skreppis.skreppis.models.LoginResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     AuthResponse authResponse;
     LoginResponse loginResponse;
     int token;
+    UrlWrapper urlWrap;
 
     public int getToken() {
         return token;
@@ -128,8 +130,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        urlWrap = new UrlWrapper();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.2:8000")
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);

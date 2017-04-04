@@ -14,6 +14,7 @@ import com.app.skreppis.skreppis.adapters.DriverListAdapter;
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.DriverList;
 import com.app.skreppis.skreppis.models.DriverListItemResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import butterknife.*;
 import retrofit2.Call;
@@ -31,6 +32,7 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
     private AppCompatSpinner mSeatsView;
     DriverListAdapter adapter;
     String token;
+    private UrlWrapper urlWrap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +59,10 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
         ButterKnife.bind(this);
         //set layout manager for list view
 
+        urlWrap = new UrlWrapper();
+
         Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("http://192.168.1.2:8000")
+                baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");
