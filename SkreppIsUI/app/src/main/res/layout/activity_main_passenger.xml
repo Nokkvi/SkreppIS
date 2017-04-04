@@ -2,11 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/background_skreppis">
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingTop="30dp">
 
         <Button
             style="?android:attr/buttonBarButtonStyle"
@@ -25,6 +28,7 @@
             android:textSize="20dp"
             />
 
+
         <Button
             style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/bt_become_driver"
@@ -41,4 +45,24 @@
             android:textStyle="bold"
             android:textSize="20dp" />
 
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/test_spinner"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:entries="@array/test_spinner"
+            android:prompt="@string/find_driver_zone" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/messagebox_container_passenger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+
 </LinearLayout>
+

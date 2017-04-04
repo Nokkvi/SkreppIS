@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.RideRequest;
 import com.app.skreppis.skreppis.models.RideRequestResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +27,7 @@ public class PostRideRequestActivity extends BaseActivity {
     private AppCompatSpinner mSeatsView;
     String token;
     String username;
+    private UrlWrapper urlWrap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,10 @@ public class PostRideRequestActivity extends BaseActivity {
             }
         });
 
+        urlWrap = new UrlWrapper();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:8000")
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);

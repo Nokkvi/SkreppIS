@@ -154,7 +154,7 @@ public class MessageBox extends Fragment {
                 //TODO: Getta staðsetningu farþega
                 String l = getString(R.string.mb_location_default);
                 mMessageTwo.setVisibility(View.VISIBLE);
-                mMessageOne.setText(l);
+                mMessageTwo.setText(l);
                 bCancel.setVisibility(View.VISIBLE);
                 return;
             case "PassengerCancels":
@@ -193,7 +193,7 @@ public class MessageBox extends Fragment {
                 bCancel.setVisibility(View.VISIBLE);
                 return;
             case "DestEta":
-                mMessageOne.setText(R.string.mb_passenger_pickup);
+                mMessageOne.setText(R.string.mb_passenger_dest);
                 //TODO: Implementa eta klukkuna
                 mChrono.setVisibility(View.VISIBLE);
                 bCancel.setVisibility(View.VISIBLE);

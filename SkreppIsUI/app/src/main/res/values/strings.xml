@@ -45,6 +45,26 @@
     <string name="test_text6">When A Gentleman Contemplates A Lady Of Paris, The Gentleman Is Apt To Exclaim: "Ooh La La," For The Ladies Of Paris Are Very Charming</string>
     <string name="test_text7">Please. It Was Trees.</string>
 
+    <string-array name="test_spinner">
+        <item>---</item>
+        <item>Closed</item>
+        <item>DriverActive</item>
+        <item>DriverRequest</item>
+        <item>PassengerWaiting</item>
+        <item>PassengerCancels</item>
+        <item>DriverDestination</item>
+        <item>RequestSent</item>
+        <item>RequestRejected</item>
+        <item>RequestTimeout</item>
+        <item>RequestSuccess</item>
+        <item>DestEta</item>
+        <item>DriverCancelsE</item>
+        <item>DriverCancelsL</item>
+        <item>YouCancelE</item>
+        <item>YouCancelL</item>
+        <item>Arrival</item>
+    </string-array>
+
     <string name="mb_default">This is the default message. You should not be seeing this. If you do, it\'s entierly your fault!</string>
     <string name="mb_location_default">Heitasta, heitasta helvíti!!!</string>
     <string name="mb_passenger_default">Skrattinn Sjálfur</string>

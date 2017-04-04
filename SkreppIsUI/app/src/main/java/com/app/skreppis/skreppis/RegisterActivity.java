@@ -36,6 +36,7 @@ import com.app.skreppis.skreppis.models.PassengerCreateRequest;
 import com.app.skreppis.skreppis.models.PassengerCreateResponse;
 import com.app.skreppis.skreppis.models.RegisterRequest;
 import com.app.skreppis.skreppis.models.RegisterResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -86,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
     private View mRegisterFormView;
     SkreppIsApi service;
-
+    private UrlWrapper urlWrap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +117,10 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             }
         });
 
+        urlWrap = new UrlWrapper();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:8000")
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);

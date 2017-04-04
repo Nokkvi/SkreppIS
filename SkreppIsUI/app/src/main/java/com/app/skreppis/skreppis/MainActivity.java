@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.AppCompatSpinner;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 
 public class MainActivity extends BaseActivity
@@ -40,6 +44,10 @@ public class MainActivity extends BaseActivity
      */
     String mbState;
 
+    Fragment mMessageBox;
+
+    //TODO: Test dæmi
+    AppCompatSpinner mMessageBoxTestSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +59,14 @@ public class MainActivity extends BaseActivity
         Log.d("Username:", username);
         makepref();
         isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
-        mbState = sharedPref.getString(getString(R.string.pref_mbstate), "closed");
+        mbState = sharedPref.getString(getString(R.string.pref_mbstate), "Closed");
+
 
         if (isDriver) {
             toggleDriver(true);
         } else {
             toggleDriver(false);
         }
-
-        //change to fragment?
-        //final TextView messageBox = (TextView) findViewById(R.id.messagebox);
     }
 
     //TODO: Debug method. Implement alternative way to detect user status
@@ -68,7 +74,12 @@ public class MainActivity extends BaseActivity
         if(makeDriver) {
             setContentView(R.layout.activity_main_driver);
             manageRideButton();
+
             mBecomeDriverBtn = null;
+
+            //TODO: Fjarlægja þennan spinner
+            manageTestSpinner();
+
             mFindPassengerBtn = (Button) findViewById(R.id.bt_find_passenger);
             mFindPassengerBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,12 +88,19 @@ public class MainActivity extends BaseActivity
                 }
             });
             sharedPref.edit().putBoolean(getString(R.string.pref_isdriver), true).apply();
+            onStateChange(mbState);
         } else {
             setContentView(R.layout.activity_main_passenger);
             manageRideButton();
+
             manageBecomeDriverButton();
+
+            //TODO: Fjarlægja þennan spinner
+            manageTestSpinner();
+
             mFindPassengerBtn = null;
             sharedPref.edit().putBoolean(getString(R.string.pref_isdriver), false).apply();
+            onStateChange(mbState);
         }
     }
 
@@ -97,12 +115,38 @@ public class MainActivity extends BaseActivity
         });
     }
 
+
     private void manageBecomeDriverButton(){
         mBecomeDriverBtn = (Button) findViewById(R.id.bt_become_driver);
         mBecomeDriverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 becomeDriver();
+            }
+        });
+    }
+
+
+    //TODO: Fjarlægja þetta method
+    private void manageTestSpinner(){
+        mMessageBoxTestSpinner = (AppCompatSpinner) findViewById(R.id.test_spinner);
+        mMessageBoxTestSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0){
+                    return;
+                }else{
+                    String state = mMessageBoxTestSpinner.getItemAtPosition(position).toString();
+                    sharedPref.edit().putString(getString(R.string.pref_mbstate), state).apply();
+                    mbState = sharedPref.getString(getString(R.string.pref_mbstate), "closed");
+                    onStateChange(mbState);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+
             }
         });
     }
@@ -129,9 +173,25 @@ public class MainActivity extends BaseActivity
     }
 
     public void onStateChange(String state){
-
+        int parent;
+        if (isDriver){
+            parent = R.id.messagebox_container_driver;
+        }else {
+            parent = R.id.messagebox_container_passenger;
+        }
+        if (state.equals("Closed")) {
+            if(mMessageBox != null) {
+                getSupportFragmentManager().beginTransaction()
+                        .remove(mMessageBox)
+                        .commit();
+            }
+            return;
+        }
+        mMessageBox = MessageBox.newInstance(state);
+        getSupportFragmentManager().beginTransaction()
+                .replace(parent, mMessageBox)
+                .commit();
     }
-
 
 /*
     @Override

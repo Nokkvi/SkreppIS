@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.RideRequestList;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +23,7 @@ public class SearchPassengerCriteriaActivity extends BaseActivity {
     String token;
     String username;
     private SkreppIsApi service;
+    private UrlWrapper urlWrap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,10 @@ public class SearchPassengerCriteriaActivity extends BaseActivity {
             }
         });
 
-        Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("http://192.168.1.106:8000")
+        urlWrap = new UrlWrapper();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");

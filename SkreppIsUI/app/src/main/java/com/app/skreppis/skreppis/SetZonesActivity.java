@@ -11,6 +11,7 @@ import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.AddZoneRequest;
 import com.app.skreppis.skreppis.models.AddZoneResponse;
 import com.app.skreppis.skreppis.models.DropZoneResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +30,7 @@ public class SetZonesActivity extends BaseActivity{
     AppCompatSpinner mAddZoneView;
     SkreppIsApi service;
     String zone;
+    UrlWrapper urlWrap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +65,10 @@ public class SetZonesActivity extends BaseActivity{
             }
         });
 
-        Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("http://192.168.1.106:8000")
+        urlWrap = new UrlWrapper();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");
