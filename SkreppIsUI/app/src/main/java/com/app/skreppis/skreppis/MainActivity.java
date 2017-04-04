@@ -17,7 +17,6 @@ public class MainActivity extends BaseActivity
     Button mFindRideBtn;
     Button mFindPassengerBtn;
     String token;
-    String username;
 
     /* Þetta er staðan sem messagebox er í.
         "Closed"            The messagebox is closed
@@ -45,9 +44,7 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         token = extras.getString("Token");
-        username = extras.getString("Username");
         Log.d("Token:", token);
-        Log.d("Username:", username);
         makepref();
         isDriver = sharedPref.getBoolean(getString(R.string.pref_isdriver), false);
         mbState = sharedPref.getString(getString(R.string.pref_mbstate), "closed");
@@ -97,14 +94,12 @@ public class MainActivity extends BaseActivity
     protected void findRide() {
         Intent intent = new Intent(this, FindRideActivity.class);
         intent.putExtra("Token", token);
-        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
     public void findPassenger() {
         Intent intent = new Intent(this, FindPassengerActivity.class);
         intent.putExtra("Token", token);
-        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
