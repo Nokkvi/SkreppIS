@@ -8,6 +8,7 @@ from .serializers import (
     DriverCreateSerializer,
     DriverDetailSerializer,
     DriverUpdateSerializer,
+    DriverToggleActiveSerializer,
     ZoneSerializer,
     ZoneCreateSerializer,
     ZoneDetailSerializer,

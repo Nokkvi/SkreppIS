@@ -25,6 +25,7 @@ public class PostRideRequestActivity extends BaseActivity {
     private AppCompatSpinner mEndView;
     private AppCompatSpinner mSeatsView;
     String token;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class PostRideRequestActivity extends BaseActivity {
 
         Bundle extras = getIntent().getExtras();
         token = extras.getString("Token");
+        username = extras.getString("Username");
 
         mStartView = (AppCompatSpinner) findViewById(R.id.post_ride_request_zonespinner1);
         mEndView = (AppCompatSpinner) findViewById(R.id.post_ride_request_zonespinner2);
@@ -48,7 +50,7 @@ public class PostRideRequestActivity extends BaseActivity {
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.102:8000")
+                .baseUrl("http://192.168.1.106:8000")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);
@@ -57,6 +59,7 @@ public class PostRideRequestActivity extends BaseActivity {
     protected boolean PostRideRequestSuccess(String token){
         Intent intent = new Intent(this, FindRideActivity.class);
         intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
         startActivity(intent);
         finish();
         return true;

@@ -25,7 +25,6 @@ class Driver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=50, blank=True)
     isActive = models.BooleanField(default=False)
-    isBusy = models.BooleanField(default=False)
     phone_number = models.CharField(max_length=16, blank=True)
     description = models.CharField(max_length=200, blank=True)
     image = models.CharField(max_length=200, blank=True)
