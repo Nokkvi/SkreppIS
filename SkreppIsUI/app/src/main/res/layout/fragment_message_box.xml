@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MessageBox">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/mb_message1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/mb_default"/>
+
+        <Chronometer
+            android:id="@+id/mb_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:format="hh:mm:ss"
+            android:countDown="true"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/mb_message2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mb_location_default"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="?android:attr/buttonBarStyle">
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btn_mb_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mbb_ok"
+                android:visibility="gone"/>
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btn_mb_try"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mbb_try_again"
+                android:visibility="gone"/>
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btn_mb_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mbb_cancel"
+                android:visibility="gone"/>
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btn_mb_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mbb_rate"
+                android:visibility="gone"/>
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btn_mb_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mbb_accept"
+                android:visibility="gone"/>
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btn_mb_reject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mbb_reject"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

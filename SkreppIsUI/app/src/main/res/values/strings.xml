@@ -8,6 +8,8 @@
     <string name="preference_file_key">Preference Key</string>
     <string name="pref_isdriver">Is Driver</string>
     <string name="pref_isactive">Is Active</string>
+    <string name="pref_mbstate">Message Box String</string>
+
 
     <string name="app_name">SkreppIs</string>
     <string name="action_settings">Settings</string>
@@ -36,7 +38,30 @@
     <string name="test_text6">When A Gentleman Contemplates A Lady Of Paris, The Gentleman Is Apt To Exclaim: "Ooh La La," For The Ladies Of Paris Are Very Charming</string>
     <string name="test_text7">Please. It Was Trees.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="mb_default">This is the default message. You should not be seeing this. If you do, it\'s entierly your fault!</string>
+    <string name="mb_location_default">Heitasta, heitasta helvíti!!!</string>
+    <string name="mb_passenger_default">Skrattinn Sjálfur</string>
+    <string name="mb_driver_active">You are currently active.</string>
+    <string name="mb_driver_request">You have a ride request from:</string>
+    <string name="mb_driver_pickup">Your Passenger is waiting for you at:</string>
+    <string name="mb_driver_cancel">Your Passenger has canceled the ride.</string>
+    <string name="mb_driver_dest">Your destination is at:</string>
+
+    <string name="mb_passenger_request">You have sent a ride request to:</string>
+    <string name="mb_passenger_rejected">The driver has rejected your request.</string>
+    <string name="mb_passenger_timeout">The driver did not respond to you request.</string>
+    <string name="mb_passenger_pickup">The driver will pick you up in eta:</string>
+    <string name="mb_passenger_dest">You will reach your destination in eta:</string>
+    <string name="mb_passenger_dcancel">Your driver has canceled your ride!</string>
+    <string name="mb_passenger_pcancel">You have canceled your ride.</string>
+    <string name="mb_arrival">You have arrived at your destination!</string>
+
+    <string name="mbb_accept">Accept</string>
+    <string name="mbb_reject">Reject</string>
+    <string name="mbb_ok">OK</string>
+    <string name="mbb_rate">Rate</string>
+    <string name="mbb_try_again">Try Another</string>
+    <string name="mbb_cancel">Cancel</string>
 
     <string name="title_activity_findride">Find Ride</string>
     <string name="title_activity_findpassenger">Find Passenger</string>
@@ -151,5 +176,8 @@
 
     <string name="post_ride_request_start">Where are you?</string>
     <string name="post_ride_request_end">Where do you want to go?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
