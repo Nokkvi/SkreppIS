@@ -31,6 +31,7 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.menu_home:
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
+                return true;
             case R.id.menu_manageprofile:
                 intent = new Intent(this, ManageProfileActivity.class);
                 startActivity(intent);
