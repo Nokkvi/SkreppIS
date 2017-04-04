@@ -61,7 +61,9 @@ class DriverCreateSerializer(serializers.ModelSerializer):
         fields = [  #'id',
                     #'passenger',
                     #''
+                    'isActive',
                     'car_seats',
+                    'smoking_allowed',
                   ]
 
 class DriverUpdateSerializer(serializers.ModelSerializer):

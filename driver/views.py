@@ -71,7 +71,7 @@ class DriverCreateView(CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),
-                        phone_number=Driver.objects.get(user=self.request.user.pk).phone_number
+                        phone_number=Passenger.objects.get(user=self.request.user.pk).phone_number
                         )
 
 

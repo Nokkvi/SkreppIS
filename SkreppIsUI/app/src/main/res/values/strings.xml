@@ -17,6 +17,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="p_findride">Find Ride</string>
+    <string name="p_becomedriver">Become Driver</string>
+    <string name="p_becomedriver_smoking">Is smoking allowed in your car?</string>
     <string name="p_finddriver">Search Drivers</string>
     <string name="p_requestdriver">Post Request</string>
 
@@ -125,6 +127,8 @@
     <string name="find_driver_zone">Search For Active Drivers In This Zone</string>
 
     <string name="find_passenger_zone">Search Passengers In This Zone</string>
+
+    <string name="become_driver_seats"> How many passenger seats are in your car?</string>
 
     <string name="drop_zone">Select zone to drop from your route</string>
 

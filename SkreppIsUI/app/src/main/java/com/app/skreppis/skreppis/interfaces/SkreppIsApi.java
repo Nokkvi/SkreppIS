@@ -25,6 +25,9 @@ public interface SkreppIsApi {
     @POST("/passenger/create/")
     Call<PassengerCreateResponse> createPassenger(@Header("Authorization") String token, @Body PassengerCreateRequest passengerCreateRequest);
 
+    @POST("/driver/create/")
+    Call<DriverCreateResponse> createDriver(@Header("Authorization") String token, @Body DriverCreateRequest driverCreateRequest);
+
     @POST("/login/")
     Call<LoginResponse> Login(@Body LoginRequest loginRequest);
 

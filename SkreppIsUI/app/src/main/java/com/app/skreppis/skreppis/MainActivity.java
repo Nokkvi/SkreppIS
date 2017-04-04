@@ -16,6 +16,7 @@ public class MainActivity extends BaseActivity
 
     Button mFindRideBtn;
     Button mFindPassengerBtn;
+    Button mBecomeDriverBtn;
     String token;
     String username;
 
@@ -67,6 +68,7 @@ public class MainActivity extends BaseActivity
         if(makeDriver) {
             setContentView(R.layout.activity_main_driver);
             manageRideButton();
+            mBecomeDriverBtn = null;
             mFindPassengerBtn = (Button) findViewById(R.id.bt_find_passenger);
             mFindPassengerBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -78,6 +80,7 @@ public class MainActivity extends BaseActivity
         } else {
             setContentView(R.layout.activity_main_passenger);
             manageRideButton();
+            manageBecomeDriverButton();
             mFindPassengerBtn = null;
             sharedPref.edit().putBoolean(getString(R.string.pref_isdriver), false).apply();
         }
@@ -94,6 +97,16 @@ public class MainActivity extends BaseActivity
         });
     }
 
+    private void manageBecomeDriverButton(){
+        mBecomeDriverBtn = (Button) findViewById(R.id.bt_become_driver);
+        mBecomeDriverBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                becomeDriver();
+            }
+        });
+    }
+
     protected void findRide() {
         Intent intent = new Intent(this, FindRideActivity.class);
         intent.putExtra("Token", token);
@@ -103,6 +116,13 @@ public class MainActivity extends BaseActivity
 
     public void findPassenger() {
         Intent intent = new Intent(this, FindPassengerActivity.class);
+        intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
+        startActivity(intent);
+    }
+
+    public void becomeDriver() {
+        Intent intent = new Intent(this, BecomeDriverActivity.class);
         intent.putExtra("Token", token);
         intent.putExtra("Username", username);
         startActivity(intent);

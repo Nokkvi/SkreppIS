@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     SkreppIsApi service;
     AuthResponse authResponse;
     LoginResponse loginResponse;
-    String token;
+    String username;
 
 
     @Override
@@ -257,9 +257,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     showProgress(false);
 
                     Log.d("LoginActivity", "onResponse: "+ statusCode);
-                    AuthRequest authRequest = new AuthRequest();
+                    final AuthRequest authRequest = new AuthRequest();
                     authRequest.setUsername(loginResponse.getUsername());
                     authRequest.setPassword(loginRequest.getPassword());
+                    username = loginResponse.getUsername();
                     Call<AuthResponse> authResponseCall = service.Auth(authRequest);
                     authResponseCall.enqueue(new Callback<AuthResponse>() {
                         @Override
@@ -268,10 +269,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             Log.d("AuthActivity", "onResponse: "+ statusCode);
                             AuthResponse authResponse = response.body();
                             if(authResponse == null)
-                                System.out.print("Oh Shit!");
-                            System.out.println(authResponse.getToken());
+                                Log.d("Token", "Oh Shit!");
+                            Log.d("Token", authResponse.getToken());
                             showProgress(false);
-                            loginSuccess(authResponse.getToken(), loginResponse.getUsername());
+                            loginSuccess(authResponse.getToken(), username);
                         }
 
                         @Override
