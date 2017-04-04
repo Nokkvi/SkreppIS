@@ -79,16 +79,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     SkreppIsApi service;
     AuthResponse authResponse;
     LoginResponse loginResponse;
-    int token;
     UrlWrapper urlWrap;
 
-    public int getToken() {
-        return token;
-    }
 
-    public void setToken(int token) {
-        this.token = token;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

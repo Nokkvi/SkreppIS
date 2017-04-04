@@ -58,6 +58,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.HEAD;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -301,7 +302,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                                 int statusCode = response.code();
                                 Log.d("AuthActivity", "onResponse: "+ statusCode);
                                 AuthResponse authResponse = response.body();
-                                System.out.println(authResponse.getToken());
                                 showProgress(false);
                                 PassengerCreateRequest passengerCreateRequest = new PassengerCreateRequest();
                                 passengerCreateRequest.setPhone_number(phone);

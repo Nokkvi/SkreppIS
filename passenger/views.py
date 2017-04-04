@@ -73,7 +73,7 @@ class PassengerUpdateView(UpdateAPIView):
     queryset = Passenger.objects.all()
     serializer_class = PassengerUpdateSerializer
     lookup_field = "name"
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
 
 class PassengerCreateView(CreateAPIView):

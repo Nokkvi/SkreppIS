@@ -64,20 +64,6 @@ class DriverCreateSerializer(serializers.ModelSerializer):
                     'car_seats',
                   ]
 
-class DriverToggleActiveSerializer(serializers.ModelSerializer):
-    isActive = SerializerMethodField()
-    class Meta:
-        model = Driver
-        fields = [
-            'isActive',
-        ]
-
-    def get_isActive(self, obj):
-        object = obj.isActive
-        obj.isActive = not object
-        obj.save()
-        return object
-
 class DriverUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -128,3 +114,17 @@ class ZoneDetailSerializer(serializers.ModelSerializer):
 
     def get_driver(self, obj):
         return obj.driver.name
+
+class DriverToggleActiveSerializer(serializers.ModelSerializer):
+    isActive = SerializerMethodField()
+    class Meta:
+        model = Driver
+        fields = [
+            'isActive',
+        ]
+
+    def get_isActive(self, obj):
+        object = obj.isActive
+        obj.isActive = not object
+        obj.save()
+        return object

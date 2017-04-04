@@ -4,8 +4,48 @@
     <list default="true" id="8b520b1f-099f-4c12-81e5-778daea93118" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIS/urls.py" afterPath="$PROJECT_DIR$/SkreppIS/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/build.gradle" afterPath="$PROJECT_DIR$/SkreppIsUI/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/FindPassengerActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/FindPassengerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/FindRideActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/FindRideActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/LoginActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/RegisterActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/RegisterActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/SearchDriverCriteriaActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/SearchDriverCriteriaActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/SearchPassengerCriteriaActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/SearchPassengerCriteriaActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/interfaces/SkreppIsApi.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/interfaces/SkreppIsApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/res/layout/activity_find_passenger.xml" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/res/layout/activity_find_passenger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/res/values/strings.xml" />
+=======
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIS/urls.py" afterPath="$PROJECT_DIR$/SkreppIS/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/FindPassengerActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/FindPassengerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/SearchPassengerCriteriaActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/SearchPassengerCriteriaActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/interfaces/SkreppIsApi.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/interfaces/SkreppIsApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/driver/models.py" afterPath="$PROJECT_DIR$/driver/models.py" />
+||||||| merged common ancestors
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIS/urls.py" afterPath="$PROJECT_DIR$/SkreppIS/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/FindPassengerActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/FindPassengerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/LoginActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/MainActivity.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/interfaces/SkreppIsApi.java" afterPath="$PROJECT_DIR$/SkreppIsUI/app/src/main/java/com/app/skreppis/skreppis/interfaces/SkreppIsApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/driver/models.py" afterPath="$PROJECT_DIR$/driver/models.py" />
+=======
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/driver/serializers.py" afterPath="$PROJECT_DIR$/driver/serializers.py" />
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/passenger/admin.py" afterPath="$PROJECT_DIR$/passenger/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/passenger/models.py" afterPath="$PROJECT_DIR$/passenger/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/passenger/serializers.py" afterPath="$PROJECT_DIR$/passenger/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/passenger/views.py" afterPath="$PROJECT_DIR$/passenger/views.py" />
+||||||| merged common ancestors
+>>>>>>> origin/master
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/driver/views.py" afterPath="$PROJECT_DIR$/driver/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/passenger/views.py" afterPath="$PROJECT_DIR$/passenger/views.py" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/driver/views.py" afterPath="$PROJECT_DIR$/driver/views.py" />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +70,13 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SkreppIS/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+<<<<<<< HEAD
+            <state relative-caret-position="286">
+              <caret line="42" column="71" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
+=======
+            <state relative-caret-position="374">
+              <caret line="43" column="33" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="33" />
+>>>>>>> origin/master
               <folding>
                 <element signature="e#642#683#0" expanded="true" />
               </folding>
@@ -39,56 +84,146 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/driver/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+<<<<<<< HEAD
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/passenger/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
+            <state relative-caret-position="155">
               <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+=======
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/passenger/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="1394">
+              <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
               <folding>
-                <element signature="e#0#46#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
+||||||| merged common ancestors
+            <state relative-caret-position="116">
+              <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+              <folding />
+=======
+            <state relative-caret-position="405">
+              <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+              <folding />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/driver/views.py">
+        <entry file="file://$PROJECT_DIR$/passenger/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="50" column="59" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="59" />
+            <state relative-caret-position="308">
+              <caret line="99" column="23" selection-start-line="99" selection-start-column="23" selection-end-line="99" selection-end-column="23" />
+>>>>>>> origin/master
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
-                <marker date="1491303048612" expanded="true" signature="1652:1653" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/driver/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="130" column="51" selection-start-line="130" selection-start-column="51" selection-end-line="130" selection-end-column="51" />
+=======
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/passenger/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/passenger/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/driver/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="629">
+              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="108" selection-end-column="28" />
+||||||| merged common ancestors
+            <state relative-caret-position="359">
+              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+=======
+            <state relative-caret-position="522">
+              <caret line="50" column="59" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="59" />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
+>>>>>>> origin/master
+              <folding>
+<<<<<<< HEAD
+                <marker date="1490618379454" expanded="true" signature="1586:1587" ph="..." />
+||||||| merged common ancestors
+                <element signature="e#0#46#0" expanded="true" />
+                <marker date="1491250483192" expanded="true" signature="1620:1621" ph="..." />
+=======
+                <element signature="e#0#46#0" expanded="true" />
+<<<<<<< HEAD
+=======
+                <marker date="1491303048612" expanded="true" signature="1652:1653" ph="..." />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
+>>>>>>> origin/master
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/driver/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="-1227">
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="289">
+              <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/accounts/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+||||||| merged common ancestors
+            <state relative-caret-position="505">
+              <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+=======
             <state relative-caret-position="374">
+>>>>>>> origin/master
               <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/passenger/models.py">
+        <entry file="file://$PROJECT_DIR$/accounts/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,14 +267,27 @@
         <option value="$PROJECT_DIR$/SkreppIS/settings.py" />
         <option value="$PROJECT_DIR$/accounts/serializers.py" />
         <option value="$PROJECT_DIR$/accounts/views.py" />
+        <option value="$PROJECT_DIR$/driver/views.py" />
+        <option value="$PROJECT_DIR$/driver/serializers.py" />
         <option value="$PROJECT_DIR$/passenger/admin.py" />
         <option value="$PROJECT_DIR$/passenger/models.py" />
-        <option value="$PROJECT_DIR$/passenger/serializers.py" />
         <option value="$PROJECT_DIR$/driver/models.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/passenger/views.py" />
+=======
+        <option value="$PROJECT_DIR$/passenger/serializers.py" />
         <option value="$PROJECT_DIR$/SkreppIS/urls.py" />
-        <option value="$PROJECT_DIR$/driver/serializers.py" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/passenger/views.py" />
+||||||| merged common ancestors
         <option value="$PROJECT_DIR$/driver/views.py" />
+        <option value="$PROJECT_DIR$/driver/serializers.py" />
+=======
+>>>>>>> origin/master
+        <option value="$PROJECT_DIR$/driver/serializers.py" />
+        <option value="$PROJECT_DIR$/SkreppIS/urls.py" />
+        <option value="$PROJECT_DIR$/driver/views.py" />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
       </list>
     </option>
   </component>
@@ -181,7 +329,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -286,6 +433,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -585,14 +733,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16257995" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1641791" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -605,6 +752,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2340195" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -862,7 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,7 +1027,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,7 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,7 +1049,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -920,7 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-292">
           <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -928,7 +1071,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,7 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,27 +1086,19 @@
         <state relative-caret-position="85">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#0#32#0" expanded="false" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/passenger/serializers.py">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/driver/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="1377">
           <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="82" selection-end-column="33" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SkreppIS/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
-          <folding>
-            <element signature="e#642#683#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -974,44 +1107,153 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+=======
+        <state relative-caret-position="289">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/passenger/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/driver/models.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+>>>>>>> origin/master
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/driver/models.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+=======
+    <entry file="file://$PROJECT_DIR$/passenger/models.py">
+||||||| merged common ancestors
+    <entry file="file://$PROJECT_DIR$/driver/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+>>>>>>> origin/master
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/passenger/serializers.py">
+=======
+    <entry file="file://$PROJECT_DIR$/passenger/serializers.py">
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SkreppIS/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="155">
+          <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+=======
+        <state relative-caret-position="374">
+          <caret line="43" column="33" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="33" />
+>>>>>>> origin/master
+          <folding>
+            <element signature="e#642#683#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/driver/views.py">
+<<<<<<< HEAD
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="108" selection-end-column="28" />
+          <folding>
+            <marker date="1490618379454" expanded="true" signature="1586:1587" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/passenger/serializers.py">
+||||||| merged common ancestors
+    <entry file="file://$PROJECT_DIR$/driver/serializers.py">
+=======
+    <entry file="file://$PROJECT_DIR$/driver/models.py">
+>>>>>>> origin/master
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="130" column="51" selection-start-line="130" selection-start-column="51" selection-end-line="130" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/SkreppIS/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="42" column="71" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
+          <folding>
+            <element signature="e#642#683#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/driver/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1227">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/driver/serializers.py">
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="1394">
+          <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+||||||| merged common ancestors
+        <state relative-caret-position="505">
+          <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+          <folding />
+=======
         <state relative-caret-position="374">
           <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/driver/views.py">
+    <entry file="file://$PROJECT_DIR$/passenger/views.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="308">
+          <caret line="99" column="23" selection-start-line="99" selection-start-column="23" selection-end-line="99" selection-end-column="23" />
+||||||| merged common ancestors
+        <state relative-caret-position="359">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+=======
         <state relative-caret-position="522">
           <caret line="50" column="59" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="59" />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
           <folding>
             <element signature="e#0#46#0" expanded="true" />
+<<<<<<< HEAD
+||||||| merged common ancestors
+            <marker date="1491250483192" expanded="true" signature="1620:1621" ph="..." />
+=======
             <marker date="1491303048612" expanded="true" signature="1652:1653" ph="..." />
+>>>>>>> 27bd98b3dc0d99479263726eb1bead9dadb1f7c9
           </folding>
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>

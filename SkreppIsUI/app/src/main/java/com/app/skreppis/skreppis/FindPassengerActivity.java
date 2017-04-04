@@ -32,6 +32,7 @@ public class FindPassengerActivity extends BaseActivity {
 
     private Button mToggleActive;
     private Button mSearchPassenger;
+    private Button mSetZones;
     String token;
     boolean isActive;
     SkreppIsApi service;
@@ -64,6 +65,7 @@ public class FindPassengerActivity extends BaseActivity {
 
         mToggleActive = (Button) findViewById(R.id.d_toggleactive);
         mSearchPassenger = (Button) findViewById(R.id.d_searchpassengers);
+        mSetZones = (Button) findViewById(R.id.d_setzones);
 
 
 
@@ -81,17 +83,32 @@ public class FindPassengerActivity extends BaseActivity {
                 }
             }
         });
+        mSetZones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoSetZones();
+            }
+        });
         mSearchPassenger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gotoSearch();
             }
         });
+
     }
 
     private void gotoSearch(){
         Intent intent = new Intent(this, SearchPassengerCriteriaActivity.class);
         intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
+        startActivity(intent);
+    }
+
+    private void gotoSetZones(){
+        Intent intent = new Intent(this, SetZonesActivity.class);
+        intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 

@@ -7,8 +7,13 @@ package com.app.skreppis.skreppis.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
 
-public class RideRequestListItemResponse {
+/**
+ * Created by Nökkvi on 26.3.2017.
+ */
+
+public class PassengerListItemResponse {
     @SerializedName("name")
     @Expose
     private String passengerName;
@@ -21,31 +26,6 @@ public class RideRequestListItemResponse {
     @Expose
     private String passengerRideRequests;
 
-    @SerializedName("start")
-    @Expose
-    private String start;
-
-    @SerializedName("end")
-    @Expose
-    private String end;
-
-    @SerializedName("over")
-    @Expose
-    private boolean over;
-
-    public String getStart() {
-        return start;
-    }
-
-    public String getEnd() {
-        return end;
-    }
-
-    public boolean isOver() {
-        return over;
-    }
-
-
     public String getPassengerName() {
         return passengerName;
     }
@@ -57,4 +37,7 @@ public class RideRequestListItemResponse {
     public String getPassengerRideRequests() {
         return passengerRideRequests;
     }
+
+
 }
+

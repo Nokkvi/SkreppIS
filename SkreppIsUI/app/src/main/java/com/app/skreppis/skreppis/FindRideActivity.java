@@ -11,6 +11,7 @@ import android.widget.Button;
 public class FindRideActivity extends BaseActivity {
 
     String token;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,9 @@ public class FindRideActivity extends BaseActivity {
 
         Bundle extras = getIntent().getExtras();
         token = extras.getString("Token");
+        username = extras.getString("Username");
         Log.d("Token:", token);
+        Log.d("Username:", username);
 
         Button findButton = (Button) findViewById(R.id.p_finddriver);
         Button requestButton = (Button) findViewById(R.id.p_requestdriver);
@@ -41,12 +44,14 @@ public class FindRideActivity extends BaseActivity {
     public void goToDriverSearchCriteria() {
         Intent intent = new Intent(this, SearchDriverCriteriaActivity.class);
         intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
     public void goToRideRequest() {
         Intent intent = new Intent(this, PostRideRequestActivity.class);
         intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 

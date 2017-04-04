@@ -61,8 +61,8 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
 
         urlWrap = new UrlWrapper();
 
-        Retrofit retrofit = new Retrofit.Builder().
-                baseUrl(urlWrap.getUrl())
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");

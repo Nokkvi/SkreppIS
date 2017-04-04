@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.RideRequest;
 import com.app.skreppis.skreppis.models.RideRequestResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +26,8 @@ public class PostRideRequestActivity extends BaseActivity {
     private AppCompatSpinner mEndView;
     private AppCompatSpinner mSeatsView;
     String token;
+    String username;
+    private UrlWrapper urlWrap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class PostRideRequestActivity extends BaseActivity {
 
         Bundle extras = getIntent().getExtras();
         token = extras.getString("Token");
+        username = extras.getString("Username");
 
         mStartView = (AppCompatSpinner) findViewById(R.id.post_ride_request_zonespinner1);
         mEndView = (AppCompatSpinner) findViewById(R.id.post_ride_request_zonespinner2);
@@ -47,8 +51,10 @@ public class PostRideRequestActivity extends BaseActivity {
             }
         });
 
+        urlWrap = new UrlWrapper();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:8000")
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         service = retrofit.create(SkreppIsApi.class);
@@ -57,6 +63,7 @@ public class PostRideRequestActivity extends BaseActivity {
     protected boolean PostRideRequestSuccess(String token){
         Intent intent = new Intent(this, FindRideActivity.class);
         intent.putExtra("Token", token);
+        intent.putExtra("Username", username);
         startActivity(intent);
         finish();
         return true;
