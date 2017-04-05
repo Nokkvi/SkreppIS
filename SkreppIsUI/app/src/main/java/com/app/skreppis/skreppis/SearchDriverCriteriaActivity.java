@@ -86,7 +86,7 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
 
                 Log.d("DriverList", "onResponse: "+ statusCode);
                 String z = mZoneView.getSelectedItem().toString();
-                String s = mZoneView.getSelectedItem().toString();
+                String s = mSeatsView.getSelectedItem().toString();
                 adapter = new DriverListAdapter(driverList1.getResults(), z, s);
                 driverList.setAdapter(adapter);
             }

@@ -169,12 +169,14 @@ class RideRequestUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = RideRequest
         fields = [
+            'driver',
             'start',
             'end',
             'pickuploc',
             'seats',
             'over',
         ]
+
 
 class RideRequestAddDriverSerializer(serializers.ModelSerializer):
     class Meta:

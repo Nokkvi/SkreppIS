@@ -127,6 +127,7 @@ public class SendRequestActivity extends BaseActivity {
         if(cancel){
             focusView.requestFocus();
         } else {
+            Log.d("Sæti", seatsString);
             int seats = Integer.parseInt(seatsString);
             RideRequest rideRequest = new RideRequest();
             rideRequest.setStart(start);

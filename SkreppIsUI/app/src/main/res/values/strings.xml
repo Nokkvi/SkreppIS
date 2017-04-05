@@ -145,7 +145,6 @@
     <string name="find_driver_numseats">How many seats do you need?</string>
 
     <string-array name="seat_number">
-        <item>--</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
