@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -102,31 +103,52 @@ public class PostRideRequestActivity extends BaseActivity {
         String end = mEndView.getSelectedItem().toString();
         String seatsString = mSeatsView.getSelectedItem().toString();
         String pickupString = mPickupView.getText().toString();
-        int seats = Integer.parseInt(seatsString);
 
-        RideRequest rideRequest = new RideRequest();
-        rideRequest.setStart(start);
-        rideRequest.setEnd(end);
-        rideRequest.setSeats(seats);
-        rideRequest.setPickupLoc(pickupString);
+        boolean cancel = false;
+        View focusView = null;
 
-        Call<RideRequestResponse> rideRequestResponseCall = service.updateRideRequest(" JWT "+token, username, rideRequest);
-        rideRequestResponseCall.enqueue(new Callback<RideRequestResponse>() {
-            @Override
-            public void onResponse(Call<RideRequestResponse> call, Response<RideRequestResponse> response) {
-                int statusCode = response.code();
+        if (TextUtils.isEmpty(pickupString)) {
+            mPickupView.setError(getString(R.string.error_field_required));
+            focusView = mPickupView;
+            cancel = true;
+        }
 
-                RideRequestResponse rideRequestResponse = response.body();
+        if(!seatsString.matches("[0-9]+")){
+            mPickupView.setError(getString(R.string.error_only_numbers));
+            focusView = mPickupView;
+            cancel = true;
+        }
 
-                Log.d("UpdRideRequestActivity", "onResponse: "+ statusCode);
-                PostRideRequestSuccess(token);
-            }
+        if(cancel){
+            focusView.requestFocus();
+        } else {
+            int seats = Integer.parseInt(seatsString);
+            RideRequest rideRequest = new RideRequest();
+            rideRequest.setStart(start);
+            rideRequest.setEnd(end);
+            rideRequest.setSeats(seats);
+            rideRequest.setPickupLoc(pickupString);
 
-            @Override
-            public void onFailure(Call<RideRequestResponse> call, Throwable t) {
-                Log.d("UpdRideRequestActivity", "onFailure: " + t.getMessage());
-            }
-        });
+            Call<RideRequestResponse> rideRequestResponseCall = service.updateRideRequest(" JWT "+token, username, rideRequest);
+            rideRequestResponseCall.enqueue(new Callback<RideRequestResponse>() {
+                @Override
+                public void onResponse(Call<RideRequestResponse> call, Response<RideRequestResponse> response) {
+                    int statusCode = response.code();
+
+                    RideRequestResponse rideRequestResponse = response.body();
+
+                    Log.d("UpdRideRequestActivity", "onResponse: "+ statusCode);
+                    PostRideRequestSuccess(token);
+                }
+
+                @Override
+                public void onFailure(Call<RideRequestResponse> call, Throwable t) {
+                    Log.d("UpdRideRequestActivity", "onFailure: " + t.getMessage());
+                }
+            });
+        }
+
+
     }
 
     private void postRideRequest(){
@@ -134,32 +156,51 @@ public class PostRideRequestActivity extends BaseActivity {
         String end = mEndView.getSelectedItem().toString();
         String seatsString = mSeatsView.getSelectedItem().toString();
         String pickupString = mPickupView.getText().toString();
-        int seats = Integer.parseInt(seatsString);
-
-        RideRequest rideRequest = new RideRequest();
-        rideRequest.setStart(start);
-        rideRequest.setEnd(end);
-        rideRequest.setSeats(seats);
-        rideRequest.setPickupLoc(pickupString);
         Log.d("pickupString", pickupString);
-        Log.d("Token", "Token: "+ token);
+        boolean cancel = false;
+        View focusView = null;
 
-        Call<RideRequestResponse> rideRequestResponseCall = service.requestRide(" JWT "+token ,rideRequest);
-        rideRequestResponseCall.enqueue(new Callback<RideRequestResponse>() {
-            @Override
-            public void onResponse(Call<RideRequestResponse> call, Response<RideRequestResponse> response) {
-                int statusCode = response.code();
+        if (TextUtils.isEmpty(pickupString)) {
+            mPickupView.setError(getString(R.string.error_field_required));
+            focusView = mPickupView;
+            cancel = true;
+        }
 
-                RideRequestResponse rideRequestResponse = response.body();
+        if(!seatsString.matches("[0-9]+")){
+            mPickupView.setError(getString(R.string.error_only_numbers));
+            focusView = mPickupView;
+            cancel = true;
+        }
 
-                Log.d("RideRequestActivity", "onResponse: "+ statusCode);
-                PostRideRequestSuccess(token);
-            }
+        if(cancel){
+            focusView.requestFocus();
+        }else{
+            int seats = Integer.parseInt(seatsString);
+            RideRequest rideRequest = new RideRequest();
+            rideRequest.setStart(start);
+            rideRequest.setEnd(end);
+            rideRequest.setSeats(seats);
+            rideRequest.setPickupLoc(pickupString);
+            Log.d("pickupString", pickupString);
+            Log.d("Token", "Token: "+ token);
 
-            @Override
-            public void onFailure(Call<RideRequestResponse> call, Throwable t) {
-                Log.d("RideRequestActivity", "onFailure: " + t.getMessage());
-            }
-        });
+            Call<RideRequestResponse> rideRequestResponseCall = service.requestRide(" JWT "+token ,rideRequest);
+            rideRequestResponseCall.enqueue(new Callback<RideRequestResponse>() {
+                @Override
+                public void onResponse(Call<RideRequestResponse> call, Response<RideRequestResponse> response) {
+                    int statusCode = response.code();
+
+                    RideRequestResponse rideRequestResponse = response.body();
+
+                    Log.d("RideRequestActivity", "onResponse: "+ statusCode);
+                    PostRideRequestSuccess(token);
+                }
+
+                @Override
+                public void onFailure(Call<RideRequestResponse> call, Throwable t) {
+                    Log.d("RideRequestActivity", "onFailure: " + t.getMessage());
+                }
+            });
+        }
     }
 }

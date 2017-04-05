@@ -43,6 +43,7 @@ public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.Dr
         holder.driverPhone.setText(driverListItemResponseList.get(position).getDriverPhone());
         holder.driverSeats.setText(driverListItemResponseList.get(position).getDriverSeats());
 
+
     }
 
     @Override
