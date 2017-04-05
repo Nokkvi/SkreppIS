@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +53,6 @@ public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.Dr
         holder.driverName.setText(driverListItemResponseList.get(position).getDriverName());
         holder.driverPhone.setText(driverListItemResponseList.get(position).getDriverPhone());
         holder.driverSeats.setText(driverListItemResponseList.get(position).getDriverSeats());
-
-
     }
 
     @Override
@@ -73,13 +72,6 @@ public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.Dr
         private String zone;
         private String seats;
 
-        public DriverListViewHolder(View itemView, String z, String s){
-            super(itemView);
-
-            zone = z;
-            seats = s;
-        }
-
         @BindView(R.id.cardViewDriver)
         CardView driverItem;
 
@@ -92,18 +84,25 @@ public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.Dr
         @BindView(R.id.driverseats)
         TextView driverSeats;
 
-        public DriverListViewHolder(View itemView) {
-
+        public DriverListViewHolder(View itemView, String s, String z) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
+            zone = z;
+            seats = s;
         }
 
         @OnClick(R.id.driver_list_item)
         public void click(View view)  {
+
+            String driverName;
+            driverName = view.findViewById(R.id.drivername).toString();
             Context context = view.getContext();
             Intent i = new Intent(context, SendRequestActivity.class);
             i.putExtra("pickupzone", zone);
             i.putExtra("numseats", seats);
+            i.putExtra("driverName", driverName);
+
             context.startActivity(i);
         }
     }

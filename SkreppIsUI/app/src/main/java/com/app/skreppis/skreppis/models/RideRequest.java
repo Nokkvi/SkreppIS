@@ -8,7 +8,18 @@ public class RideRequest {
     private String start;
     private String end;
     private String pickuploc;
+    private String driver;
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
+    public String getDriver() {
+        return driver;
+    }
+
     private int seats;
+
 
     public String getStart() {
         return start;
