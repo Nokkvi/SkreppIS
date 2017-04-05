@@ -13,7 +13,12 @@ from .serializers import (
     ZoneCreateSerializer,
     ZoneDetailSerializer,
     RideRequestSerializer,
-    RideRequestCreateSerializer
+    RideRequestCreateSerializer,
+    RideRequestUpdateSerializer,
+    DriverChangeActiveSerializer,
+    RideRequestAddDriverSerializer,
+    RideRequestDriverFirstSerializer,
+    RideRequestDetailSerializer,
 )
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.generics import (
@@ -80,6 +85,12 @@ class DriverCreateView(CreateAPIView):
 class DriverToggleActiveView(UpdateAPIView):
     queryset = Driver.objects.all()
     serializer_class = DriverToggleActiveSerializer
+    lookup_field = "name"
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class DriverChangeActiveView(UpdateAPIView):
+    queryset = Driver.objects.all()
+    serializer_class = DriverChangeActiveSerializer
     lookup_field = "name"
     permission_classes = [IsAuthenticatedOrReadOnly]
 
@@ -165,3 +176,25 @@ class RideRequestCreateView(CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(passenger=Passenger.objects.get(user=self.request.user.pk),
                         )
+
+class RideRequestUpdateView(UpdateAPIView):
+    queryset = RideRequest.objects.all()
+    serializer_class = RideRequestUpdateSerializer
+    lookup_field = "passenger__name"
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class RideRequestAddDriverView(UpdateAPIView):
+    queryset = RideRequest.objects.all()
+    serializer_class = RideRequestAddDriverSerializer
+    lookup_field = "passenger__name"
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_update(self, serializer):
+        serializer.save(driver=Driver.objects.get(user=self.request.user.pk),
+                        )
+
+class RideRequestDetailView(RetrieveAPIView):
+    queryset = RideRequest.objects.all()
+    serializer_class = RideRequestDetailSerializer
+    lookup_field = "passenger__name"
+    permission_classes = [IsAuthenticatedOrReadOnly]

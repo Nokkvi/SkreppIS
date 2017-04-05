@@ -37,6 +37,7 @@
 
     <string name="d_isActive">You Are Now Active. Passengers May Contact You For Rides.</string>
     <string name="d_notActive">You Are No Longer Active. Passengers Cannot Contact You.</string>
+    <string name="l_password">You typed either the wrong password or username</string>
 
     <string name="d_dropZones">You have dropped your zones</string>
 
@@ -114,6 +115,7 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="error_only_numbers">You have to pick number of seats</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

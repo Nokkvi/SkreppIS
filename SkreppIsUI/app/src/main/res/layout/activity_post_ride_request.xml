@@ -86,7 +86,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/find_driver_pickup"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/white"
                     android:inputType="textNoSuggestions"
                     android:maxLines="1" />
 
