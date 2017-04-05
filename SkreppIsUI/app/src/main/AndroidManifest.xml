@@ -14,15 +14,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".FindRideActivity"
@@ -53,14 +50,12 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".RegisterActivity"
@@ -69,7 +64,10 @@
             android:name=".PostRideRequestActivity"
             android:label="@string/title_activity_findride" />
         <activity android:name=".SearchDriverCriteriaActivity" />
-        <activity android:name=".SearchPassengerCriteriaActivity"/>
+        <activity android:name=".SearchPassengerCriteriaActivity" />
+        <activity
+            android:name=".SendRequestActivity"
+            android:theme="@style/Theme.AppCompat.popupTheme"/>
     </application>
 
 </manifest>

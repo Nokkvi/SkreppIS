@@ -246,7 +246,7 @@ public class MessageBox extends Fragment {
             mStateListener = (OnStateChangeListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnStateChangeListener");
         }
     }
 

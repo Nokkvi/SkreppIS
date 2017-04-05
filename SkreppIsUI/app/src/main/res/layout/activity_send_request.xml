@@ -38,28 +38,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:text="@string/post_ride_request_start"/>
-
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/post_ride_request_zonespinner1"
-                android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:entries="@array/zone"
-                android:prompt="@string/find_driver_zone" />
-
-            <TextView
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
                 android:text="@string/post_ride_request_end"/>
 
             <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/post_ride_request_zonespinner2"
+                android:id="@+id/send_request_zonespinner"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
                 android:paddingTop="5dp"
@@ -81,7 +63,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/post_ride_request_pickup"
+                    android:id="@+id/send_request_pickup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/find_driver_pickup"
@@ -92,28 +74,10 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/find_driver_numseats"
-                android:textColor="@color/white" />
-
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/post_ride_request_seatspinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@android:color/white"
-                android:entries="@array/seat_number"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:prompt="@string/find_driver_numseats" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/post_ride_request_button"
+            android:id="@+id/send_request_button"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,9 +91,7 @@
             android:textColor="@android:color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
+
     </LinearLayout>
 
 </LinearLayout>
-
-
-

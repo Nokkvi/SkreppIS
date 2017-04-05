@@ -61,8 +61,7 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
 
         urlWrap = new UrlWrapper();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(urlWrap.getUrl())
+        Retrofit retrofit = new Retrofit.Builder().                baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");
@@ -86,7 +85,9 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
                 DriverList driverList1 = response.body();
 
                 Log.d("DriverList", "onResponse: "+ statusCode);
-                adapter = new DriverListAdapter(driverList1.getResults());
+                String z = mZoneView.getSelectedItem().toString();
+                String s = mZoneView.getSelectedItem().toString();
+                adapter = new DriverListAdapter(driverList1.getResults(), z, s);
                 driverList.setAdapter(adapter);
             }
 
@@ -115,10 +116,11 @@ public class SearchDriverCriteriaActivity extends BaseActivity {
 
                 DriverList driverList1 = response.body();
                 System.out.println(driverList1);
-
+                String z = mZoneView.getSelectedItem().toString();
+                String s = mSeatsView.getSelectedItem().toString();
                 Log.d("DriverListSearch", "onResponse: "+ statusCode);
                 if(driverList1 != null){
-                    adapter = new DriverListAdapter(driverList1.getResults());
+                    adapter = new DriverListAdapter(driverList1.getResults(), z, s);
                     driverList.setAdapter(adapter);
                 }
             }

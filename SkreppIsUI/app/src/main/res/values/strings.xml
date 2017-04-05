@@ -13,6 +13,8 @@
     <string name="pref_mbstate">Message Box String</string>
 
 
+
+
     <string name="app_name">SkreppIs</string>
     <string name="action_settings">Settings</string>
 
@@ -23,7 +25,7 @@
     <string name="p_requestdriver">Post Request</string>
 
     <string name="d_findpassenger">Find Passenger</string>
-    <string name ="d_setzones">Set Zones</string>
+    <string name="d_setzones">Set Zones</string>
     <string name="d_searchpassenger">Search Passengers</string>
     <string name="t_toggle_active">Toggle Active</string>
 
@@ -65,6 +67,8 @@
         <item>Arrival</item>
 
     </string-array>
+
+    <string name="request_driver">Request</string>
 
     <string name="mb_default">This is the default message. You should not be seeing this. If you do, it\'s entierly your fault!</string>
     <string name="mb_location_default">Heitasta, heitasta helvíti!!!</string>
