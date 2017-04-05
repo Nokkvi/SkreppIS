@@ -73,7 +73,7 @@ class Fare(models.Model):
 
 class RideRequest(models.Model):
     passenger = models.ForeignKey(Passenger, null=True, blank=True)
-    driver = models.ForeignKey(Driver, null=True, blank=True)
+    driver = models.CharField(max_length=100, null=True, blank=True)
     start = models.CharField(max_length=100, blank=True, null=True)
     end = models.CharField(max_length=100, null=True, blank=True)
     pickuploc = models.CharField(max_length=100, null=True, blank=True)

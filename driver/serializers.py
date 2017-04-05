@@ -174,7 +174,6 @@ class RideRequestUpdateSerializer(serializers.ModelSerializer):
             'end',
             'pickuploc',
             'seats',
-            'over',
         ]
 
 

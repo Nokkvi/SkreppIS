@@ -183,6 +183,8 @@ class RideRequestUpdateView(UpdateAPIView):
     lookup_field = "passenger__name"
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+
+
 class RideRequestAddDriverView(UpdateAPIView):
     queryset = RideRequest.objects.all()
     serializer_class = RideRequestAddDriverSerializer
