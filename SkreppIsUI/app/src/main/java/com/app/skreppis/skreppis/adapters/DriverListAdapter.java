@@ -84,7 +84,7 @@ public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.Dr
         @BindView(R.id.driverseats)
         TextView driverSeats;
 
-        public DriverListViewHolder(View itemView, String s, String z) {
+        public DriverListViewHolder(View itemView, String z, String s) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
@@ -95,13 +95,15 @@ public class DriverListAdapter extends RecyclerView.Adapter<DriverListAdapter.Dr
         @OnClick(R.id.driver_list_item)
         public void click(View view)  {
 
-            String driverName;
-            driverName = view.findViewById(R.id.drivername).toString();
+            String dName;
+            TextView driv = (TextView) view.findViewById(R.id.drivername);
+            dName = driv.getText().toString();
+            Log.d("test", dName);
             Context context = view.getContext();
             Intent i = new Intent(context, SendRequestActivity.class);
             i.putExtra("pickupzone", zone);
             i.putExtra("numseats", seats);
-            i.putExtra("driverName", driverName);
+            i.putExtra("driverName", dName);
 
             context.startActivity(i);
         }

@@ -23,7 +23,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SendRequestActivity extends AppCompatActivity {
+public class SendRequestActivity extends BaseActivity {
 
     private SkreppIsApi service;
     private AppCompatSpinner mZoneView;
@@ -50,12 +50,17 @@ public class SendRequestActivity extends AppCompatActivity {
 
         getWindow().setLayout((int)(width*0.8),(int)(height*0.8));
 
+        makepref();
+
         Bundle extras = getIntent().getExtras();
-        token = extras.getString("Token");
-        username = extras.getString("Username");
+        token = sharedPref.getString("Token", "token");
+        username = sharedPref.getString("Username", "idiot");
         seats = extras.getString("numseats");
         startZone = extras.getString("pickupzone");
         driverName = extras.getString("driverName");
+
+        Log.d("Token", token);
+        Log.d("Username", username);
 
         mZoneView = (AppCompatSpinner) findViewById(R.id.send_request_zonespinner);
         mPickupView = (EditText) findViewById(R.id.send_request_pickup);
