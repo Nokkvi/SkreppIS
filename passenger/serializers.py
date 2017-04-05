@@ -23,14 +23,12 @@ class PassengerSerializer(serializers.ModelSerializer):
 
 class PassengerDetailSerializer(serializers.ModelSerializer):
     image = SerializerMethodField()
-    riderequest = SerializerMethodField()
     class Meta:
         model = Passenger
         fields = [  'name',
                     'phone_number',
                     'description',
                     'image',
-                    'riderequests',
                   ]
 
     def get_image(self, obj):

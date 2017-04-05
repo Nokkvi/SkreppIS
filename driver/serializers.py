@@ -125,6 +125,14 @@ class DriverToggleActiveSerializer(serializers.ModelSerializer):
         obj.save()
         return object
 
+class DriverChangeActiveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Driver
+        fields = [
+            'isActive',
+        ]
+
+
 
 class RideRequestSerializer(serializers.ModelSerializer):
     passenger = SerializerMethodField()
@@ -132,9 +140,10 @@ class RideRequestSerializer(serializers.ModelSerializer):
         model = RideRequest
         fields = [
             'passenger',
+            'driver',
             'start',
             'end',
-            'pickuploc'
+            'pickuploc',
             'seats',
             'over',
         ]
@@ -149,5 +158,52 @@ class RideRequestCreateSerializer(serializers.ModelSerializer):
         fields = [
             'start',
             'end',
+            'pickuploc',
+            'seats',
+            'over',
+        ]
+
+class RideRequestUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RideRequest
+        fields = [
+            'start',
+            'end',
+            'pickuploc',
+            'seats',
+            'over',
+        ]
+
+class RideRequestAddDriverSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RideRequest
+        fields = [
+            'driver',
+            'over',
+        ]
+
+class RideRequestDriverFirstSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RideRequest
+        fields = [
+            'driver',
+            'passenger',
             'seats',
         ]
+
+class RideRequestDetailSerializer(serializers.ModelSerializer):
+    passenger = SerializerMethodField()
+    class Meta:
+        model = RideRequest
+        fields = [
+            'passenger',
+            'driver',
+            'start',
+            'end',
+            'pickuploc',
+            'seats',
+            'over',
+        ]
+
+    def get_passenger(self, obj):
+        return obj.passenger.name

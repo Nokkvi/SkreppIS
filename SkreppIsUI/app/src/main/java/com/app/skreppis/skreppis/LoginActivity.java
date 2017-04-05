@@ -34,6 +34,8 @@ import android.widget.TextView;
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.AuthRequest;
 import com.app.skreppis.skreppis.models.AuthResponse;
+import com.app.skreppis.skreppis.models.ChangeActiveRequest;
+import com.app.skreppis.skreppis.models.ChangeActiveResponse;
 import com.app.skreppis.skreppis.models.LoginRequest;
 import com.app.skreppis.skreppis.models.LoginResponse;
 import com.app.skreppis.skreppis.models.UrlWrapper;
@@ -264,6 +266,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     showProgress(false);
 
                     Log.d("LoginActivity", "onResponse: "+ statusCode);
+                    if(statusCode==400){
+                        Snackbar.make( mPasswordView, R.string.l_password, Snackbar.LENGTH_LONG).show();
+                        return;
+                    }
                     final AuthRequest authRequest = new AuthRequest();
                     authRequest.setUsername(loginResponse.getUsername());
                     authRequest.setPassword(loginRequest.getPassword());
@@ -279,6 +285,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 Log.d("Token", "Oh Shit!");
                             Log.d("Token", authResponse.getToken());
                             showProgress(false);
+                            activeTrue(authResponse.getToken(), username);
                             loginSuccess(authResponse.getToken(), username);
                         }
 
@@ -296,6 +303,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             });
         }
+    }
+
+    private void activeTrue(String token, String username){
+        ChangeActiveRequest changeActiveRequest = new ChangeActiveRequest();
+        changeActiveRequest.setActive(true);
+
+        Call<ChangeActiveResponse> changeActiveResponseCall = service.changeActive(token, username, changeActiveRequest);
+        changeActiveResponseCall.enqueue(new Callback<ChangeActiveResponse>() {
+            @Override
+            public void onResponse(Call<ChangeActiveResponse> call, Response<ChangeActiveResponse> response) {
+                int statusCode = response.code();
+                Log.d("ChangeActiveActivity", "onResponse: "+ statusCode);
+                ChangeActiveResponse changeActiveResponse = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<ChangeActiveResponse> call, Throwable t) {
+                Log.d("ChangeActiveActivity", "onFailure: " + t.getMessage());
+            }
+        });
     }
 
     private boolean isEmailValid(String email) {

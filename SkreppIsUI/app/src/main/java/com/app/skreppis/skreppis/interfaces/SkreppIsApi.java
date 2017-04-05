@@ -52,8 +52,17 @@ public interface SkreppIsApi {
     @GET("/passenger/riderequests")
     Call<RideRequestList> getPassengerListSearch(@Query("q") String start);
 
+    @GET("/passenger/riderequests/{passenger__name}")
+    Call<RideRequestResponse> checkIfRideRequest(@Header("Authorization") String token, @Path("passenger__name") String name);
+
+    @PUT("/passenger/riderequests/{passenger__name}/editrequest")
+    Call<RideRequestResponse> updateRideRequest(@Header("Authorization") String token, @Path("passenger__name") String name, @Body RideRequest rideRequest);
+
     @PUT("/driver/{name}/toggleactive")
     Call<ToggleActiveResponse> toggleActive(@Header("Authorization") String token, @Path("name") String username);
+
+    @PUT("/driver/{name}/changeactive")
+    Call<ChangeActiveResponse> changeActive(@Header("Authorizarioin") String token, @Path("name") String username, @Body ChangeActiveRequest changeActiveRequest);
 
     @DELETE("/driver/{name}/zonedelete")
     Call<DropZoneResponse> dropZones(@Header("Authorization") String token, @Path("name") String username);

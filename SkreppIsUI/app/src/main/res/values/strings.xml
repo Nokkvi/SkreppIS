@@ -35,6 +35,7 @@
 
     <string name="d_isActive">You Are Now Active. Passengers May Contact You For Rides.</string>
     <string name="d_notActive">You Are No Longer Active. Passengers Cannot Contact You.</string>
+    <string name="l_password">You typed either the wrong password or username</string>
 
     <string name="d_dropZones">You have dropped your zones</string>
 
