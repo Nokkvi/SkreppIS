@@ -17,6 +17,7 @@ class DriverSerializer(serializers.ModelSerializer):
                     'zones',
                     'rating',
                     'car_seats',
+                    'isActive',
                   ]
 
     def get_zones(self, obj):
@@ -40,6 +41,7 @@ class DriverDetailSerializer(serializers.ModelSerializer):
                     'zones',
                     'rating',
                     'car_seats',
+                    'isActive',
                   ]
 
     def get_zones(self, obj):
