@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Driver, Passenger, Zone
+from .models import Driver, Passenger, Zone, RideRequest
 from .serializers import (
     DriverSerializer,
     DriverCreateSerializer,
@@ -12,6 +12,8 @@ from .serializers import (
     ZoneSerializer,
     ZoneCreateSerializer,
     ZoneDetailSerializer,
+    RideRequestSerializer,
+    RideRequestCreateSerializer
 )
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.generics import (
@@ -137,3 +139,29 @@ class ZoneDestroyView(DestroyAPIView):
         queryset_list = Zone.objects.filter(driver=Driver.objects.get(user=self.request.user.pk))
         queryset_list.delete()
         return queryset_list
+
+class RideRequestList(ListAPIView):
+    queryset = RideRequest.objects.all()
+    serializer_class = RideRequestSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    filter_backends = [SearchFilter, OrderingFilter]
+    pagination_class = PageNumberPagination  # PageNumberPagination
+
+    def get_queryset(self, *args, **kwargs):
+        queryset_list = RideRequest.objects.all()
+        query = self.request.GET.get("q")
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(start=query)
+            )
+        return queryset_list
+
+class RideRequestCreateView(CreateAPIView):
+    queryset = RideRequest.objects.all()
+    serializer_class = RideRequestCreateSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    pagination_class = PageNumberPagination
+
+    def perform_create(self, serializer):
+        serializer.save(passenger=Passenger.objects.get(user=self.request.user.pk),
+                        )

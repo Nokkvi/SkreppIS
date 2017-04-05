@@ -9,6 +9,9 @@ from django.db import models
 from passenger.models import Passenger
 
 
+
+
+
 class DriverManager(models.Manager):
     def create_driver(self, user):
         name = user.get_username()
@@ -17,9 +20,6 @@ class DriverManager(models.Manager):
         image = Passenger.object.get(pk=user.pk).image
         driver = self.create(user=user, name=name, phone_number=phone_number, description=description, image=image)
         return driver
-
-
-
 
 class Driver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -51,6 +51,7 @@ class Driver(models.Model):
         self.slug = slugify(self.name)
         super(Driver, self).save()
 
+
 class Zone(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     driver = models.ForeignKey(Driver, null=True, blank=True)
@@ -58,14 +59,24 @@ class Zone(models.Model):
     def get_name(self):
         return self.name
 
-class Request(models.Model):
-    passenger = models.ForeignKey(Passenger, on_delete=models.CASCADE)
-    driver = models.ManyToManyField(Driver)
-    inTown = models.BooleanField(default=True)
-    destination = models.ForeignKey(Zone)
-    arrivalTime = models.DateTimeField()
-    status = models.CharField(max_length=16, default="pending")
+class DriverFare(models.Model):
+    passenger = models.ForeignKey(Passenger)
+    driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return "Frá " + self.passenger.name
+class Fare(models.Model):
+    passengerName = models.ForeignKey(Passenger, null=True, blank=True)
+    driver = models.ForeignKey(Driver, null=True, blank=True)
+    pickup = models.CharField(max_length=100, blank=True, null=True)
+    dropoff = models.CharField(max_length=100, null=True, blank=True)
+    seats = models.IntegerField(null=True)
+    over = models.BooleanField(default=False)
+
+class RideRequest(models.Model):
+    passenger = models.ForeignKey(Passenger, null=True, blank=True)
+    assigneddriver = models.ForeignKey(Driver, null=True, blank=True)
+    start = models.CharField(max_length=100, blank=True, null=True)
+    end = models.CharField(max_length=100, null=True, blank=True)
+    pickuploc = models.CharField(max_length=100, null=True, blank=True)
+    seats = models.IntegerField(null=True)
+    over = models.BooleanField(default=False)
 

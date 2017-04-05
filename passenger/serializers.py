@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import HyperlinkedIdentityField
 
-from .models import Passenger, RideRequest
+from .models import Passenger
 
 
 
@@ -17,13 +17,9 @@ class PassengerSerializer(serializers.ModelSerializer):
         fields = [  'url',
                     'name',
                     'phone_number',
-                    'riderequests',
+
         ]
 
-    def get_riderequests(self, obj):
-        c_qs = RideRequest.objects.filter(passenger__name=obj)
-        riderequests = RideRequestSerializer(c_qs, many=True).data
-        return riderequests
 
 class PassengerDetailSerializer(serializers.ModelSerializer):
     image = SerializerMethodField()
@@ -36,10 +32,6 @@ class PassengerDetailSerializer(serializers.ModelSerializer):
                     'image',
                     'riderequests',
                   ]
-    def get_riderequests(self, obj):
-        c_qs = RideRequest.objects.filter(passenger__name=obj)
-        riderequests = RideRequestSerializer(c_qs, many=True).data
-        return riderequests
 
     def get_image(self, obj):
         try:
@@ -67,27 +59,3 @@ class PassengerUpdateSerializer(serializers.ModelSerializer):
                   'phone_number',
                   'description',
                   ]
-
-class RideRequestSerializer(serializers.ModelSerializer):
-    passenger = SerializerMethodField()
-    class Meta:
-        model = RideRequest
-        fields = [
-            'passenger',
-            'start',
-            'end',
-            'over',
-        ]
-
-    def get_passenger(self, obj):
-        return obj.passenger.name
-
-
-class RideRequestCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RideRequest
-        fields = [
-            'start',
-            'end',
-            'seats',
-        ]

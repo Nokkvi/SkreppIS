@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+
 class PassengerManager(models.Manager):
     def create_passenger(self, phone_number, user):
         name = user.get_username()
@@ -23,10 +24,5 @@ class Passenger(models.Model):
         return self.name
 
 
-class RideRequest(models.Model):
-    passenger = models.ForeignKey(Passenger, null=True, blank=True)
-    start = models.CharField(max_length=100, blank=True, null=True)
-    end = models.CharField(max_length=100, null=True, blank=True)
-    seats = models.IntegerField(null=True)
-    over = models.BooleanField(default=False)
+
 

@@ -26,14 +26,12 @@ from rest_framework.filters import (
 
 from passenger.pagination import PageNumberPagination
 from .permissions import IsOwnerOrReadOnly
-from .models import Passenger, RideRequest
+from .models import Passenger
 from .serializers import    (
                             PassengerSerializer,
                             PassengerDetailSerializer,
                             PassengerCreateSerializer,
                             PassengerUpdateSerializer,
-                            RideRequestSerializer,
-                            RideRequestCreateSerializer,
                             )
 from django.views.decorators.csrf import csrf_exempt
 
@@ -85,31 +83,7 @@ class PassengerCreateView(CreateAPIView):
         serializer.save(user=self.request.user, name=self.request.user.get_username(),
                         )
 
-class RideRequestList(ListAPIView):
-    queryset = RideRequest.objects.all()
-    serializer_class = RideRequestSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    filter_backends = [SearchFilter, OrderingFilter]
-    pagination_class = PageNumberPagination  # PageNumberPagination
 
-    def get_queryset(self, *args, **kwargs):
-        queryset_list = RideRequest.objects.all()
-        query = self.request.GET.get("q")
-        if query:
-            queryset_list = queryset_list.filter(
-                Q(start=query)
-            )
-        return queryset_list
-
-class RideRequestCreateView(CreateAPIView):
-    queryset = RideRequest.objects.all()
-    serializer_class = RideRequestCreateSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    pagination_class = PageNumberPagination
-
-    def perform_create(self, serializer):
-        serializer.save(passenger=Passenger.objects.get(user=self.request.user.pk),
-                        )
 
 
 

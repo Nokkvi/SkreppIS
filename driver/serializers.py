@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
-from .models import Driver, Request, Zone
+from .models import Driver, Zone, RideRequest
 
 from ratings.serializers import RatingSerializer
 from ratings.models import Rating, RatingManager
@@ -75,12 +75,6 @@ class DriverUpdateSerializer(serializers.ModelSerializer):
                     'smoking_allowed',
                   ]
 
-class RequestSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Request
-        fields = '__all__'
-
 class ZoneSerializer(serializers.ModelSerializer):
     driver = SerializerMethodField()
     class Meta:
@@ -130,3 +124,30 @@ class DriverToggleActiveSerializer(serializers.ModelSerializer):
         obj.isActive = not object
         obj.save()
         return object
+
+
+class RideRequestSerializer(serializers.ModelSerializer):
+    passenger = SerializerMethodField()
+    class Meta:
+        model = RideRequest
+        fields = [
+            'passenger',
+            'start',
+            'end',
+            'pickuploc'
+            'seats',
+            'over',
+        ]
+
+    def get_passenger(self, obj):
+        return obj.passenger.name
+
+
+class RideRequestCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RideRequest
+        fields = [
+            'start',
+            'end',
+            'seats',
+        ]
