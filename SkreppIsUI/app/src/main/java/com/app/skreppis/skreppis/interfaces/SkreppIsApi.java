@@ -62,7 +62,7 @@ public interface SkreppIsApi {
     Call<ToggleActiveResponse> toggleActive(@Header("Authorization") String token, @Path("name") String username);
 
     @PUT("/driver/{name}/changeactive")
-    Call<ChangeActiveResponse> changeActive(@Header("Authorizarioin") String token, @Path("name") String username, @Body ChangeActiveRequest changeActiveRequest);
+    Call<ChangeActiveResponse> changeActive(@Header("Authorization") String token, @Path("name") String username, @Body ChangeActiveRequest changeActiveRequest);
 
     @DELETE("/driver/{name}/zonedelete")
     Call<DropZoneResponse> dropZones(@Header("Authorization") String token, @Path("name") String username);
