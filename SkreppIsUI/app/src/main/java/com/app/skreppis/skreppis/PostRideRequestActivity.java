@@ -7,6 +7,7 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.RideRequest;
@@ -25,6 +26,7 @@ public class PostRideRequestActivity extends BaseActivity {
     private AppCompatSpinner mStartView;
     private AppCompatSpinner mEndView;
     private AppCompatSpinner mSeatsView;
+    private TextView mPickupView;
     String token;
     String username;
     private UrlWrapper urlWrap;
@@ -41,6 +43,7 @@ public class PostRideRequestActivity extends BaseActivity {
         mStartView = (AppCompatSpinner) findViewById(R.id.post_ride_request_zonespinner1);
         mEndView = (AppCompatSpinner) findViewById(R.id.post_ride_request_zonespinner2);
         mSeatsView = (AppCompatSpinner) findViewById(R.id.post_ride_request_seatspinner);
+        mPickupView = (TextView) findViewById(R.id.post_ride_request_pickup);
 
         Button mPostRequestButton = (Button) findViewById(R.id.post_ride_request_button);
 
@@ -73,12 +76,14 @@ public class PostRideRequestActivity extends BaseActivity {
         String start = mStartView.getSelectedItem().toString();
         String end = mEndView.getSelectedItem().toString();
         String seatsString = mSeatsView.getSelectedItem().toString();
+        String pickupString = mPickupView.toString();
         int seats = Integer.parseInt(seatsString);
 
         RideRequest rideRequest = new RideRequest();
         rideRequest.setStart(start);
         rideRequest.setEnd(end);
         rideRequest.setSeats(seats);
+        rideRequest.setPickup(pickupString);
         Log.d("Token", "Token: "+ token);
 
         Call<RideRequestResponse> rideRequestResponseCall = service.requestRide(" JWT "+token ,rideRequest);

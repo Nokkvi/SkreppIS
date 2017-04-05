@@ -7,6 +7,7 @@ package com.app.skreppis.skreppis.models;
 public class RideRequest {
     private String start;
     private String end;
+    private String pickup;
     private int seats;
 
     public String getStart() {
@@ -23,6 +24,15 @@ public class RideRequest {
 
     public void setEnd(String end) {
         this.end = end;
+    }
+
+    public void setPickup(String pickup) {
+        this.pickup = pickup;
+    }
+
+    public String getPickup() {
+
+        return pickup;
     }
 
     public int getSeats() {

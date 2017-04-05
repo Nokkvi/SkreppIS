@@ -63,6 +63,7 @@
         <item>YouCancelE</item>
         <item>YouCancelL</item>
         <item>Arrival</item>
+
     </string-array>
 
     <string name="mb_default">This is the default message. You should not be seeing this. If you do, it\'s entierly your fault!</string>
@@ -133,6 +134,8 @@
     <!-- Find Driver Strings -->
     <string name="find_driver_location">*Where Are You Now?</string>
     <string name="find_driver_destination">*Where Do You Want To Go?</string>
+    <string name="find_driver_pickup">*Where Do You Want To Be Picked Up?</string>
+    <string name="find_driver_dropoff">*Where Do You Want To Be Dropped Off?</string>
     <string name="find_driver_numseats">How many seats do you need?</string>
 
     <string-array name="seat_number">
