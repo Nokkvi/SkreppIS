@@ -147,6 +147,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("Token", token);
         editor.putString("Username", username);
+        editor.putString(getString(R.string.pref_mbstate), "Closed");
         editor.commit();
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("Token", token);

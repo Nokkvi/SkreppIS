@@ -63,10 +63,15 @@
         <activity
             android:name=".PostRideRequestActivity"
             android:label="@string/title_activity_findride" />
-        <activity android:name=".SearchDriverCriteriaActivity" />
-        <activity android:name=".SearchPassengerCriteriaActivity" />
+        <activity
+            android:name=".SearchDriverCriteriaActivity"
+            android:label="@string/title_activity_findride"/>
+        <activity
+            android:name=".SearchPassengerCriteriaActivity"
+            android:label="@string/title_activity_findpassenger"/>
         <activity
             android:name=".SendRequestActivity"
+            android:label="@string/title_activity_findride"
             android:theme="@style/Theme.AppCompat.popupTheme"/>
     </application>
 
