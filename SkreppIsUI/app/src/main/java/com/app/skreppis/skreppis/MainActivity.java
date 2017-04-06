@@ -7,15 +7,21 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.AppCompatSpinner;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 
+import com.app.skreppis.skreppis.adapters.RideRequestListAdapter;
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.DriverListItemResponse;
+import com.app.skreppis.skreppis.models.RideRequestList;
 import com.app.skreppis.skreppis.models.UrlWrapper;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +41,9 @@ public class MainActivity extends BaseActivity
     String username;
     private UrlWrapper urlWrap;
     SkreppIsApi service;
+    RideRequestListAdapter adapter;
+    @BindView(R.id.requestList)
+    RecyclerView requestList;
 
     /* Þetta er staðan sem messagebox er í.
         "Closed"            The messagebox is closed
@@ -127,6 +136,14 @@ public class MainActivity extends BaseActivity
             });
             sharedPref.edit().putBoolean(getString(R.string.pref_isdriver), true).apply();
             onStateChange(mbState);
+
+            ButterKnife.bind(this);
+
+            StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL);
+
+            requestList.setLayoutManager(staggeredGridLayoutManager);
+
+            SearchMyRequests();
         } else {
             setContentView(R.layout.activity_main_passenger);
             manageRideButton();
@@ -229,6 +246,32 @@ public class MainActivity extends BaseActivity
         getSupportFragmentManager().beginTransaction()
                 .replace(parent, mMessageBox)
                 .commit();
+    }
+
+    private void SearchMyRequests(){
+        Call<RideRequestList> rideRequestListCall = service.getMyRequests(username);
+
+        rideRequestListCall.enqueue(new Callback<RideRequestList>() {
+            @Override
+            public void onResponse(Call<RideRequestList> call, Response<RideRequestList> response) {
+                int statusCode = response.code();
+
+                RideRequestList rideRequestList = response.body();
+
+                Log.d("GetMyRequests", "onResponse: "+ statusCode);
+                if(requestList != null){
+                    adapter = new RideRequestListAdapter(rideRequestList.getResults(), token);
+                    requestList.setAdapter(adapter);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<RideRequestList> call, Throwable t) {
+                Log.d("GetMyRequests", "onFailure: "+ t.getMessage());
+            }
+        });
+
     }
 
 /*

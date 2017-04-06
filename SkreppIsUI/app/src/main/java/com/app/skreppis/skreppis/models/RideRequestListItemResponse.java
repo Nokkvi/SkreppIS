@@ -9,17 +9,13 @@ import com.google.gson.annotations.SerializedName;
 
 
 public class RideRequestListItemResponse {
-    @SerializedName("name")
+    @SerializedName("passenger")
     @Expose
-    private String passengerName;
+    private String passenger;
 
-    @SerializedName("phone_number")
+    @SerializedName("driver")
     @Expose
-    private String passengerPhone;
-
-    @SerializedName("riderequests")
-    @Expose
-    private String passengerRideRequests;
+    private String driver;
 
     @SerializedName("start")
     @Expose
@@ -29,9 +25,29 @@ public class RideRequestListItemResponse {
     @Expose
     private String end;
 
+    @SerializedName("pickuploc")
+    @Expose
+    private String pickuploc;
+
+    @SerializedName("seats")
+    @Expose
+    private int seats;
+
     @SerializedName("over")
     @Expose
     private boolean over;
+
+    @SerializedName("accepted")
+    @Expose
+    private boolean accepted;
+
+    public String getPassenger() {
+        return passenger;
+    }
+
+    public String getDriver() {
+        return driver;
+    }
 
     public String getStart() {
         return start;
@@ -41,20 +57,7 @@ public class RideRequestListItemResponse {
         return end;
     }
 
-    public boolean isOver() {
-        return over;
-    }
-
-
-    public String getPassengerName() {
-        return passengerName;
-    }
-
-    public String getPassengerPhone() {
-        return passengerPhone;
-    }
-
-    public String getPassengerRideRequests() {
-        return passengerRideRequests;
+    public String getPickuploc() {
+        return pickuploc;
     }
 }

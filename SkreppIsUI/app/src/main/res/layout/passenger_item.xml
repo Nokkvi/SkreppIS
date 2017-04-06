@@ -2,45 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:padding="10dp">
 
     <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cardViewPassenger"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/black"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/passengername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:textColor="@android:color/white"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/passengerphone"
+                android:id="@+id/drivername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:textColor="@android:color/white"
+                android:layout_toRightOf="@+id/passengername"
+                android:layout_marginRight="16dp"
                 android:textSize="12sp" />
 
 
             <TextView
-                android:id="@+id/passengerriderequests"
+                android:id="@+id/passengerpickuploc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:textColor="@android:color/white"
+                android:layout_toRightOf="@+id/drivername"
+                android:layout_marginRight="16dp"
                 android:textSize="12sp" />
-        </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/passengerpickuploc"
+                android:layout_alignParentRight="true"
+                android:text="@string/btn_accept"
+                android:id="@+id/bt_request_accept"/>
+
+        </RelativeLayout>
+
     </android.support.v7.widget.CardView>
 </LinearLayout>
 

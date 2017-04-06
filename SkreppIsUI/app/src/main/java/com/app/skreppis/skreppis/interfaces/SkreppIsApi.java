@@ -52,11 +52,17 @@ public interface SkreppIsApi {
     @GET("/passenger/riderequests")
     Call<RideRequestList> getPassengerListSearch(@Query("q") String start);
 
+    @GET("/passenger/riderequests")
+    Call<RideRequestList> getMyRequests(@Query("search") String driver);
+
     @GET("/passenger/riderequests/{passenger__name}")
     Call<RideRequestResponse> checkIfRideRequest(@Header("Authorization") String token, @Path("passenger__name") String name);
 
     @PUT("/passenger/riderequests/{passenger__name}/editrequest")
     Call<RideRequestResponse> updateRideRequest(@Header("Authorization") String token, @Path("passenger__name") String name, @Body RideRequest rideRequest);
+
+    @PUT("/passenger/riderequests/{passenger__name}/accept")
+    Call<RideRequestResponse> acceptRideRequest(@Header("Authorization") String token, @Path("passenger__name") String name);
 
     @PUT("/driver/{name}/toggleactive")
     Call<ToggleActiveResponse> toggleActive(@Header("Authorization") String token, @Path("name") String username);

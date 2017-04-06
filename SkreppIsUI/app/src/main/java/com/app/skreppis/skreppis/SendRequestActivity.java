@@ -160,7 +160,7 @@ public class SendRequestActivity extends BaseActivity {
         String start = startZone;
         String end = mZoneView.getSelectedItem().toString();
         String seatsString = seats;
-        String pickupString = mPickupView.toString();
+        String pickupString = mPickupView.getText().toString();
         String driverString = driverName;
         Log.d("pickupString", pickupString);
         boolean cancel = false;

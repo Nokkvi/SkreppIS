@@ -19,6 +19,7 @@ from .serializers import (
     RideRequestAddDriverSerializer,
     RideRequestDriverFirstSerializer,
     RideRequestDetailSerializer,
+    AcceptRequestUpdateSerializer,
 )
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.generics import (
@@ -152,14 +153,15 @@ class ZoneDestroyView(DestroyAPIView):
         return queryset_list
 
 class RideRequestList(ListAPIView):
-    queryset = RideRequest.objects.all()
+    queryset = RideRequest.objects.filter(accepted__exact=False,over__exact=False)
     serializer_class = RideRequestSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['driver']
     pagination_class = PageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        queryset_list = RideRequest.objects.all()
+        queryset_list = RideRequest.objects.filter(accepted__exact=False,over__exact=False)
         query = self.request.GET.get("q")
         if query:
             queryset_list = queryset_list.filter(
@@ -196,7 +198,13 @@ class RideRequestAddDriverView(UpdateAPIView):
                         )
 
 class RideRequestDetailView(RetrieveAPIView):
-    queryset = RideRequest.objects.all()
+    queryset = RideRequest.objects.filter(accepted__exact=False,over__exact=False)
     serializer_class = RideRequestDetailSerializer
+    lookup_field = "passenger__name"
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class AcceptRequestUpdateView(UpdateAPIView):
+    queryset = RideRequest.objects.filter(over=False).filter(accepted=False)
+    serializer_class = AcceptRequestUpdateSerializer
     lookup_field = "passenger__name"
     permission_classes = [IsAuthenticatedOrReadOnly]

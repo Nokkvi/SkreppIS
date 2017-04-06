@@ -11,7 +11,6 @@ class PassengerSerializer(serializers.ModelSerializer):
         view_name='detail',
         lookup_field='name',
     )
-    riderequests = SerializerMethodField()
     class Meta:
         model = Passenger
         fields = [  'url',

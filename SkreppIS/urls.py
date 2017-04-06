@@ -47,6 +47,7 @@ urlpatterns = [
     url(r'^passenger/riderequests/(?P<passenger__name>[\w-]+)$', driver.views.RideRequestDetailView.as_view(), name='detailriderequest'),
     url(r'^passenger/riderequests/(?P<passenger__name>[\w-]+)/editrequest$', driver.views.RideRequestUpdateView.as_view(), name='editriderequest'),
     url(r'^passenger/riderequests/(?P<passenger__name>[\w-]+)/adddriverrequest$', driver.views.RideRequestAddDriverView.as_view(), name='adddriverriderequest'),
+    url(r'^passenger/riderequests/(?P<passenger__name>[\w-]+)/accept$', driver.views.AcceptRequestUpdateView.as_view(), name='acceptrequest'),
     url(r'^register/$', accounts.views.UserCreateAPIView.as_view(), name='register'),
     url(r'^login/$', accounts.views.UserLoginAPIView.as_view(), name='login'),
     url(r'^api-token-auth/', obtain_jwt_token),

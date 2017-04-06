@@ -56,6 +56,13 @@
             android:entries="@array/test_spinner"
             android:prompt="@string/find_driver_zone" />
 
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:id="@+id/requestList" />
+
     </LinearLayout>
 
     <FrameLayout
@@ -63,5 +70,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"/>
+
 
 </RelativeLayout>

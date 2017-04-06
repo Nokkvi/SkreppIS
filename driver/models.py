@@ -79,4 +79,5 @@ class RideRequest(models.Model):
     pickuploc = models.CharField(max_length=100, null=True, blank=True)
     seats = models.IntegerField(null=True)
     over = models.BooleanField(default=False)
+    accepted = models.BooleanField(default=False)
 

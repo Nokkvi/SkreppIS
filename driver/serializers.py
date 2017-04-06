@@ -148,6 +148,7 @@ class RideRequestSerializer(serializers.ModelSerializer):
             'pickuploc',
             'seats',
             'over',
+            'accepted',
         ]
 
     def get_passenger(self, obj):
@@ -158,14 +159,15 @@ class RideRequestCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = RideRequest
         fields = [
+            'driver',
             'start',
             'end',
             'pickuploc',
             'seats',
-            'over',
         ]
 
 class RideRequestUpdateSerializer(serializers.ModelSerializer):
+    accepted = SerializerMethodField()
     class Meta:
         model = RideRequest
         fields = [
@@ -174,7 +176,15 @@ class RideRequestUpdateSerializer(serializers.ModelSerializer):
             'end',
             'pickuploc',
             'seats',
+            'accepted'
         ]
+
+    def get_accepted(self, obj):
+        object = obj.accepted
+        obj.accepted = False
+        obj.save()
+        return object
+
 
 
 class RideRequestAddDriverSerializer(serializers.ModelSerializer):
@@ -206,7 +216,22 @@ class RideRequestDetailSerializer(serializers.ModelSerializer):
             'pickuploc',
             'seats',
             'over',
+            'accepted',
         ]
 
     def get_passenger(self, obj):
         return obj.passenger.name
+
+class AcceptRequestUpdateSerializer(serializers.ModelSerializer):
+    accepted = SerializerMethodField()
+    class Meta:
+        model = RideRequest
+        fields = [
+            'accepted',
+        ]
+
+    def get_accepted(self, obj):
+        object = obj.accepted
+        obj.accepted = True
+        obj.save()
+        return object
