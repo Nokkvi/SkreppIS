@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.LoginResponse;
 import com.app.skreppis.skreppis.models.ToggleActiveResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class FindPassengerActivity extends BaseActivity {
     SkreppIsApi service;
     Boolean out;
     String username;
+    private UrlWrapper urlWrap;
 
 
     @Override
@@ -51,8 +53,10 @@ public class FindPassengerActivity extends BaseActivity {
         username = extras.getString("Username");
         Log.d("Username:", username);
 
-        Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("http://192.168.1.106:8000")
+
+        urlWrap = new UrlWrapper();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");
@@ -66,8 +70,6 @@ public class FindPassengerActivity extends BaseActivity {
         mToggleActive = (Button) findViewById(R.id.d_toggleactive);
         mSearchPassenger = (Button) findViewById(R.id.d_searchpassengers);
         mSetZones = (Button) findViewById(R.id.d_setzones);
-
-
 
         mToggleActive.setOnClickListener(new View.OnClickListener() {
             @Override

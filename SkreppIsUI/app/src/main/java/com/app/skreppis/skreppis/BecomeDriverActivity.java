@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.app.skreppis.skreppis.interfaces.SkreppIsApi;
 import com.app.skreppis.skreppis.models.DriverCreateRequest;
 import com.app.skreppis.skreppis.models.DriverCreateResponse;
+import com.app.skreppis.skreppis.models.UrlWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,6 +29,7 @@ public class BecomeDriverActivity extends BaseActivity{
     SkreppIsApi service;
     private EditText mCarSeatsView;
     private CheckBox mSmokingAllowedView;
+    private UrlWrapper urlWrap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +47,9 @@ public class BecomeDriverActivity extends BaseActivity{
 
         Button mBecomeDriverButton = (Button) findViewById(R.id.passenger_become_driver_btn);
 
-
-        Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("http://192.168.1.106:8000")
+        urlWrap = new UrlWrapper();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(urlWrap.getUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         System.out.print("bound");
