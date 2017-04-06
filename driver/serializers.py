@@ -176,7 +176,7 @@ class RideRequestUpdateSerializer(serializers.ModelSerializer):
             'end',
             'pickuploc',
             'seats',
-            'accepted'
+            'accepted',
         ]
 
     def get_accepted(self, obj):

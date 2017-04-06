@@ -128,6 +128,7 @@ public class PostRideRequestActivity extends BaseActivity {
             rideRequest.setEnd(end);
             rideRequest.setSeats(seats);
             rideRequest.setPickupLoc(pickupString);
+            rideRequest.setDriver("");
 
             Call<RideRequestResponse> rideRequestResponseCall = service.updateRideRequest(" JWT "+token, username, rideRequest);
             rideRequestResponseCall.enqueue(new Callback<RideRequestResponse>() {

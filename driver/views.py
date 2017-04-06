@@ -153,7 +153,6 @@ class ZoneDestroyView(DestroyAPIView):
         return queryset_list
 
 class RideRequestList(ListAPIView):
-    queryset = RideRequest.objects.filter(accepted__exact=False,over__exact=False)
     serializer_class = RideRequestSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
@@ -168,6 +167,7 @@ class RideRequestList(ListAPIView):
                 Q(start=query)
             )
         return queryset_list
+
 
 class RideRequestCreateView(CreateAPIView):
     queryset = RideRequest.objects.all()
@@ -198,13 +198,13 @@ class RideRequestAddDriverView(UpdateAPIView):
                         )
 
 class RideRequestDetailView(RetrieveAPIView):
-    queryset = RideRequest.objects.filter(accepted__exact=False,over__exact=False)
+    queryset = RideRequest.objects.all()
     serializer_class = RideRequestDetailSerializer
     lookup_field = "passenger__name"
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 class AcceptRequestUpdateView(UpdateAPIView):
-    queryset = RideRequest.objects.filter(over=False).filter(accepted=False)
+    queryset = RideRequest.objects.filter(accepted__exact=False,over__exact=False)
     serializer_class = AcceptRequestUpdateSerializer
     lookup_field = "passenger__name"
     permission_classes = [IsAuthenticatedOrReadOnly]
