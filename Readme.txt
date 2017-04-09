@@ -7,4 +7,4 @@
 
 4. Opnið Skreppís í pycharm og skrifið í run: py manage.py runserver 192.168.???.???:8000
 
-5. Nú er hægt að opna skreppIsUI folderinn í android studio. Þar þarf að breyta ip addressum í LoginActivity, RegiserActivity og SearchDriverCriteriaActivity hvar sem stendur baseUrl("ip tala").
+5. Nú er hægt að opna skreppIsUI folderinn í android studio. Þar þarf að breyta ip addressum í models/UrlWrapper svo appið tengist servernum
